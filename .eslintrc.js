@@ -6,7 +6,9 @@ module.exports = {
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "airbnb"
+        "plugin:prettier/recommended",
+        "airbnb",
+        "prettier"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -24,6 +26,7 @@ module.exports = {
         }
     },
     "rules": {
+        "prettier/prettier": "error",
         "react/jsx-one-expression-per-line": 0,
         "linebreak-style": 0,
         "import/no-unresolved": 0,
