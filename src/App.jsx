@@ -1,15 +1,23 @@
 import React from "react"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route, Redirect } from "react-router-dom";
+import { createBrowserHistory } from 'history';
 
 // pages
-import Home from "./pages/Home";
+import Main from "./pages/Main";
+import Test from "./pages/Test"
+import Result from "./pages/Result"
+
+const history = createBrowserHistory();
 
 const App = () => (
-  <Router>
-    <Switch>
-      <Route exact path="/" component={Home}/>
-    </Switch>
-  </Router>
-);
+    <Router history={history}>
+      <Switch>
+        <Route exact path="/" component={Main}/>
+        <Route path="/test" component={Test}/>
+        <Route path="/result/:id" component={Result}/>
+        <Redirect from="*" to="/" />
+      </Switch>
+    </Router>
+)
 
 export default App;
