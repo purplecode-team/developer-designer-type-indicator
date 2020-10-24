@@ -26,6 +26,13 @@ module.exports = {
       filename: "./index.html"
     })
   ],
+  output:{
+    publicPath: "/"
+  },
+  devServer: {
+    publicPath: "/",
+    historyApiFallback: true,
+  },
   resolve: {
     extensions: [".js", ".jsx", ".json"]
   }
