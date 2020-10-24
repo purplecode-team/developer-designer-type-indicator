@@ -1,5 +1,5 @@
-import React from "react"
-import { useParams } from "react-router-dom"
+import React from 'react';
+import { useParams } from 'react-router-dom';
 
 const Result = () => {
   const { name } = useParams();
@@ -9,7 +9,7 @@ const Result = () => {
       <h1> Result </h1>
       <h1> {name} </h1>
     </>
-  )
+  );
 };
 
 export default Result;
