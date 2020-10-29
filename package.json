@@ -35,9 +35,12 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "css-loader": "^5.0.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "style-loader": "^2.0.0",
+    "styled-components": "^5.2.0"
   },
   "husky": {
     "hooks": {
