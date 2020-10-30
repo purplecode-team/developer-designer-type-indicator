@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import styles from './slide.module.css';
 import Content from '../components/Content';
+import * as S from "./style";
 
 const Test = () => {
   const TOTAL_SLIDES = 3;
@@ -21,20 +21,20 @@ const Test = () => {
 
   return( 
     <>
-      <div className={styles.container}>
+      <S.container >
         <h1>Developer version</h1>
-        <div className={styles.slide_wrap}>
-          <div className={styles.slide_box}>
-            <div className={styles.slide_list} ref={slideRef}>
+        <S.slideWrap >
+          <S.slideBox >
+            <S.slideList ref={slideRef}>
               <Content nextSlide={nextSlide}></Content>
               <Content nextSlide={nextSlide}></Content>
               <Content nextSlide={nextSlide}></Content>
               <Content nextSlide={nextSlide}></Content>
-            </div>
-          </div>
-          <ul className={styles.slide_pagination} />
-        </div>
-      </div>
+            </S.slideList>
+          </S.slideBox>
+          <ul  />
+        </S.slideWrap>
+      </S.container>
     </>
   );
 };
