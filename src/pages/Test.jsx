@@ -8,7 +8,6 @@ const Test = () => {
   const slideRef = useRef(null);
   const nextSlide = () => {
     if (currentSlide >= TOTAL_SLIDES) {
-      //마지막 슬라이드
       setCurrentSlide(currentSlide);
     } else {
       setCurrentSlide(currentSlide + 1);
@@ -21,20 +20,19 @@ const Test = () => {
 
   return( 
     <>
-      <S.container >
+      <S.Container>
         <h1>Developer version</h1>
-        <S.slideWrap >
-          <S.slideBox >
-            <S.slideList ref={slideRef}>
-              <Content nextSlide={nextSlide}></Content>
-              <Content nextSlide={nextSlide}></Content>
-              <Content nextSlide={nextSlide}></Content>
-              <Content nextSlide={nextSlide}></Content>
-            </S.slideList>
-          </S.slideBox>
-          <ul  />
-        </S.slideWrap>
-      </S.container>
+        <S.SlideWrap>
+          <S.SlideBox>
+            <S.SlideList ref={slideRef}>
+              <Content nextSlide={nextSlide} />
+              <Content nextSlide={nextSlide} />
+              <Content nextSlide={nextSlide} />
+              <Content nextSlide={nextSlide} />
+            </S.SlideList>
+          </S.SlideBox>
+        </S.SlideWrap>
+      </S.Container>
     </>
   );
 };
