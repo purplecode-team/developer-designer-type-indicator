@@ -9,7 +9,7 @@ const Test = () => {
   const nextSlide = () => {
     if (currentSlide >= TOTAL_SLIDES) {
       setCurrentSlide(currentSlide);
-    } else {
+    } else { 
       setCurrentSlide(currentSlide + 1);
     }
   };
