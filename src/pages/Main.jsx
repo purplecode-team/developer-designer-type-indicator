@@ -14,13 +14,13 @@ const Main = () => {
 
 const MainWrapper = styled.div`
   height: 100vh;
+  width: 100%;
   overflow: hidden;
   background-color: ${palette.blue0};
   background-image: url(${grassImg});
   background-position: bottom;
   background-size: 100% 15rem;
   background-repeat: no-repeat;
-  width: 100%;
 `;
 
 export default Main;

@@ -7,8 +7,8 @@ import media from '../../lib/styles/media';
 const Wrapper = styled.div`
   position: relative;
   height: 100%;
-  width: 35rem;
-  margin: 0 auto;
+  display: grid;
+  place-items: center;
 `;
 
 const Content = styled.div`
@@ -18,9 +18,9 @@ const Content = styled.div`
 `;
 
 const TurtleImg = styled.img`
-  width: 70%;
-  @media (max-width: ${media.laptopL}) {
-    width: 50%;
+  width: 20rem;
+  @media (max-width: ${media.tablet}) {
+    width: 15rem;
   }
 `;
 
@@ -49,7 +49,7 @@ const TurtleWithTitle = () => {
             성향 분석 테스트
           </h1>
         </TitleWrapper>
-        <TurtleImg src={turtleImg} alt="turtle" />
+        <TurtleImg src={turtleImg} alt="turtle character" />
       </Content>
     </Wrapper>
   );

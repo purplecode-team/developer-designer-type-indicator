@@ -13,7 +13,6 @@ const Container = styled.div`
   background-position: 50% 30%;
   background-size: 60%;
   @media (max-width: ${media.laptopL}) {
-    width: 90%;
     background-size: 80%;
     background-position: 50% 10%;
   }
