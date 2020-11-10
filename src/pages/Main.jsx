@@ -1,20 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import bg from '../../public/img/bg.png';
-import { media } from '../lib/styles/media';
+import palette from '../lib/styles/palette';
 
 const Main = () => {
-  return (
-    <MainContainer>
-      <h1> Home </h1>
-    </MainContainer>
-  );
+  return <MainWrapper></MainWrapper>;
 };
 
-const MainContainer = styled.div`
+const MainWrapper = styled.div`
   height: 100vh;
-  background-image: url(${bg});
-  background-repeat: no-repeat;
+  background-color: ${palette.blue0};
 `;
 
 export default Main;
