@@ -49,7 +49,7 @@ const TurtleWithTitle = () => {
             성향 분석 테스트
           </h1>
         </TitleWrapper>
-        <TurtleImg src={turtleImg} alt="turtle with title" />
+        <TurtleImg src={turtleImg} alt="turtle" />
       </Content>
     </Wrapper>
   );

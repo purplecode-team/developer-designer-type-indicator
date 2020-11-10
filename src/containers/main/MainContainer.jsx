@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import img from '../../../public/img/bg_clouds.png';
 import media from '../../lib/styles/media';
-
 import TurtleWithTitle from '../../components/main/TurtleWithTitle';
 
 const Container = styled.div`
