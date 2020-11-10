@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router, Switch, Route, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import GlobalStyle from './lib/styles/GlobalStyle';
 
 // pages
 import Main from './pages/Main';
@@ -11,6 +12,7 @@ const history = createBrowserHistory();
 
 const App = () => (
   <Router history={history}>
+    <GlobalStyle />
     <Switch>
       <Route exact path="/" component={Main} />
       <Route path="/test" component={Test} />
