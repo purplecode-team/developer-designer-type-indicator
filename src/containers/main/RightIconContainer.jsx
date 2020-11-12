@@ -49,10 +49,10 @@ const RightIconContainer = () => {
     <Container>
       <Tree src={tree} alt="right tree" />
       <Content>
-        <IconM src={icon2} />
-        <IconS src={icon3} right="4" />
-        <IconS src={icon4} top="3" />
-        <IconM src={icon1} right="3" />
+        <IconM src={icon2} alt="AI icon" />
+        <IconS src={icon3} alt="XD icon" right="4" />
+        <IconS src={icon4} alt="ID icon" top="3" />
+        <IconM src={icon1} alt="PSD icon" right="3" />
       </Content>
     </Container>
   );

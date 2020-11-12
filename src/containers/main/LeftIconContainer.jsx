@@ -48,10 +48,10 @@ const LeftIconContainer = () => {
     <Container>
       <Tree src={tree} alt="left tree" />
       <Content>
-        <IconS src={icon4} left="6" />
-        <IconM src={icon1} left="1" />
-        <IconM src={icon2} top="-1" left="4" />
-        <IconS src={icon3} top="3" />
+        <IconS src={icon4} alt="Java icon" left="6" />
+        <IconM src={icon1} alt="JS icon" left="1" />
+        <IconM src={icon2} alt="Python icon" top="-1" left="4" />
+        <IconS src={icon3} alt="C icon" top="3" />
       </Content>
     </Container>
   );
