@@ -8,7 +8,7 @@ const Button = styled.button`
   outline: none;
   cursor: pointer;
   width: 24rem;
-  z-index: 2;
+  z-index: 10;
   transition: all 0.2s ease-in-out;
   img {
     width: 95%;
