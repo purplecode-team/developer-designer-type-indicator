@@ -8,6 +8,11 @@ const IconImg = styled.img`
   margin-top: ${(props) => props.top}rem;
   margin-left: ${(props) => props.left}rem;
   margin-right: ${(props) => props.right}rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+  }
   @media (max-width: ${media.laptopL}) {
     width: 6rem;
   }

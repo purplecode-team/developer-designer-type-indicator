@@ -15,9 +15,7 @@ const Button = styled.button`
     object-fit: contain;
   }
   &:hover {
-    cursor: pointer;
     transform: scale(1.05);
-    border: 2px;
   }
   h2 {
     position: relative;
