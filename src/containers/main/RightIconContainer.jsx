@@ -5,16 +5,16 @@ import IconM from '../../components/main/IconM';
 import IconS from '../../components/main/IconS';
 
 // img src
-import icon1 from '../../../public/img/f_icon1.png';
-import icon2 from '../../../public/img/f_icon2.png';
-import icon3 from '../../../public/img/f_icon3.png';
-import icon4 from '../../../public/img/f_icon4.png';
-import tree from '../../../public/img/tree_left.png';
+import icon1 from '../../../public/img/d_icon1.png';
+import icon2 from '../../../public/img/d_icon2.png';
+import icon3 from '../../../public/img/d_icon3.png';
+import icon4 from '../../../public/img/d_icon4.png';
+import tree from '../../../public/img/tree_right.png';
 
 const Container = styled.div`
   position: absolute;
-  left: -1rem;
   top: -1rem;
+  right: -1rem;
   @media (max-width: ${media.laptopM}) {
     display: none;
   }
@@ -28,6 +28,7 @@ const Content = styled.div`
   height: 40%;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  justify-items: end;
   @media (max-width: ${media.laptopL}) {
     margin-top: 3rem;
     width: 30rem;
@@ -36,25 +37,25 @@ const Content = styled.div`
 
 const Tree = styled.img`
   position: absolute;
-  left: -1rem;
   top: -1rem;
+  right: -1rem;
   z-index: 3;
   height: 110vh;
   object-fit: contain;
 `;
 
-const LeftIconContainer = () => {
+const RightIconContainer = () => {
   return (
     <Container>
-      <Tree src={tree} alt="left tree" />
+      <Tree src={tree} alt="right tree" />
       <Content>
-        <IconS src={icon4} left="6" />
-        <IconM src={icon1} left="1" />
-        <IconM src={icon2} top="-1" left="4" />
-        <IconS src={icon3} top="3" />
+        <IconM src={icon2} />
+        <IconS src={icon3} right="4" />
+        <IconS src={icon4} top="3" />
+        <IconM src={icon1} right="3" />
       </Content>
     </Container>
   );
 };
 
-export default LeftIconContainer;
+export default RightIconContainer;
