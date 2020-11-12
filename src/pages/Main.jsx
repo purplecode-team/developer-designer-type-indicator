@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import MainContainer from '../containers/main/MainContainer';
-import grassImg from '../../public/img/bg_bottom.png';
 import BoardContainer from '../containers/main/BoardContainer';
 
 const Main = () => {
@@ -18,10 +17,6 @@ const MainWrapper = styled.div`
   width: 100%;
   overflow: hidden;
   background-color: #c5f1fc;
-  background-image: url(${grassImg});
-  background-position: bottom;
-  background-size: 100% 15rem;
-  background-repeat: no-repeat;
 `;
 
 export default Main;

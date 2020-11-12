@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import leftBoardImg from '../../../public/img/left_start.png';
-import rightBoardImg from '../../../public/img/right_start.png';
+import leftBoard from '../../../public/img/left_start.png';
+import rightBoard from '../../../public/img/right_start.png';
 import InformationBoard from '../../components/main/InformationBoard';
 
 const Container = styled.div`
@@ -20,12 +20,8 @@ const Container = styled.div`
 const BoardContainer = () => {
   return (
     <Container>
-      <InformationBoard img={leftBoardImg} title="개발자 테스트" leftPos="1" />
-      <InformationBoard
-        img={rightBoardImg}
-        title="디자이너 테스트"
-        leftPos="-1"
-      />
+      <InformationBoard img={leftBoard} title="개발자 테스트" leftPos="1" />
+      <InformationBoard img={rightBoard} title="디자이너 테스트" leftPos="-1" />
     </Container>
   );
 };
