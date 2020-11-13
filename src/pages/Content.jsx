@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import firebase from '../util/firebase';
 
 const SlideContent = styled.div`
   width: 400px;
@@ -30,22 +31,26 @@ const SlideBtnButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
 `;
-const Content = ({ nextSlide }) => {
+
+
+
+const Content = ({ nextSlide, question, answerA, answerB}) => {
+  console.log('content에서 실행'+question);
+  console.log('대답 : '+answerA);
   return (
     <>
       <SlideContent>
         <SlideTextWrap>
           <SlideText>
-            버스를 타고 가던 중,
-            <br /> 벨을 눌렀지만 그냥 지나친다면?
+            {question}
           </SlideText>
         </SlideTextWrap>
         <SlideBtnBox>
           <SlideBtnButton type="button" onClick={nextSlide}>
-            그냥 다음 정거장에서 내린다
+            {answerA}
           </SlideBtnButton>
           <SlideBtnButton type="button" onClick={nextSlide}>
-            기사님! 여기서 내릴게요! 소리친다
+            {answerB}
           </SlideBtnButton>
         </SlideBtnBox>
       </SlideContent>

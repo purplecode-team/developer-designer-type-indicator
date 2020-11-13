@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Content from './Content';
 import styled from 'styled-components';
+import firebase from '../util/firebase';
 
 const Container = styled.div`
   text-align: center;
@@ -23,9 +24,14 @@ const SlideList = styled.div`
   width: 2000px;
 `;
 
+
+
 const Test = () => {
   const TOTAL_SLIDES = 3;
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [question, setQuestion] = useState('');
+  const [answerA, setAnswerA] = useState('');
+  const [answerB, setAnswerB] = useState('');
   const slideRef = useRef(null);
   const nextSlide = () => {
     if (currentSlide >= TOTAL_SLIDES) {
@@ -39,6 +45,14 @@ const Test = () => {
     slideRef.current.style.transform = `translateX(-${currentSlide * 4}00px)`;
   }, [currentSlide]);
 
+  const ref = firebase.database().ref('DevQuestions');
+  ref.once('value', (snapshot) => {
+    setQuestion(snapshot.val()['dev1']['question']);
+    setAnswerA(snapshot.val()['dev1']['E']);
+    setAnswerB(snapshot.val()['dev1']['I']);
+    console.log(question);
+  });
+  console.log('외부'+question);
   return (
     <>
       <Container>
@@ -46,10 +60,11 @@ const Test = () => {
         <SlideWrap>
           <SlideBox>
             <SlideList ref={slideRef}>
-              <Content nextSlide={nextSlide} />
-              <Content nextSlide={nextSlide} />
-              <Content nextSlide={nextSlide} />
-              <Content nextSlide={nextSlide} />
+              <Content nextSlide={nextSlide} question={question} answerA={answerA} answerB={answerB}/>
+              <Content nextSlide={nextSlide} question={question} answerA={answerA} answerB={answerB}/>
+              <Content nextSlide={nextSlide} question={question} answerA={answerA} answerB={answerB}/>
+              <Content nextSlide={nextSlide} question={question} answerA={answerA} answerB={answerB}/>
+              <Content nextSlide={nextSlide} question={question} answerA={answerA} answerB={answerB}/>
             </SlideList>
           </SlideBox>
         </SlideWrap>
