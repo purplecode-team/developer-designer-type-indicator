@@ -6,6 +6,7 @@ import media from '../../lib/styles/media';
 
 const Wrapper = styled.div`
   position: relative;
+  top: -100%;
   height: 100%;
   display: grid;
   place-items: center;
@@ -13,6 +14,7 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
   position: absolute;
+  z-index: 1;
   bottom: 0;
   text-align: center;
 `;
@@ -24,7 +26,7 @@ const TurtleImg = styled.img`
   }
 `;
 
-const TitleWrapper = styled.header`
+const TitleWrapper = styled.div`
   background-image: url(${titleImg});
   background-repeat: no-repeat;
   background-size: 25rem 12rem;

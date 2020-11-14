@@ -1,25 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
+
+// components
 import MainContainer from '../containers/main/MainContainer';
-import grassImg from '../../public/img/bg_bottom.png';
+import BoardContainer from '../containers/main/BoardContainer';
+import LeftIconContainer from '../containers/main/LeftIconContainer';
+import RightIconContainer from '../containers/main/RightIconContainer';
+
+const MainWrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  background-color: #c5f1fc;
+`;
 
 const Main = () => {
   return (
     <MainWrapper>
+      <LeftIconContainer />
+      <BoardContainer />
       <MainContainer />
+      <RightIconContainer />
     </MainWrapper>
   );
 };
-
-const MainWrapper = styled.div`
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  background-color: #c5f1fc;
-  background-image: url(${grassImg});
-  background-position: bottom;
-  background-size: 100% 15rem;
-  background-repeat: no-repeat;
-`;
 
 export default Main;

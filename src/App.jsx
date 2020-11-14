@@ -1,5 +1,10 @@
 import React from 'react';
-import { Router, Switch, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import GlobalStyle from './lib/styles/GlobalStyle';
 
@@ -15,7 +20,7 @@ const App = () => (
     <GlobalStyle />
     <Switch>
       <Route exact path="/" component={Main} />
-      <Route path="/test" component={Test} />
+      <Route path="/test/:type" component={Test} />
       <Route path="/result/:id" component={Result} />
       <Redirect from="*" to="/" />
     </Switch>
