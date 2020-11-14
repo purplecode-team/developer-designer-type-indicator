@@ -1,14 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import CountUp from 'react-countup';
+
+const StyledLink = styled(Link)`
+  width: 24rem;
+  z-index: 10;
+`;
 
 const Button = styled.button`
   background: none;
   border: none;
   outline: none;
   cursor: pointer;
-  width: 24rem;
-  z-index: 10;
+  width: 100%;
   transition: all 0.2s ease-in-out;
   img {
     width: 95%;
@@ -33,20 +38,19 @@ const Button = styled.button`
   }
 `;
 
-const InformationBoard = ({ img, title, leftPos }) => {
-  const handleClick = () => {
-    console.log('click');
-  };
-
+const InformationBoard = ({ img, title, leftPos, urlSlug }) => {
+  console.log(`/test/${urlSlug}`);
   return (
-    <Button leftPos={leftPos} onClick={handleClick}>
-      <h2> {title} 시작 </h2>
-      <p>
-        총 <CountUp end={100} />
-        명이 참여했어요.{' '}
-      </p>
-      <img src={img} alt={title} />
-    </Button>
+    <StyledLink to={`/test/${urlSlug}`}>
+      <Button leftPos={leftPos}>
+        <h2> {title} 시작 </h2>
+        <p>
+          총 <CountUp end={100} />
+          명이 참여했어요.{' '}
+        </p>
+        <img src={img} alt={title} />
+      </Button>
+    </StyledLink>
   );
 };
 

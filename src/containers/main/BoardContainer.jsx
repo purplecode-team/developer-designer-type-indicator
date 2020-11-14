@@ -20,8 +20,18 @@ const Container = styled.div`
 const BoardContainer = () => {
   return (
     <Container>
-      <InformationBoard img={leftBoard} title="개발자 테스트" leftPos="1" />
-      <InformationBoard img={rightBoard} title="디자이너 테스트" leftPos="-1" />
+      <InformationBoard
+        img={leftBoard}
+        title="개발자 테스트"
+        leftPos="1"
+        urlSlug="developer"
+      />
+      <InformationBoard
+        img={rightBoard}
+        title="디자이너 테스트"
+        leftPos="-1"
+        urlSlug="designer"
+      />
     </Container>
   );
 };
