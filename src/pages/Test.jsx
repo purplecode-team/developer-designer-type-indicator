@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Content from './Content';
 import styled from 'styled-components';
+import Content from './Content';
 
 const Container = styled.div`
   text-align: center;

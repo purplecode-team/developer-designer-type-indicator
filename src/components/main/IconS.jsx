@@ -1,5 +1,6 @@
-import styled from 'styled-components';
 import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import media from '../../lib/styles/media';
 
 const IconImg = styled.img`
@@ -20,6 +21,20 @@ const IconImg = styled.img`
 
 const IconS = ({ src, alt, top, left, right }) => {
   return <IconImg src={src} alt={alt} top={top} left={left} right={right} />;
+};
+
+IconS.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  top: PropTypes.string,
+  left: PropTypes.string,
+  right: PropTypes.string,
+};
+
+IconS.defaultProps = {
+  top: '0',
+  left: '0',
+  right: '0',
 };
 
 export default IconS;

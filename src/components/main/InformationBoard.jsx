@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import CountUp from 'react-countup';
@@ -39,7 +40,6 @@ const Button = styled.button`
 `;
 
 const InformationBoard = ({ img, title, leftPos, urlSlug }) => {
-  console.log(`/test/${urlSlug}`);
   return (
     <StyledLink to={`/test/${urlSlug}`}>
       <Button leftPos={leftPos}>
@@ -52,6 +52,13 @@ const InformationBoard = ({ img, title, leftPos, urlSlug }) => {
       </Button>
     </StyledLink>
   );
+};
+
+InformationBoard.propTypes = {
+  img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  leftPos: PropTypes.string.isRequired,
+  urlSlug: PropTypes.string.isRequired,
 };
 
 export default InformationBoard;
