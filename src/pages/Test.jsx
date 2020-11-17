@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Content from './Content';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import Content from '../components/test/Content';
 import styled from 'styled-components';
 import firebase from '../util/firebase';
 
@@ -27,32 +27,43 @@ const SlideList = styled.div`
 
 
 const Test = () => {
-  const TOTAL_SLIDES = 3;
+  const TOTAL_SLIDES = 15;
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [question, setQuestion] = useState('');
-  const [answerA, setAnswerA] = useState('');
-  const [answerB, setAnswerB] = useState('');
+  const [devData,setDevData] = useState({
+    dev1:{}, dev2:{}, dev3:{}
+ 
+  });
   const slideRef = useRef(null);
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     if (currentSlide >= TOTAL_SLIDES) {
       setCurrentSlide(currentSlide);
     } else {
       setCurrentSlide(currentSlide + 1);
     }
-  };
+    console.log('nextslide실행');
+  },[currentSlide]);
+
   useEffect(() => {
     slideRef.current.style.transition = 'all 0.2s ease-in-out';
     slideRef.current.style.transform = `translateX(-${currentSlide * 4}00px)`;
   }, [currentSlide]);
+  
+  useEffect(()=>{
+    const ref = firebase.database().ref('DevQuestions');
+    ref.once('value', (snapshot) => {
+      setDevData(snapshot.val());
+    });
+    console.log('마운트 될 때만 실행');
+  },[]);
 
-  const ref = firebase.database().ref('DevQuestions');
-  ref.once('value', (snapshot) => {
-    setQuestion(snapshot.val()['dev1']['question']);
-    setAnswerA(snapshot.val()['dev1']['E']);
-    setAnswerB(snapshot.val()['dev1']['I']);
-    console.log(question);
-  });
-  console.log('외부'+question);
+  const dataArray = [devData.dev1, devData.dev2, devData.dev3];
+  
+  const contentList = dataArray.map((data, index) =>(
+    <Content key={index} nextSlide={nextSlide} data={data} />
+  ));
+  console.log(devData);
+
+
   return (
     <>
       <Container>
@@ -60,11 +71,7 @@ const Test = () => {
         <SlideWrap>
           <SlideBox>
             <SlideList ref={slideRef}>
-              <Content nextSlide={nextSlide} question={question} answerA={answerA} answerB={answerB}/>
-              <Content nextSlide={nextSlide} question={question} answerA={answerA} answerB={answerB}/>
-              <Content nextSlide={nextSlide} question={question} answerA={answerA} answerB={answerB}/>
-              <Content nextSlide={nextSlide} question={question} answerA={answerA} answerB={answerB}/>
-              <Content nextSlide={nextSlide} question={question} answerA={answerA} answerB={answerB}/>
+              {contentList}
             </SlideList>
           </SlideBox>
         </SlideWrap>
