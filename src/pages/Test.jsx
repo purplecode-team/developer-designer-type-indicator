@@ -16,8 +16,20 @@ const MainWrapper = styled.div`
 `;
 
 const Container = styled.div`
+  position:absolute;
+  top: 15%;
+  width: 50%;
+  left: 25%;
+  height: 450px;
+  padding: 20px 0;
   text-align: center;
-  margin-top: 50px;
+  background-color:#eee;
+  border-radius:10%;
+  z-index: 1;
+`;
+const SlideTitle = styled.div`
+  margin-top:20px;
+  font-size:25px;
 `;
 const SlideWrap = styled.div`
   width: 400px;
@@ -27,7 +39,7 @@ const SlideWrap = styled.div`
 const SlideBox = styled.div`
   width: 100%;
   margin: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 `;
 const SlideList = styled.div`
   display: flex;
@@ -38,6 +50,7 @@ const SlideList = styled.div`
 
 
 const Test = () => {
+  
   const TOTAL_SLIDES = 15;
   const [currentSlide, setCurrentSlide] = useState(0);
   const [devData,setDevData] = useState({
@@ -80,7 +93,7 @@ const Test = () => {
         ariaLabel="clouds background"
         img={cloudImg}/>
         <Container>
-          <h1>Developer version</h1>
+          <SlideTitle>Developer version</SlideTitle>
           <SlideWrap>
             <SlideBox>
               <SlideList ref={slideRef}>

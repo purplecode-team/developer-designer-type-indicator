@@ -3,17 +3,22 @@ import styled from 'styled-components';
 
 const SlideContent = styled.div`
   width: 400px;
+  height: 250px;
+  display: flex;
+  padding: 30px 0;
+  flex-direction: column;
+  justify-content: space-around;
 `;
 const SlideTextWrap = styled.div`
   display: table;
   width: 100%;
-  height: 200px;
 `;
 const SlideText = styled.p`
   display: table-cell;
   text-align: center;
   vertical-align: middle;
   font-size: 20px;
+  margin: 40px 0;
 `;
 
 const SlideBtnBox = styled.div`
@@ -41,32 +46,48 @@ const Content = ({nextSlide, data}) => {
     console.log(count);
     console.log(result);
   },[result]);
-  const getAnswer = (id) =>{
-    console.log(id);
-    // console.log(count);
-    // console.log(result);
-    // console.log('getAnswer 실행');
+
+  const selecteA = (id)=>{
     if(id === "EI"){
       setCount(result.E + 1);
       setResult({...result,E:result.E + 1});
-      console.log('getAnswer EI 실행');
     }else if(id === "TF"){
       setCount(result.T + 1);
       setResult({...result,T:result.T + 1});
-      console.log('getAnswer TF 실행');
     }else if(id === "JP"){
       setCount(result.J + 1);
       setResult({...result,J:result.J + 1});
-      console.log('getAnswer JP 실행');
     }else{
-      console.log('data.id is wrong');
+      console.log("Something is wrong");
+    }
+  }
+  const selecteB = (id)=>{
+    if(id === "EI"){
+      setCount(result.I + 1);
+      setResult({...result,I:result.I + 1});
+    }else if(id === "TF"){
+      setCount(result.F + 1);
+      setResult({...result,F:result.F + 1});
+    }else if(id === "JP"){
+      setCount(result.P + 1);
+      setResult({...result,P:result.P + 1});
+    }else{
+      console.log("Id is wrong");
+    }
+  }
+  const getAnswer = (id, isSelected) =>{
+    if(isSelected === "A"){
+      selecteA(id);
+    }else if(isSelected ==="B"){
+      selecteB(id);
+    }else{
+      console.log('isSelected is wrong');
     }
   };
   
-  const clickSelection = (id)=>{
+  const clickSelection = (id, isSelected)=>{
     nextSlide();
-    getAnswer(id);
-    console.log('click실행 ');
+    getAnswer(id, isSelected);
   };
 
   return (
@@ -77,10 +98,10 @@ const Content = ({nextSlide, data}) => {
         </SlideText>
       </SlideTextWrap>
       <SlideBtnBox>
-        <SlideBtnButton type="button" onClick={()=>{clickSelection(data.id)}}>
+        <SlideBtnButton type="button" onClick={()=>{clickSelection(data.id,"A")}}>
           {data.A}
         </SlideBtnButton>
-        <SlideBtnButton type="button" onClick={()=>{clickSelection(data.id)}}>
+        <SlideBtnButton type="button" onClick={()=>{clickSelection(data.id,"B")}}>
           {data.B}
         </SlideBtnButton>
       </SlideBtnBox>
