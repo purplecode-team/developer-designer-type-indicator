@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, createContext } from 'react';
 import Content from '../components/test/Content';
 import styled from 'styled-components';
 import firebase from '../util/firebase';
@@ -6,6 +6,7 @@ import CloudBackground from '../components/common/CloudBackground';
 import GrassBackground from '../components/common/GrassBackground';
 import cloudImg from '../../public/img/bg_clouds.png';
 import grassImg from '../../public/img/bg_bottom.png';
+import {TestContext} from '../components/common/TestContext';
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -45,20 +46,21 @@ const SlideList = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: left;
-  width: 2000px;
+  width: 6000px;
 `;
-
 
 const Test = () => {
   
+  const results = {E:0, I:0 , T:0, F:0, J:0, P:0};
+
   const TOTAL_SLIDES = 15;
   const [currentSlide, setCurrentSlide] = useState(0);
   const [devData,setDevData] = useState({
-    dev1:{}, dev2:{}, dev3:{}
+    dev1:{}, dev2:{}, dev3:{}, dev4:{}, dev5:{}, dev6:{}, dev7:{}, dev8:{}, dev9:{}, dev10:{}, dev11:{}, dev12:{}, dev13:{}, dev14:{}, dev15:{}
   });
   const slideRef = useRef(null);
   const nextSlide = useCallback(() => {
-    if (currentSlide >= TOTAL_SLIDES) {
+    if (currentSlide >= TOTAL_SLIDES-1) {
       setCurrentSlide(currentSlide);
     } else {
       setCurrentSlide(currentSlide + 1);
@@ -76,30 +78,29 @@ const Test = () => {
     ref.once('value', (snapshot) => {
       setDevData(snapshot.val());
     });
-    console.log('마운트 될 때만 실행');
+    console.log('firebase 데이터 가져오기 실행');
   },[]);
-
-  const dataArray = [devData.dev1, devData.dev2, devData.dev3];
-  
+  const dataArray = [
+    devData.dev1, devData.dev2, devData.dev3, devData.dev4, devData.dev5, devData.dev6, devData.dev7, devData.dev8, devData.dev9,
+    devData.dev10, devData.dev11, devData.dev12, devData.dev13, devData.dev14, devData.dev15
+  ];
   const contentList = dataArray.map((data, index) =>(
     <Content key={index} nextSlide={nextSlide} data={data} />
   ));
-  console.log(devData);
-
+  
   return (
     <MainWrapper>
-      <CloudBackground
-        role="img"
-        ariaLabel="clouds background"
-        img={cloudImg}/>
+      <CloudBackground role="img" ariaLabel="clouds background" img={cloudImg}/>
         <Container>
           <SlideTitle>Developer version</SlideTitle>
           <SlideWrap>
-            <SlideBox>
-              <SlideList ref={slideRef}>
-                {contentList}
-              </SlideList>
-            </SlideBox>
+            <TestContext.Provider value={results}>
+              <SlideBox>
+                <SlideList ref={slideRef}>
+                  {contentList}
+                </SlideList>
+              </SlideBox>
+            </TestContext.Provider>          
           </SlideWrap>
         </Container>
       <GrassBackground role="img" ariaLabel="grass background" img={grassImg}/>

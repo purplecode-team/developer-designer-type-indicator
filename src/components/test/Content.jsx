@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo, useContext } from 'react';
 import styled from 'styled-components';
+import {TestContext} from '../common/TestContext';
 
 const SlideContent = styled.div`
   width: 400px;
@@ -41,10 +42,10 @@ const Content = ({nextSlide, data}) => {
   const [result, setResult] = useState({
     E:0, I:0 , T:0, F:0, J:0, P:0
   });
+  const results = useContext(TestContext);
 
   useEffect(()=>{
-    console.log(count);
-    console.log(result);
+
   },[result]);
 
   const selecteA = (id)=>{
@@ -88,6 +89,7 @@ const Content = ({nextSlide, data}) => {
   const clickSelection = (id, isSelected)=>{
     nextSlide();
     getAnswer(id, isSelected);
+    console.log('이것은 results : '+results);
   };
 
   return (
@@ -98,7 +100,7 @@ const Content = ({nextSlide, data}) => {
         </SlideText>
       </SlideTextWrap>
       <SlideBtnBox>
-        <SlideBtnButton type="button" onClick={()=>{clickSelection(data.id,"A")}}>
+        <SlideBtnButton type="button" onClick={()=>{clickSelection(data.id,"A"); results.E=results.E+1;}}>
           {data.A}
         </SlideBtnButton>
         <SlideBtnButton type="button" onClick={()=>{clickSelection(data.id,"B")}}>
@@ -108,4 +110,5 @@ const Content = ({nextSlide, data}) => {
     </SlideContent>
   );
 };
+
 export default Content;
