@@ -1,30 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-import img from '../../../public/img/bg_clouds.png';
-import media from '../../lib/styles/media';
+import cloudImg from '../../../public/img/bg_clouds.png';
+import grassImg from '../../../public/img/bg_bottom.png';
+import CloudBackground from '../../components/common/CloudBackground';
+import GrassBackground from '../../components/common/GrassBackground';
 import TurtleWithTitle from '../../components/main/TurtleWithTitle';
 
 const Container = styled.div`
   height: 100%;
-  max-width: ${media.laptopL};
-  margin: 0 auto;
-  background-image: url(${img});
-  background-repeat: no-repeat;
-  background-position: 50% 30%;
-  background-size: 60%;
-  @media (max-width: ${media.laptopL}) {
-    background-size: 80%;
-    background-position: 50% 10%;
-  }
-  @media (max-width: ${media.tablet}) {
-    background-size: 100%;
-  }
+  max-width: 100%;
 `;
 
 const MainContainer = () => {
   return (
     <Container>
+      <CloudBackground
+        role="img"
+        ariaLabel="clouds background"
+        img={cloudImg}
+      />
       <TurtleWithTitle />
+      <GrassBackground role="img" ariaLabel="grass background" img={grassImg} />
     </Container>
   );
 };

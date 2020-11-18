@@ -2,6 +2,18 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Content from '../components/test/Content';
 import styled from 'styled-components';
 import firebase from '../util/firebase';
+import CloudBackground from '../components/common/CloudBackground';
+import GrassBackground from '../components/common/GrassBackground';
+import cloudImg from '../../public/img/bg_clouds.png';
+import grassImg from '../../public/img/bg_bottom.png';
+
+const MainWrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  background-color: #c5f1fc;
+`;
 
 const Container = styled.div`
   text-align: center;
@@ -25,13 +37,11 @@ const SlideList = styled.div`
 `;
 
 
-
 const Test = () => {
   const TOTAL_SLIDES = 15;
   const [currentSlide, setCurrentSlide] = useState(0);
   const [devData,setDevData] = useState({
     dev1:{}, dev2:{}, dev3:{}
- 
   });
   const slideRef = useRef(null);
   const nextSlide = useCallback(() => {
@@ -63,20 +73,24 @@ const Test = () => {
   ));
   console.log(devData);
 
-
   return (
-    <>
-      <Container>
-        <h1>Developer version</h1>
-        <SlideWrap>
-          <SlideBox>
-            <SlideList ref={slideRef}>
-              {contentList}
-            </SlideList>
-          </SlideBox>
-        </SlideWrap>
-      </Container>
-    </>
+    <MainWrapper>
+      <CloudBackground
+        role="img"
+        ariaLabel="clouds background"
+        img={cloudImg}/>
+        <Container>
+          <h1>Developer version</h1>
+          <SlideWrap>
+            <SlideBox>
+              <SlideList ref={slideRef}>
+                {contentList}
+              </SlideList>
+            </SlideBox>
+          </SlideWrap>
+        </Container>
+      <GrassBackground role="img" ariaLabel="grass background" img={grassImg}/>
+    </MainWrapper>
   );
 };
 export default Test;
