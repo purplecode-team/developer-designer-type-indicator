@@ -1,12 +1,16 @@
-import React, { useState, useEffect, useRef, useCallback, createContext } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useReducer } from 'react';
 import Content from '../components/test/Content';
 import styled from 'styled-components';
 import firebase from '../util/firebase';
-import CloudBackground from '../components/common/CloudBackground';
-import GrassBackground from '../components/common/GrassBackground';
-import cloudImg from '../../public/img/bg_clouds.png';
-import grassImg from '../../public/img/bg_bottom.png';
 import {TestContext} from '../components/common/TestContext';
+import testBackground from '../../public/img/testBackground.png';
+import leftTree from '../../public/img/tree_left.png';
+import rightTree from '../../public/img/tree_right.png';
+import media from '../lib/styles/media';
+
+
+let SLIDEWIDTH = 400;
+let SLIDELEN = 15;
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -14,18 +18,52 @@ const MainWrapper = styled.div`
   overflow: hidden;
   position: relative;
   background-color: #c5f1fc;
+  background-image: url(${testBackground});
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+`;
+const RightTree = styled.img`
+  @media (max-width: ${media.laptopM}) {
+    right: -12rem;
+  };
+  @media (max-width: ${media.laptop}) {
+    display:none;
+  };
+  position: absolute;
+  right: -7rem;
+  top: -1rem;
+  height: 110vh;
+  object-fit: contain;
+`;
+const LeftTree = styled.img`
+  @media (max-width: ${media.laptopM}) {
+    left: -12rem;
+  };
+  @media (max-width: ${media.laptop}) {
+    display:none;
+  };
+  position: absolute;
+  left: -7rem;
+  top: -1rem;
+  height: 110vh;
+  object-fit: contain;
 `;
 
 const Container = styled.div`
-  position:absolute;
-  top: 15%;
-  width: 50%;
-  left: 25%;
-  height: 450px;
+  @media (max-width: ${media.tablet}) {
+    width:450px;
+  };
+  @media (max-width: ${media.mobileL}) {
+    width:90%;
+  };
+  width: 500px;
+  height: 350px;
+  margin: 100px auto;
   padding: 20px 0;
   text-align: center;
-  background-color:#eee;
-  border-radius:10%;
+  font-family: 'jua', sans-serif;
+  background-color:white;
+  border-radius: 50px;
   z-index: 1;
 `;
 const SlideTitle = styled.div`
@@ -33,12 +71,16 @@ const SlideTitle = styled.div`
   font-size:25px;
 `;
 const SlideWrap = styled.div`
-  width: 400px;
+  @media (max-width: ${media.tablet}) {
+    width: ${SLIDEWIDTH*0.8};
+  }
+  @media (max-width: ${media.mobileL}) {
+    width:${SLIDEWIDTH*0.6};
+  };
+  width: ${SLIDEWIDTH}px;
   margin: auto;
-  padding-bottom: 30px;
 `;
 const SlideBox = styled.div`
-  width: 100%;
   margin: auto;
   overflow: hidden;
 `;
@@ -46,12 +88,55 @@ const SlideList = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: left;
-  width: 6000px;
+  width: ${SLIDEWIDTH*SLIDELEN}px;
 `;
 
+const reducer = (state, action) => {
+  switch (action.type){
+    case "EI":
+      console.log("EI 실행 "+action.type);
+      ++state.E;
+      return {...state};
+    case "TF":
+      console.log("TF 실행 "+action.type);
+      ++state.T;
+      return {...state};
+    case "JP":
+      console.log("JP 실행 "+action.type);
+      ++state.J;
+      return {...state};
+    default:
+      console.log(state);
+      return state;
+  }
+};
+
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowSize;
+}
+
 const Test = () => {
-  
-  const results = {E:0, I:0 , T:0, F:0, J:0, P:0};
+  let currentWidth = 0;
+  const size = useWindowSize();
+  const [state, dispatch] = useReducer(reducer, {E:0, I:0 , T:0, F:0, J:0, P:0});
 
   const TOTAL_SLIDES = 15;
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -65,12 +150,18 @@ const Test = () => {
     } else {
       setCurrentSlide(currentSlide + 1);
     }
-    console.log('nextslide실행');
   },[currentSlide]);
 
   useEffect(() => {
+    if(size.width<480){
+      currentWidth=SLIDEWIDTH*0.6;
+    }else if(size.width<768){
+      currentWidth=SLIDEWIDTH*0.8;
+    }else{
+      currentWidth=SLIDEWIDTH;
+    }
     slideRef.current.style.transition = 'all 0.2s ease-in-out';
-    slideRef.current.style.transform = `translateX(-${currentSlide * 4}00px)`;
+    slideRef.current.style.transform = `translateX(-${currentSlide * currentWidth}px)`;
   }, [currentSlide]);
   
   useEffect(()=>{
@@ -87,23 +178,24 @@ const Test = () => {
   const contentList = dataArray.map((data, index) =>(
     <Content key={index} nextSlide={nextSlide} data={data} />
   ));
-  
+
+
   return (
     <MainWrapper>
-      <CloudBackground role="img" ariaLabel="clouds background" img={cloudImg}/>
-        <Container>
-          <SlideTitle>Developer version</SlideTitle>
-          <SlideWrap>
-            <TestContext.Provider value={results}>
-              <SlideBox>
-                <SlideList ref={slideRef}>
-                  {contentList}
-                </SlideList>
-              </SlideBox>
-            </TestContext.Provider>          
-          </SlideWrap>
-        </Container>
-      <GrassBackground role="img" ariaLabel="grass background" img={grassImg}/>
+      <RightTree src={rightTree} alt="Right tree" />
+      <LeftTree src={leftTree} alt="Left tree" />
+      <Container>
+        <SlideTitle>Developer</SlideTitle>
+        <SlideWrap>
+          <TestContext.Provider value={{state, dispatch}}>
+            <SlideBox>
+              <SlideList ref={slideRef}>
+                {contentList}
+              </SlideList>
+            </SlideBox>
+          </TestContext.Provider>          
+        </SlideWrap>
+      </Container>
     </MainWrapper>
   );
 };

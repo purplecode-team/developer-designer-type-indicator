@@ -1,20 +1,34 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo, useContext } from 'react';
 import styled from 'styled-components';
 import {TestContext} from '../common/TestContext';
+import media from '../../lib/styles/media';
+
+const slideWidth = 400;
 
 const SlideContent = styled.div`
-  width: 400px;
-  height: 250px;
+  @media (max-width: ${media.tablet}) {
+    width: ${slideWidth*0.8};
+  }
+  @media (max-width: ${media.mobileL}) {
+    width:${slideWidth*0.6};
+  };
+  width: ${slideWidth}px;
+  height: 325px;
   display: flex;
-  padding: 30px 0;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
 `;
 const SlideTextWrap = styled.div`
   display: table;
   width: 100%;
 `;
 const SlideText = styled.p`
+  @media (max-width: ${media.tablet}) {
+    
+  }
+  @media (max-width: ${media.mobileL}) {
+    font-size: 16px;
+  };
   display: table-cell;
   text-align: center;
   vertical-align: middle;
@@ -26,71 +40,50 @@ const SlideBtnBox = styled.div`
   position: relative;
 `;
 const SlideBtnButton = styled.button`
+  @media (max-width: ${media.tablet}) {
+
+  }
+  @media (max-width: ${media.mobileL}) {
+    font-size: 12px;
+    height: 50px;
+  };
   display: block;
-  margin: 10px auto;
-  width: 80%;
-  height: 60px;
+  margin: 20px auto;
+  width: 100%;
+  height: 65px;
   font-size: 16px;
   background: none;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  border: 1px solid #FF9C9C;
+  border-radius: 20px;
   cursor: pointer;
+  &:hover{
+    color:white;
+    background-color: #FF9C9C;
+  };
+  &:focus{
+    outline-style:none;
+  }
 `;
 
 const Content = ({nextSlide, data}) => {
-  const [count, setCount] = useState(0);
-  const [result, setResult] = useState({
-    E:0, I:0 , T:0, F:0, J:0, P:0
-  });
-  const results = useContext(TestContext);
+  // const [count, setCount] = useState(0);
 
-  useEffect(()=>{
+  const {results, dispatch } = useContext(TestContext);
 
-  },[result]);
-
-  const selecteA = (id)=>{
-    if(id === "EI"){
-      setCount(result.E + 1);
-      setResult({...result,E:result.E + 1});
-    }else if(id === "TF"){
-      setCount(result.T + 1);
-      setResult({...result,T:result.T + 1});
-    }else if(id === "JP"){
-      setCount(result.J + 1);
-      setResult({...result,J:result.J + 1});
-    }else{
-      console.log("Something is wrong");
-    }
-  }
-  const selecteB = (id)=>{
-    if(id === "EI"){
-      setCount(result.I + 1);
-      setResult({...result,I:result.I + 1});
-    }else if(id === "TF"){
-      setCount(result.F + 1);
-      setResult({...result,F:result.F + 1});
-    }else if(id === "JP"){
-      setCount(result.P + 1);
-      setResult({...result,P:result.P + 1});
-    }else{
-      console.log("Id is wrong");
-    }
-  }
-  const getAnswer = (id, isSelected) =>{
+  const getAnswer = useCallback((id, isSelected) =>{
     if(isSelected === "A"){
-      selecteA(id);
+      dispatch(id);
     }else if(isSelected ==="B"){
-      selecteB(id);
+      dispatch(id);
     }else{
       console.log('isSelected is wrong');
     }
-  };
+  });
   
-  const clickSelection = (id, isSelected)=>{
+  const clickSelection = useCallback((id, isSelected)=>{
     nextSlide();
     getAnswer(id, isSelected);
-    console.log('이것은 results : '+results);
-  };
+  });
 
   return (
     <SlideContent>
@@ -100,10 +93,10 @@ const Content = ({nextSlide, data}) => {
         </SlideText>
       </SlideTextWrap>
       <SlideBtnBox>
-        <SlideBtnButton type="button" onClick={()=>{clickSelection(data.id,"A"); results.E=results.E+1;}}>
+        <SlideBtnButton type="button" onClick={()=>{clickSelection(data.id,"A"); dispatch({type:data.id})}}>
           {data.A}
         </SlideBtnButton>
-        <SlideBtnButton type="button" onClick={()=>{clickSelection(data.id,"B")}}>
+        <SlideBtnButton type="button" onClick={()=>{clickSelection(data.id,"B"); dispatch({type:data.id})}}>
           {data.B}
         </SlideBtnButton>
       </SlideBtnBox>
