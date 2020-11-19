@@ -13,7 +13,6 @@ const SlideContent = styled.div`
     width:${slideWidth*0.6};
   };
   width: ${slideWidth}px;
-  height: 325px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -21,6 +20,7 @@ const SlideContent = styled.div`
 const SlideTextWrap = styled.div`
   display: table;
   width: 100%;
+  height:15%;
 `;
 const SlideText = styled.p`
   @media (max-width: ${media.tablet}) {

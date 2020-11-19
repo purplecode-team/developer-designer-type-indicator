@@ -65,6 +65,7 @@ const Container = styled.div`
   background-color:white;
   border-radius: 50px;
   z-index: 1;
+  box-shadow: #afafaf 5px 5px 20px;
 `;
 const SlideTitle = styled.div`
   margin-top:20px;
@@ -89,6 +90,7 @@ const SlideList = styled.div`
   flex-direction: row;
   justify-content: left;
   width: ${SLIDEWIDTH*SLIDELEN}px;
+  height:100%;
 `;
 
 const reducer = (state, action) => {
