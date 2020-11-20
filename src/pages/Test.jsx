@@ -109,8 +109,9 @@ const reducer = (state, action) => {
       return {...state};
     default:
       console.log(state);
+      console.log('default 실행');
       return state;
-  }
+  };
 };
 
 function useWindowSize() {
@@ -138,7 +139,7 @@ function useWindowSize() {
 const Test = () => {
   let currentWidth = 0;
   const size = useWindowSize();
-  const [state, dispatch] = useReducer(reducer, {E:0, I:0 , T:0, F:0, J:0, P:0});
+  const [state, dispatch] = useReducer(reducer, {E:0, T:0, J:0});
 
   const TOTAL_SLIDES = 15;
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -148,6 +149,7 @@ const Test = () => {
   const slideRef = useRef(null);
   const nextSlide = useCallback(() => {
     if (currentSlide >= TOTAL_SLIDES-1) {
+      console.log('마지막 제출');
       setCurrentSlide(currentSlide);
     } else {
       setCurrentSlide(currentSlide + 1);
