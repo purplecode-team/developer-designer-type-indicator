@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import GlobalStyle from './lib/styles/GlobalStyle';
-import {Context} from '../src/components/common/Context';
+import {Context} from './lib/helpers/Context';
 
 
 // pages

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo, useContext } from 'react';
 import styled from 'styled-components';
-import {Context} from '../common/Context';
+import {Context} from '../../lib/helpers/Context';
 import media from '../../lib/styles/media';
 const slideWidth = 400;
 
