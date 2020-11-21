@@ -114,16 +114,16 @@ function useWindowSize() {
   }, []);
 
   return windowSize;
-}
+};
 
-const Test = () => {
+const Test = ({match}) => {
   let currentWidth = 0;
   const size = useWindowSize();
 
   const TOTAL_SLIDES = 15;
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [devData,setDevData] = useState({
-    dev1:{}, dev2:{}, dev3:{}, dev4:{}, dev5:{}, dev6:{}, dev7:{}, dev8:{}, dev9:{}, dev10:{}, dev11:{}, dev12:{}, dev13:{}, dev14:{}, dev15:{}
+  const [data,setData] = useState({
+    Q1:{}, Q2:{}, Q3:{}, Q4:{}, Q5:{}, Q6:{}, Q7:{}, Q8:{}, Q9:{}, Q10:{}, Q11:{}, Q12:{}, Q13:{}, Q14:{}, Q15:{}
   });
   const slideRef = useRef(null);
   const nextSlide = useCallback(() => {
@@ -133,6 +133,7 @@ const Test = () => {
     } else {
       setCurrentSlide(currentSlide + 1);
     }
+    console.log(currentSlide);
   },[currentSlide]);
 
   useEffect(() => {
@@ -147,16 +148,24 @@ const Test = () => {
     slideRef.current.style.transform = `translateX(-${currentSlide * currentWidth}px)`;
   }, [currentSlide]);
   
-  useEffect(()=>{
-    const ref = firebase.database().ref('DevQuestions');
+  const connectData = useCallback((dataName) =>{
+    const ref = firebase.database().ref(dataName);
     ref.once('value', (snapshot) => {
-      setDevData(snapshot.val());
+      setData(snapshot.val());
     });
-    console.log('firebase 데이터 가져오기 실행');
   },[]);
+
+  useEffect(()=>{
+    if(match.params.type === 'developer'){
+      connectData('developData');
+    }else if(match.params.type === 'designer'){
+      connectData('designData');
+    }
+  },[]);
+
   const dataArray = [
-    devData.dev1, devData.dev2, devData.dev3, devData.dev4, devData.dev5, devData.dev6, devData.dev7, devData.dev8, devData.dev9,
-    devData.dev10, devData.dev11, devData.dev12, devData.dev13, devData.dev14, devData.dev15
+    data.Q1, data.Q2, data.Q3, data.Q4, data.Q5, data.Q6, data.Q7, data.Q8, data.Q9,
+    data.Q10, data.Q11, data.Q12, data.Q13, data.Q14, data.Q15
   ];
   const contentList = dataArray.map((data, index) =>(
     <Content key={index} nextSlide={nextSlide} data={data} />
@@ -167,7 +176,7 @@ const Test = () => {
       <RightTree src={rightTree} alt="Right tree" />
       <LeftTree src={leftTree} alt="Left tree" />
       <Container>
-        <SlideTitle>Developer</SlideTitle>
+        <SlideTitle>{match.params.type}</SlideTitle>
         <SlideWrap>
             <SlideBox>
               <SlideList ref={slideRef}>
