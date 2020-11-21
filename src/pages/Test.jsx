@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, useCallback, useReducer } from 'rea
 import Content from '../components/test/Content';
 import styled from 'styled-components';
 import firebase from '../util/firebase';
-import {TestContext} from '../components/common/TestContext';
 import testBackground from '../../public/img/testBackground.png';
 import leftTree from '../../public/img/tree_left.png';
 import rightTree from '../../public/img/tree_right.png';
@@ -93,26 +92,7 @@ const SlideList = styled.div`
   height:100%;
 `;
 
-const reducer = (state, action) => {
-  switch (action.type){
-    case "EI":
-      console.log("EI 실행 "+action.type);
-      ++state.E;
-      return {...state};
-    case "TF":
-      console.log("TF 실행 "+action.type);
-      ++state.T;
-      return {...state};
-    case "JP":
-      console.log("JP 실행 "+action.type);
-      ++state.J;
-      return {...state};
-    default:
-      console.log(state);
-      console.log('default 실행');
-      return state;
-  };
-};
+
 
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
@@ -139,7 +119,6 @@ function useWindowSize() {
 const Test = () => {
   let currentWidth = 0;
   const size = useWindowSize();
-  const [state, dispatch] = useReducer(reducer, {E:0, T:0, J:0});
 
   const TOTAL_SLIDES = 15;
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -183,7 +162,6 @@ const Test = () => {
     <Content key={index} nextSlide={nextSlide} data={data} />
   ));
 
-
   return (
     <MainWrapper>
       <RightTree src={rightTree} alt="Right tree" />
@@ -191,13 +169,11 @@ const Test = () => {
       <Container>
         <SlideTitle>Developer</SlideTitle>
         <SlideWrap>
-          <TestContext.Provider value={{state, dispatch}}>
             <SlideBox>
               <SlideList ref={slideRef}>
                 {contentList}
               </SlideList>
             </SlideBox>
-          </TestContext.Provider>          
         </SlideWrap>
       </Container>
     </MainWrapper>
