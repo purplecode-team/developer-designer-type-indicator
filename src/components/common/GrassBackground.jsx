@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import media from '../../lib/styles/media';
 
 const Background = styled.span`
   width: 100%;
@@ -10,7 +11,7 @@ const Background = styled.span`
   bottom: 0;
   background-image: url(${(props) => props.img});
   background-position: bottom;
-  background-size: 100% 15rem;
+  background-size: 200% 10rem;
   background-repeat: no-repeat;
 `;
 

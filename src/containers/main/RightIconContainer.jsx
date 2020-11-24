@@ -24,7 +24,7 @@ const Content = styled.div`
   position: relative;
   z-index: 5;
   margin-top: 5rem;
-  width: 40rem;
+  width: 30rem;
   height: 40%;
   display: grid;
   grid-template-columns: 1fr 1fr;

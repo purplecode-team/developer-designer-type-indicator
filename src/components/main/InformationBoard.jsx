@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import CountUp from 'react-countup';
 
 const StyledLink = styled(Link)`
-  width: 24rem;
+  width: 20rem;
   z-index: 10;
 `;
 

@@ -4,25 +4,39 @@ import styled from 'styled-components';
 import media from '../../lib/styles/media';
 
 const Background = styled.span`
+  position: absolute;
+  top: ${(props) => props.top}%;
+  left: ${(props) => props.left}%;
   margin: 0 auto;
-  max-width: ${media.laptopL};
-  height: 100%;
-  display: block;
+  width: 16rem;
+  height: 12rem;
   background-image: url(${(props) => props.img});
   background-repeat: no-repeat;
-  background-position: 50% 30%;
-  background-size: 60%;
-  @media (max-width: ${media.laptopL}) {
-    background-size: 80%;
-    background-position: 50% 10%;
+  background-size:100%;
+  @media (max-width: ${media.tablet}){
+    top: ${(props) => props.top+5}%;
+    left: ${(props) => props.left}%;
+    width: 10rem;
+    height: 7rem;
   }
-  @media (max-width: ${media.tablet}) {
-    background-size: 95%;
+  @media (max-width: ${media.mobileL}){
+    top: ${(props) => props.top+5}%;
+    left: ${(props) => props.left-10}%;
+    width: 10rem;
+    height: 7rem;
   }
 `;
 
 const CloudBackground = ({ ariaLabel, img }) => {
-  return <Background role="img" aria-label={ariaLabel} img={img} />;
+  const positions = [{top:24,left:15},{top:5,left:65},{top:52,left:55}];
+  const list = positions.map((position,index)=>(
+    <Background key={index} role="img" aria-label={ariaLabel} img={img} top={position.top} left={position.left}/>)
+  );
+  return (
+    <>
+      {list}
+    </>
+  );
 };
 
 CloudBackground.propTypes = {
