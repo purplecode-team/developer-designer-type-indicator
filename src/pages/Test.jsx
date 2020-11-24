@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback, useReducer } from 'react';
+import React, { useState, useEffect, useCallback} from 'react';
 import Content from '../components/test/Content';
+import ContentNav from '../components/test/ContentNav';
 import styled from 'styled-components';
 import firebase from '../util/firebase';
 import testBackground from '../../public/img/testBackground.png';
@@ -7,9 +8,6 @@ import leftTree from '../../public/img/tree_left.png';
 import rightTree from '../../public/img/tree_right.png';
 import media from '../lib/styles/media';
 
-
-let SLIDEWIDTH = 400;
-let SLIDELEN = 15;
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -57,7 +55,7 @@ const Container = styled.div`
   };
   width: 500px;
   height: 350px;
-  margin: 100px auto;
+  margin: 120px auto;
   padding: 20px 0;
   text-align: center;
   font-family: 'jua', sans-serif;
@@ -66,34 +64,18 @@ const Container = styled.div`
   z-index: 1;
   box-shadow: #afafaf 5px 5px 20px;
 `;
-const SlideTitle = styled.div`
-  margin-top:20px;
+const ContentTitle = styled.div`
+  margin:20px 0;
   font-size:25px;
 `;
-const SlideWrap = styled.div`
-  @media (max-width: ${media.tablet}) {
-    width: ${SLIDEWIDTH*0.8};
-  }
-  @media (max-width: ${media.mobileL}) {
-    width:${SLIDEWIDTH*0.6};
-  };
-  width: ${SLIDEWIDTH}px;
-  margin: auto;
-`;
-const SlideBox = styled.div`
-  margin: auto;
-  overflow: hidden;
-`;
-const SlideList = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  width: ${SLIDEWIDTH*SLIDELEN}px;
-  height:100%;
+const ContentWrap = styled.div`
+  width: 90%;
+  margin: 0 auto;
 `;
 
 
-const Test = ({match}) => {
+
+const Test = ({match, history}) => {
   const [count, setCount] = useState(1);
   const [currentData, setCurrentData] = useState({});
   const [data,setData] = useState({
@@ -113,10 +95,9 @@ const Test = ({match}) => {
   },[]);
 
   const nextSlide = useCallback(() => {
+    console.log('현재 count : '+count);
     setCount(count+1);
     setCurrentData(dataArray[count]);
-    console.log('currentData 실행');
-    console.log(count);
   });
 
   useEffect(()=>{
@@ -129,7 +110,6 @@ const Test = ({match}) => {
 
   useEffect(()=>{
     setCurrentData(dataArray[0]);
-    console.log('setCurrentData 첫번째 실행');
   },[data]);
 
   return (
@@ -137,15 +117,12 @@ const Test = ({match}) => {
       <RightTree src={rightTree} alt="Right tree" />
       <LeftTree src={leftTree} alt="Left tree" />
       <Container>
-        <SlideTitle>{match.params.type}</SlideTitle>
-        <SlideWrap>
-            <SlideBox>
-              <SlideList >
-                <Content nextSlide={nextSlide} data={currentData} count={count} />
-              </SlideList>
-            </SlideBox>
-        </SlideWrap>
+        <ContentTitle>{match.params.type}</ContentTitle>
+        <ContentWrap>
+          <Content nextSlide={nextSlide} data={currentData} count={count} history={history} />
+        </ContentWrap>
       </Container>
+      <ContentNav/>
     </MainWrapper>
   );
 };
