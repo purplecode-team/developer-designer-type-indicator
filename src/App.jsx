@@ -9,7 +9,6 @@ import { createBrowserHistory } from 'history';
 import GlobalStyle from './lib/styles/GlobalStyle';
 import {Context} from './lib/helpers/Context';
 
-
 // pages
 import Main from './pages/Main';
 import Test from './pages/Test';
@@ -48,7 +47,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Main} />
         <Route path="/test/:type" component={Test} />
-        <Route path="/result/:id" component={Result} />
+        <Route path="/result" component={Result} />
         <Redirect from="*" to="/" />
       </Switch>
     </Router>
