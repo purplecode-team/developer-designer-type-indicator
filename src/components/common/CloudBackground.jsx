@@ -28,7 +28,7 @@ const Background = styled.span`
 `;
 
 const CloudBackground = ({ ariaLabel, img }) => {
-  const positions = [{top:24,left:15},{top:5,left:65},{top:52,left:55}];
+  const positions = [{top:24,left:12},{top:5,left:65},{top:52,left:55}];
   const list = positions.map((position,index)=>(
     <Background key={index} role="img" aria-label={ariaLabel} img={img} top={position.top} left={position.left}/>)
   );

@@ -7,7 +7,10 @@ import testBackground from '../../public/img/testBackground.png';
 import leftTree from '../../public/img/tree_left.png';
 import rightTree from '../../public/img/tree_right.png';
 import media from '../lib/styles/media';
-
+import GrassBackground from '../components/common/GrassBackground';
+import CloudBackground from '../components/common/CloudBackground';
+import grassImg from '../../public/img/ground.png';
+import cloudImg from '../../public/img/cloud.png';
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -15,10 +18,8 @@ const MainWrapper = styled.div`
   overflow: hidden;
   position: relative;
   background-color: #c5f1fc;
-  background-image: url(${testBackground});
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
 `;
+
 const RightTree = styled.img`
   @media (max-width: ${media.laptopM}) {
     right: -12rem;
@@ -31,6 +32,7 @@ const RightTree = styled.img`
   top: -1rem;
   height: 110vh;
   object-fit: contain;
+  z-index:99;
 `;
 const LeftTree = styled.img`
   @media (max-width: ${media.laptopM}) {
@@ -44,6 +46,7 @@ const LeftTree = styled.img`
   top: -1rem;
   height: 110vh;
   object-fit: contain;
+  z-index:99;
 `;
 
 const Container = styled.div`
@@ -53,6 +56,7 @@ const Container = styled.div`
   @media (max-width: ${media.mobileL}) {
     width:90%;
   };
+  position:relative;
   width: 500px;
   height: 350px;
   margin: 120px auto;
@@ -67,6 +71,7 @@ const Container = styled.div`
 const ContentTitle = styled.div`
   margin:20px 0;
   font-size:25px;
+  
 `;
 const ContentWrap = styled.div`
   width: 90%;
@@ -113,7 +118,7 @@ const Test = ({match, history}) => {
   },[data]);
 
   return (
-    <MainWrapper >
+    <MainWrapper>
       <RightTree src={rightTree} alt="Right tree" />
       <LeftTree src={leftTree} alt="Left tree" />
       <Container>
@@ -121,8 +126,10 @@ const Test = ({match, history}) => {
         <ContentWrap>
           <Content nextSlide={nextSlide} data={currentData} count={count} history={history} />
         </ContentWrap>
+        <ContentNav count={count}/>
       </Container>
-      <ContentNav/>
+      <CloudBackground role="img" ariaLabel="clouds background" img={cloudImg} />
+      <GrassBackground role="img" ariaLabel="grass background" img={grassImg} />
     </MainWrapper>
   );
 };

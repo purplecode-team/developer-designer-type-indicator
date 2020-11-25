@@ -10,20 +10,21 @@ const Container = styled.div`
   display: flex;
   overflow: hidden;
   justify-content: space-between;
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   left: 0;
   right: 0;
   text-align: center;
   @media (max-width: ${media.tablet}){
-
+    width:100%;
   }
   @media (max-width: ${media.mobileL}){
-    
-    width:90%;
-    bottom: 6rem;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    bottom: 1rem;
   }
 `;
 
