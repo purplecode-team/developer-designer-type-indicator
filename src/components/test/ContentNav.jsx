@@ -13,26 +13,25 @@ const NavBar = styled.div`
   background-color: #ffd4d7;
 `;
 const NavIconWrap = styled.span`
+  background-image: url(${foot});
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
   position: absolute;
   top: -1rem;
   left: ${(props) => props.left}%;
-  width: 22px;
+  width: 30px;
   height: 40px;
 `;
 const NavCountWrap = styled.div`
+  position:relative;
   width:100%;
-
-`
-
+`;
 const NavCount = styled.p`
   font-size: 5px;
-  position: absolute;
-  top: 20px;
-  z-index: 9;
   color: white;
-  left: 10px;
+  margin-top: 20px;
 `;
-
 const NavIcon = styled.img`
   width: 25px;
   object-fit: contain;
@@ -48,10 +47,7 @@ const ContentNav = ({count})=>{
     <>
       <NavBar>
         <NavIconWrap left={(count-1) * distance}>
-          <NavCountWrap>
             <NavCount>{count}</NavCount>
-          </NavCountWrap>
-          <NavIcon src={foot} />
         </NavIconWrap>
       </NavBar>
     </>

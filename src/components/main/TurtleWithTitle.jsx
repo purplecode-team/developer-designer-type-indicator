@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import turtleImg from '../../../public/img/character.png';
+import turtleImg2 from '../../../public/img/character2.png';
 import titleImg from '../../../public/img/bubble.png';
 import media from '../../lib/styles/media';
 
 const Wrapper = styled.div`
   position: relative;
-  top: -100%;
-  height: 100%;
+  height: 90%;
   display: grid;
   place-items: center;
 `;
@@ -17,16 +17,13 @@ const Content = styled.div`
   z-index: 1;
   bottom: 0;
   text-align: center;
-  @media (max-width: ${media.mobileL}) {
-    width: 100%;
-    bottom: 10rem;
+  width: 400px;
+  @media (max-width: ${media.tablet}) {
+    bottom: 14rem;
+    width: 70%;
   }
-`;
-
-const TurtleImg = styled.img`
-  width: 17rem;
   @media (max-width: ${media.mobileL}) {
-    width: 11rem;
+
   }
 `;
 
@@ -35,28 +32,49 @@ const TitleWrapper = styled.div`
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
-  width: 25rem;
-  height: 13rem;
+  width: 20rem;
+  height: 12rem;
+  margin: 0 auto;
   h1 {
     font-size: 24px;
     padding: 3.2rem 0;
     line-height: 1.3em;
     font-family:'jua', sans-serif;
+    color: gray;
   }
   @media (max-width: ${media.tablet}) {
-    background-size: 100% 100%;
-    margin: 0 auto;
+    height: 10rem;
+    h1{
+      padding: 2.2rem 0;
+    }
   }
   @media (max-width: ${media.mobileL}) {
-    background-size: 100% 100%;
-    width: 80%;
-    height: 10rem;
-    margin: 0 auto;
+    width: 100%;
     h1 {
-    padding: 2.2rem 0;
+
     }
   }
 `;
+
+const TurtleImg = styled.div`
+  background-image: url(${turtleImg});
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  width: 14rem;
+  height: 20rem;
+  margin: 0 auto;
+  @media (max-width: ${media.tablet}) {
+    width: 6rem;
+    height: 8rem;
+    padding-top: 10px;
+    background-image: url(${turtleImg2});
+  }
+  @media (max-width: ${media.mobileL}) {
+
+  }
+`;
+
 
 const TurtleWithTitle = () => {
   return (
@@ -68,7 +86,7 @@ const TurtleWithTitle = () => {
             성향 분석 테스트
           </h1>
         </TitleWrapper>
-        <TurtleImg src={turtleImg} alt="turtle character" />
+        <TurtleImg />
       </Content>
     </Wrapper>
   );

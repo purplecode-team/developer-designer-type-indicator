@@ -8,10 +8,14 @@ import media from '../../lib/styles/media';
 const StyledLink = styled(Link)`
   width: 20rem;
   z-index: 10;
-  margin-top: 10px;
-  @media (max-width: ${media.mobileL}) {
-    width: 200px;
+  padding-top: 10px;
+  @media (max-width: ${media.tablet}) {
+    width: 14rem;
+    position: absolute;
+    top:${(props) => props.top}rem;
+    margin-left:${(props) => props.margin}px;
   }
+
 `;
 
 const Button = styled.button`
@@ -46,14 +50,7 @@ const Button = styled.button`
       font-size: 14px;
     }
   };
-  @media (max-width: ${media.mobileL}) {
-    h2{
-      font-size: 14px;
-    }
-    p{
-      font-size: 12px;
-    }
-  }
+
 `;
 
 const BoardTextWrap = styled.div`
@@ -61,17 +58,17 @@ const BoardTextWrap = styled.div`
   top:40px;
   width:100%;
   text-align:center;
-  @media (max-width: ${media.mobileL}) {
+  @media (max-width: ${media.tablet}) {
     top:30px;
   }
 `;
 
-const InformationBoard = ({ img, title, leftPos, urlSlug }) => {
+const InformationBoard = ({ img, title, leftPos, urlSlug, top, margin }) => {
   return (
-    <StyledLink to={`/test/${urlSlug}`}>
+    <StyledLink to={`/test/${urlSlug}`} top={top} margin={margin} >
       <Button leftPos={leftPos}>
         <BoardTextWrap>
-          <h2> {title} 시작 </h2>
+          <h2> {title}</h2>
           <p>
             총 <CountUp end={100} />
             명이 참여했어요.{' '}
