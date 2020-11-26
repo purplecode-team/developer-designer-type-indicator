@@ -1,5 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import {Context} from '../../lib/helpers/Context';
 import media from '../../lib/styles/media';
 
@@ -47,7 +48,7 @@ const ContentBtnContainer = ({nextSlide, data, count, history}) => {
     const {state, dispatch } = useContext(Context);
   
     const classifySelection = (id, selection)=>{
-      if(selection=="A"){
+      if(selection == "A"){
         dispatch(id);
       }else{
         console.log("B 선택");
@@ -55,9 +56,9 @@ const ContentBtnContainer = ({nextSlide, data, count, history}) => {
       console.log(state);
     }
     const goToResult = ()=>{
-      if(count === 15){
+      if(count == 15){
         history.push('/result');
-        return;
+        
       }
     }
     const clickSelection = useCallback((id, selection)=>{
@@ -67,15 +68,21 @@ const ContentBtnContainer = ({nextSlide, data, count, history}) => {
     });
   
     return (
-    <ContentBtnBox>
-      <ContentBtnButton type="button" onClick={()=>{clickSelection({type:data.id},"A");}}>
-        {data.A}
-      </ContentBtnButton>
-      <ContentBtnButton type="button" onClick={()=>{clickSelection({type:data.id},"B");}}>
-        {data.B}
-      </ContentBtnButton>
-    </ContentBtnBox>
+      <ContentBtnBox>
+        <ContentBtnButton type="button" onClick={()=>{clickSelection({type:data.id},"A");}}>
+          {data.A}
+        </ContentBtnButton>
+        <ContentBtnButton type="button" onClick={()=>{clickSelection({type:data.id},"B");}}>
+          {data.B}
+        </ContentBtnButton>
+      </ContentBtnBox>
     );
-  };
+};
+
+ContentBtnContainer.propTypes = {
+  nextSlide: PropTypes.func,
+  data: PropTypes.object,
+  count: PropTypes.number
+};
   
   export default ContentBtnContainer;

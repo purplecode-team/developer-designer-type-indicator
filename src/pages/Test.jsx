@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useCallback} from 'react';
+import styled from 'styled-components';
 import Content from '../components/test/Content';
 import ContentNav from '../components/test/ContentNav';
-import styled from 'styled-components';
 import firebase from '../util/firebase';
-import testBackground from '../../public/img/testBackground.png';
 import leftTree from '../../public/img/tree_left.png';
 import rightTree from '../../public/img/tree_right.png';
 import media from '../lib/styles/media';
@@ -99,7 +98,7 @@ const Test = ({match, history}) => {
   },[]);
 
   const nextSlide = useCallback(() => {
-    console.log('현재 count : '+count);
+    console.log(`현재 count : ${count}`);
     setCount(count+1);
     setCurrentData(dataArray[count]);
   });
@@ -125,7 +124,7 @@ const Test = ({match, history}) => {
         <ContentWrap>
           <Content nextSlide={nextSlide} data={currentData} count={count} history={history} />
         </ContentWrap>
-        <ContentNav count={count}/>
+        <ContentNav count={count} />
       </Container>
       <CloudBackground role="img" ariaLabel="clouds background" img={cloudImg} />
       <GrassBackground role="img" ariaLabel="grass background" img={grassImg} />

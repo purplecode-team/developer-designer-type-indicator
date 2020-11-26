@@ -1,7 +1,5 @@
-import React, { useEffect, useCallback, useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import {Context} from '../../lib/helpers/Context';
-import media from '../../lib/styles/media';
 import foot from '../../../public/img/foot.png';
 
 const NavBar = styled.div`
@@ -23,20 +21,11 @@ const NavIconWrap = styled.span`
   width: 30px;
   height: 40px;
 `;
-const NavCountWrap = styled.div`
-  position:relative;
-  width:100%;
-`;
+
 const NavCount = styled.p`
   font-size: 5px;
   color: white;
   margin-top: 20px;
-`;
-const NavIcon = styled.img`
-  width: 25px;
-  object-fit: contain;
-  position: absolute;
-  left:0;
 `;
 
 
@@ -47,7 +36,7 @@ const ContentNav = ({count})=>{
     <>
       <NavBar>
         <NavIconWrap left={(count-1) * distance}>
-            <NavCount>{count}</NavCount>
+          <NavCount>{count}</NavCount>
         </NavIconWrap>
       </NavBar>
     </>

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
 import ContentBtnContainer from '../../containers/test/ContentBtnContainer';
 
@@ -39,10 +40,14 @@ const Content = ({nextSlide, data, count, history}) => {
           {data.question}
         </ContentQuestion>
       </ContentQuestionWrap>
-      <ContentBtnContainer nextSlide={nextSlide} data={data} count={count} history={history}>
-      </ContentBtnContainer>
+      <ContentBtnContainer nextSlide={nextSlide} data={data} count={count} history={history} />
     </ContentBox>
   );
+};
+ContentBtnContainer.propTypes = {
+  nextSlide: PropTypes.func,
+  data: PropTypes.object,
+  count: PropTypes.number,
 };
 
 export default Content;

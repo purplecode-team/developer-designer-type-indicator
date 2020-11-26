@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 import {Context} from '../lib/helpers/Context';
 
-import styled from 'styled-components';
 
 
 const MainWrapper = styled.div`
@@ -34,7 +34,7 @@ const Result = () => {
         temp += 'P';
       }
       setResult(result+temp);
-      console.log('최종 성향 = '+temp);
+      console.log(`최종 성향 = ${temp}`);
   });
   useEffect(()=>{
     callResult();

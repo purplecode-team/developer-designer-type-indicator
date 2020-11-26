@@ -65,7 +65,7 @@ const BoardTextWrap = styled.div`
 
 const InformationBoard = ({ img, title, leftPos, urlSlug, top, margin }) => {
   return (
-    <StyledLink to={`/test/${urlSlug}`} top={top} margin={margin} >
+    <StyledLink to={`/test/${urlSlug}`} top={top} margin={margin}>
       <Button leftPos={leftPos}>
         <BoardTextWrap>
           <h2> {title}</h2>
