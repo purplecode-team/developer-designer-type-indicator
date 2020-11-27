@@ -34,7 +34,7 @@ const TitleWrapper = styled.div`
   margin: 0 auto;
   h1 {
     font-size: 24px;
-    padding: 3.2rem 0;
+    padding: 2.7rem 0;
     line-height: 1.3em;
     font-family: 'jua', sans-serif;
     color: gray;
