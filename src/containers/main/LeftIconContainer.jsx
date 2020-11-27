@@ -24,7 +24,7 @@ const Content = styled.div`
   position: relative;
   z-index: 5;
   margin-top: 5rem;
-  width: 40rem;
+  width: 30rem;
   height: 40%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -48,7 +48,7 @@ const LeftIconContainer = () => {
     <Container>
       <Tree src={tree} alt="left tree" />
       <Content>
-        <IconS src={icon4} alt="Java icon" left="6" />
+        <IconS src={icon4} alt="Java icon" left="4" />
         <IconM src={icon1} alt="JS icon" left="1" />
         <IconM src={icon2} alt="Python icon" top="-1" left="4" />
         <IconS src={icon3} alt="C icon" top="3" />

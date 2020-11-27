@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import media from '../../lib/styles/media';
 
 const IconImg = styled.img`
-  width: 10rem;
+  width: 7rem;
   object-fit: contain;
   margin-top: ${(props) => props.top}rem;
   margin-left: ${(props) => props.left}rem;
@@ -13,9 +12,6 @@ const IconImg = styled.img`
   cursor: pointer;
   &:hover {
     transform: scale(1.05);
-  }
-  @media (max-width: ${media.laptopL}) {
-    width: 8rem;
   }
 `;
 

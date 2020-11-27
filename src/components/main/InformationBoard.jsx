@@ -3,13 +3,24 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import CountUp from 'react-countup';
+import media from '../../lib/styles/media';
 
 const StyledLink = styled(Link)`
-  width: 24rem;
+  width: 20rem;
   z-index: 10;
+  padding-top: 10px;
+  @media (max-width: ${media.tablet}) {
+    width: 14rem;
+    position: absolute;
+    top:${(props) => props.top}rem;
+    margin-left:${(props) => props.margin}px;
+  }
+
 `;
 
 const Button = styled.button`
+  position:relative;
+  font-family: 'jua';
   background: none;
   border: none;
   outline: none;
@@ -24,30 +35,45 @@ const Button = styled.button`
     transform: scale(1.05);
   }
   h2 {
-    position: relative;
-    top: 6rem;
-    left: ${(props) => props.leftPos}rem;
     font-size: 20px;
-    font-weight: 550;
     color: #653019;
   }
   p {
-    position: relative;
     font-size: 16px;
-    top: 7rem;
-    left: ${(props) => props.leftPos}rem;
+    margin-top: 10px;
+  }
+  @media (max-width: ${media.tablet}) {
+    h2{
+      font-size: 18px;
+    }
+    p{
+      font-size: 14px;
+    }
+  };
+
+`;
+
+const BoardTextWrap = styled.div`
+  position:absolute;
+  top:40px;
+  width:95%;
+  text-align:center;
+  @media (max-width: ${media.tablet}) {
+    top:30px;
   }
 `;
 
-const InformationBoard = ({ img, title, leftPos, urlSlug }) => {
+const InformationBoard = ({ img, title, leftPos, urlSlug, top, margin }) => {
   return (
-    <StyledLink to={`/test/${urlSlug}`}>
+    <StyledLink to={`/test/${urlSlug}`} top={top} margin={margin}>
       <Button leftPos={leftPos}>
-        <h2> {title} 시작 </h2>
-        <p>
-          총 <CountUp end={100} />
-          명이 참여했어요.{' '}
-        </p>
+        <BoardTextWrap>
+          <h2> {title}</h2>
+          <p>
+            참여 수 : <CountUp end={100} />
+            {'명'}
+          </p>
+        </BoardTextWrap>
         <img src={img} alt={title} />
       </Button>
     </StyledLink>

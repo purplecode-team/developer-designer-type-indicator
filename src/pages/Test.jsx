@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef, useCallback, useReducer } from 'react';
-import Content from '../components/test/Content';
+import React, { useState, useEffect, useCallback} from 'react';
 import styled from 'styled-components';
+import Content from '../components/test/Content';
+import ContentNav from '../components/test/ContentNav';
 import firebase from '../util/firebase';
-import testBackground from '../../public/img/testBackground.png';
 import leftTree from '../../public/img/tree_left.png';
 import rightTree from '../../public/img/tree_right.png';
 import media from '../lib/styles/media';
-
-
-let SLIDEWIDTH = 400;
-let SLIDELEN = 15;
+import GrassBackground from '../components/common/GrassBackground';
+import CloudBackground from '../components/common/CloudBackground';
+import grassImg from '../../public/img/ground.png';
+import cloudImg from '../../public/img/cloud.png';
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -17,10 +17,8 @@ const MainWrapper = styled.div`
   overflow: hidden;
   position: relative;
   background-color: #c5f1fc;
-  background-image: url(${testBackground});
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
 `;
+
 const RightTree = styled.img`
   @media (max-width: ${media.laptopM}) {
     right: -12rem;
@@ -33,6 +31,7 @@ const RightTree = styled.img`
   top: -1rem;
   height: 110vh;
   object-fit: contain;
+  z-index:99;
 `;
 const LeftTree = styled.img`
   @media (max-width: ${media.laptopM}) {
@@ -46,6 +45,7 @@ const LeftTree = styled.img`
   top: -1rem;
   height: 110vh;
   object-fit: contain;
+  z-index:99;
 `;
 
 const Container = styled.div`
@@ -55,9 +55,10 @@ const Container = styled.div`
   @media (max-width: ${media.mobileL}) {
     width:90%;
   };
+  position:relative;
   width: 500px;
   height: 350px;
-  margin: 100px auto;
+  margin: 120px auto;
   padding: 20px 0;
   text-align: center;
   font-family: 'jua', sans-serif;
@@ -66,34 +67,18 @@ const Container = styled.div`
   z-index: 1;
   box-shadow: #afafaf 5px 5px 20px;
 `;
-const SlideTitle = styled.div`
-  margin-top:20px;
+const ContentTitle = styled.div`
+  margin:20px 0;
   font-size:25px;
+  
 `;
-const SlideWrap = styled.div`
-  @media (max-width: ${media.tablet}) {
-    width: ${SLIDEWIDTH*0.8};
-  }
-  @media (max-width: ${media.mobileL}) {
-    width:${SLIDEWIDTH*0.6};
-  };
-  width: ${SLIDEWIDTH}px;
-  margin: auto;
-`;
-const SlideBox = styled.div`
-  margin: auto;
-  overflow: hidden;
-`;
-const SlideList = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  width: ${SLIDEWIDTH*SLIDELEN}px;
-  height:100%;
+const ContentWrap = styled.div`
+  width: 90%;
+  margin: 0 auto;
 `;
 
 
-const Test = ({match}) => {
+const Test = ({match, history}) => {
   const [count, setCount] = useState(1);
   const [currentData, setCurrentData] = useState({});
   const [data,setData] = useState({
@@ -113,10 +98,9 @@ const Test = ({match}) => {
   },[]);
 
   const nextSlide = useCallback(() => {
+    console.log(`현재 count : ${count}`);
     setCount(count+1);
     setCurrentData(dataArray[count]);
-    console.log('currentData 실행');
-    console.log(count);
   });
 
   useEffect(()=>{
@@ -129,23 +113,21 @@ const Test = ({match}) => {
 
   useEffect(()=>{
     setCurrentData(dataArray[0]);
-    console.log('setCurrentData 첫번째 실행');
   },[data]);
 
   return (
-    <MainWrapper >
+    <MainWrapper>
       <RightTree src={rightTree} alt="Right tree" />
       <LeftTree src={leftTree} alt="Left tree" />
       <Container>
-        <SlideTitle>{match.params.type}</SlideTitle>
-        <SlideWrap>
-            <SlideBox>
-              <SlideList >
-                <Content nextSlide={nextSlide} data={currentData} count={count} />
-              </SlideList>
-            </SlideBox>
-        </SlideWrap>
+        <ContentTitle>{match.params.type}</ContentTitle>
+        <ContentWrap>
+          <Content nextSlide={nextSlide} data={currentData} count={count} history={history} />
+        </ContentWrap>
+        <ContentNav count={count} />
       </Container>
+      <CloudBackground role="img" ariaLabel="clouds background" img={cloudImg} />
+      <GrassBackground role="img" ariaLabel="grass background" img={grassImg} />
     </MainWrapper>
   );
 };

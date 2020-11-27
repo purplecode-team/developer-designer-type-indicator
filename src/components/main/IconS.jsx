@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import media from '../../lib/styles/media';
 
 const IconImg = styled.img`
-  width: 8rem;
+  width: 6rem;
   object-fit: contain;
   margin-top: ${(props) => props.top}rem;
   margin-left: ${(props) => props.left}rem;
