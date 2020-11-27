@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useCallback} from 'react';
 import styled from 'styled-components';
-import Content from '../components/test/Content';
+import ContentContainer from '../containers/test/ContentContainer';
 import ContentNav from '../components/test/ContentNav';
 import firebase from '../util/firebase';
-import leftTree from '../../public/img/tree_left.png';
-import rightTree from '../../public/img/tree_right.png';
 import media from '../lib/styles/media';
 import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
 import grassImg from '../../public/img/ground.png';
 import cloudImg from '../../public/img/cloud.png';
+import RightTree from '../components/common/RightTree';
+import LeftTree from '../components/common/LeftTree';
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -17,35 +17,6 @@ const MainWrapper = styled.div`
   overflow: hidden;
   position: relative;
   background-color: #c5f1fc;
-`;
-
-const RightTree = styled.img`
-  @media (max-width: ${media.laptopM}) {
-    right: -12rem;
-  };
-  @media (max-width: ${media.laptop}) {
-    display:none;
-  };
-  position: absolute;
-  right: -7rem;
-  top: -1rem;
-  height: 110vh;
-  object-fit: contain;
-  z-index:99;
-`;
-const LeftTree = styled.img`
-  @media (max-width: ${media.laptopM}) {
-    left: -12rem;
-  };
-  @media (max-width: ${media.laptop}) {
-    display:none;
-  };
-  position: absolute;
-  left: -7rem;
-  top: -1rem;
-  height: 110vh;
-  object-fit: contain;
-  z-index:99;
 `;
 
 const Container = styled.div`
@@ -117,15 +88,16 @@ const Test = ({match, history}) => {
 
   return (
     <MainWrapper>
-      <RightTree src={rightTree} alt="Right tree" />
-      <LeftTree src={leftTree} alt="Left tree" />
+
       <Container>
         <ContentTitle>{match.params.type}</ContentTitle>
         <ContentWrap>
-          <Content nextSlide={nextSlide} data={currentData} count={count} history={history} />
+          <ContentContainer nextSlide={nextSlide} data={currentData} count={count} history={history} />
         </ContentWrap>
         <ContentNav count={count} />
       </Container>
+      <RightTree/>
+      <LeftTree />
       <CloudBackground role="img" ariaLabel="clouds background" img={cloudImg} />
       <GrassBackground role="img" ariaLabel="grass background" img={grassImg} />
     </MainWrapper>
