@@ -20,15 +20,15 @@ const reducer = (state, action) => {
   switch (action.type){
     case "EI":
       console.log(`EI 실행 ${action.type}`);
-      ++state.E;
+      state.E+=1;
       return {...state};
     case "TF":
       console.log(`TF 실행 ${action.type}`);
-      ++state.T;
+      state.T+=1;
       return {...state};
     case "JP":
       console.log(`JP 실행 ${action.type}`);
-      ++state.J;
+      state.J+=1;
       return {...state};
     default:
       console.log(state);
