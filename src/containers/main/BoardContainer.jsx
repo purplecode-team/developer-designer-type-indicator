@@ -5,7 +5,6 @@ import rightBoard from '../../../public/img/right_start.png';
 import InformationBoard from '../../components/main/InformationBoard';
 import media from '../../lib/styles/media';
 
-
 const Container = styled.div`
   display: flex;
   overflow: hidden;
@@ -17,15 +16,13 @@ const Container = styled.div`
   left: 0;
   right: 0;
   text-align: center;
-  @media (max-width: ${media.tablet}){
+  @media (max-width: ${media.tablet}) {
     flex-direction: column;
     align-items: center;
     width: 100%;
     height: 18rem;
   }
-
 `;
-
 
 const BoardContainer = () => {
   return (
@@ -36,7 +33,6 @@ const BoardContainer = () => {
         leftPos="1"
         urlSlug="developer"
         top={0}
-        margin={-20}
       />
       <InformationBoard
         img={rightBoard}
@@ -44,7 +40,6 @@ const BoardContainer = () => {
         leftPos="-1"
         urlSlug="designer"
         top={7}
-        margin={20}
       />
     </Container>
   );

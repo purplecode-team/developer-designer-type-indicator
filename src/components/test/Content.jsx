@@ -11,14 +11,16 @@ const ContentBox = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
 `;
+
 const ContentQuestionWrap = styled.div`
   display: table;
   width: 100%;
 `;
+
 const ContentQuestion = styled.p`
   @media (max-width: ${media.mobileL}) {
     font-size: 16px;
-  };
+  }
   display: table-cell;
   text-align: center;
   vertical-align: middle;
@@ -31,19 +33,22 @@ const ContentQuestion = styled.p`
   line-height: normal;
 `;
 
-const Content = ({nextSlide, data, count, history}) => {
-
+const Content = ({ nextSlide, data, count, history }) => {
   return (
     <ContentBox>
       <ContentQuestionWrap>
-        <ContentQuestion>
-          {data.question}
-        </ContentQuestion>
+        <ContentQuestion>{data.question}</ContentQuestion>
       </ContentQuestionWrap>
-      <ContentBtnContainer nextSlide={nextSlide} data={data} count={count} history={history} />
+      <ContentBtnContainer
+        nextSlide={nextSlide}
+        data={data}
+        count={count}
+        history={history}
+      />
     </ContentBox>
   );
 };
+
 ContentBtnContainer.propTypes = {
   nextSlide: PropTypes.func,
   data: PropTypes.object,

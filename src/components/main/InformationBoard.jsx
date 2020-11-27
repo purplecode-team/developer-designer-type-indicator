@@ -12,14 +12,12 @@ const StyledLink = styled(Link)`
   @media (max-width: ${media.tablet}) {
     width: 14rem;
     position: absolute;
-    top:${(props) => props.top}rem;
-    margin-left:${(props) => props.margin}px;
+    top: ${(props) => props.top}rem;
   }
-
 `;
 
 const Button = styled.button`
-  position:relative;
+  position: relative;
   font-family: 'jua';
   background: none;
   border: none;
@@ -28,7 +26,7 @@ const Button = styled.button`
   width: 100%;
   transition: all 0.2s ease-in-out;
   img {
-    width: 95%;
+    width: 105%;
     object-fit: contain;
   }
   &:hover {
@@ -43,31 +41,33 @@ const Button = styled.button`
     margin-top: 10px;
   }
   @media (max-width: ${media.tablet}) {
-    h2{
-      font-size: 18px;
+    h2 {
+      font-size: 16px;
     }
-    p{
+    p {
+      margin-top: 5px;
       font-size: 14px;
     }
-  };
-
+  } ;
 `;
 
 const BoardTextWrap = styled.div`
-  position:absolute;
-  top:40px;
-  width:95%;
-  text-align:center;
+  position: absolute;
+  top: 40px;
+  width: 95%;
+  text-align: center;
+  padding-left: ${(props) => props.leftPos}rem;
   @media (max-width: ${media.tablet}) {
-    top:30px;
+    top: 30px;
+    padding-left: 0;
   }
 `;
 
-const InformationBoard = ({ img, title, leftPos, urlSlug, top, margin }) => {
+const InformationBoard = ({ img, title, leftPos, urlSlug, top }) => {
   return (
-    <StyledLink to={`/test/${urlSlug}`} top={top} margin={margin}>
-      <Button leftPos={leftPos}>
-        <BoardTextWrap>
+    <StyledLink to={`/test/${urlSlug}`} top={top}>
+      <Button>
+        <BoardTextWrap leftPos={leftPos}>
           <h2> {title}</h2>
           <p>
             참여 수 : <CountUp end={100} />

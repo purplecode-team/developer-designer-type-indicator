@@ -4,12 +4,13 @@ import foot from '../../../public/img/foot.png';
 
 const NavBar = styled.div`
   position: absolute;
-  top : -40px;
+  top: -40px;
   width: 100%;
   height: 12px;
   border-radius: 10px;
   background-color: #ffd4d7;
 `;
+
 const NavIconWrap = styled.span`
   background-image: url(${foot});
   background-repeat: no-repeat;
@@ -28,19 +29,18 @@ const NavCount = styled.p`
   margin-top: 20px;
 `;
 
-
-const ContentNav = ({count})=>{
+const ContentNav = ({ count }) => {
   const distance = 6.78;
 
   return (
     <>
       <NavBar>
-        <NavIconWrap left={(count-1) * distance}>
+        <NavIconWrap left={(count - 1) * distance}>
           <NavCount>{count}</NavCount>
         </NavIconWrap>
       </NavBar>
     </>
-  )
-}
+  );
+};
 
 export default ContentNav;
