@@ -19,7 +19,7 @@ const Content = styled.div`
   text-align: center;
   width: 400px;
   @media (max-width: ${media.tablet}) {
-    bottom: 14rem;
+    bottom: 12.4rem;
     width: 70%;
   }
   @media (max-width: ${media.mobileL}) {
@@ -65,7 +65,7 @@ const TurtleImg = styled.div`
   height: 20rem;
   margin: 0 auto;
   @media (max-width: ${media.tablet}) {
-    width: 6rem;
+    width: 7rem;
     height: 8rem;
     padding-top: 10px;
     background-image: url(${turtleImg2});

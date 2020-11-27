@@ -13,7 +13,7 @@ const Container = styled.div`
   width: 80%;
   margin: 0 auto;
   position: absolute;
-  bottom: 26px;
+  bottom: 0;
   left: 0;
   right: 0;
   text-align: center;
@@ -32,7 +32,7 @@ const BoardContainer = () => {
     <Container>
       <InformationBoard
         img={leftBoard}
-        title="개발자 TEST"
+        title="개발자 TEST 가는 길"
         leftPos="1"
         urlSlug="developer"
         top={0}
@@ -40,7 +40,7 @@ const BoardContainer = () => {
       />
       <InformationBoard
         img={rightBoard}
-        title="디자이너 TEST"
+        title="디자이너 TEST 가는 길"
         leftPos="-1"
         urlSlug="designer"
         top={7}

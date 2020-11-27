@@ -56,7 +56,7 @@ const Button = styled.button`
 const BoardTextWrap = styled.div`
   position:absolute;
   top:40px;
-  width:100%;
+  width:95%;
   text-align:center;
   @media (max-width: ${media.tablet}) {
     top:30px;
@@ -70,8 +70,8 @@ const InformationBoard = ({ img, title, leftPos, urlSlug, top, margin }) => {
         <BoardTextWrap>
           <h2> {title}</h2>
           <p>
-            총 <CountUp end={100} />
-            명이 참여했어요.{' '}
+            참여 수 : <CountUp end={100} />
+            {'명'}
           </p>
         </BoardTextWrap>
         <img src={img} alt={title} />
