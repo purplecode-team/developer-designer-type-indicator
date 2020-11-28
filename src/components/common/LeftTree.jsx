@@ -13,8 +13,7 @@ const Tree = styled.img`
   };
   position: absolute;
   left: -7rem;
-  top: -1rem;
-  height: 110vh;
+  height: 100vh;
   object-fit: contain;
   z-index:1;
 `;

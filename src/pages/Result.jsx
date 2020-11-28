@@ -14,7 +14,7 @@ import media from '../lib/styles/media';
 const ResultWrapper = styled.div`
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
   position: relative;
   background-color: #c5f1fc;
 `;

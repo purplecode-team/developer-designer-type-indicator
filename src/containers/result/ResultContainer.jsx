@@ -10,7 +10,10 @@ const ResultBox = styled.div`
     z-index:999;
     display:grid;
     width:100%;
-    grid-template-columns: 2.5fr 3fr;
+    grid-template-columns: 1fr 3fr 3fr 2fr;
+    @media (max-width: ${media.tablet}) {
+        grid-template-columns: 1fr 3fr 3fr 2fr;
+    }        
 `;
 
 const ResultContent = styled.div`
@@ -24,11 +27,14 @@ const ResultContainer = ({}) => {
     return (
         <ResultBox>
             <ResultContent>
+            </ResultContent>
+            <ResultContent>
               <CharacterContainer/>
             </ResultContent>
             <ResultContent>
               <ResultTextContainer/>
             </ResultContent>
+            <ResultContent></ResultContent>
         </ResultBox>
     );
 };

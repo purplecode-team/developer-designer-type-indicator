@@ -1,39 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
+import TextWhiteBoard from '../../components/result/TextWhiteBoard';
 import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
 
-
-
-const TextContent = styled.div`
+const TextContentWrap = styled.div`
     position:relative;
     height: 100vh;
 `;
-const TextBox = styled.div`
+const TextContentBox = styled.div`
   position:absolute;
   top:100px;
   width: 100%;
 `;
 
-const TextWhiteBoard = styled.div`
-  width:85%;
-  height:33rem;
-  background-color:white;
-  border-radius:4rem;
-`;
-
 const ResultTextContainer = ({}) => {
 
     return(
-      <TextContent> 
-        <TextBox>
-            <TextWhiteBoard>
-
-            </TextWhiteBoard>
-        </TextBox>
-      </TextContent>    
+      <TextContentWrap> 
+        <TextContentBox>
+            <TextWhiteBoard/>
+        </TextContentBox>
+      </TextContentWrap>    
     );
-
 };
 
 export default ResultTextContainer;

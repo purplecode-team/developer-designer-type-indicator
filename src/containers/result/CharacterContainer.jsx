@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
 import treeBase from '../../../public/img/tree_base.png';
 import character from '../../../public/img/bear.png';
+import lightImg from '../../../public/img/light.png';
+
 
 const CharacterContent = styled.div`
   position:relative;
@@ -13,7 +15,15 @@ const CharacterContent = styled.div`
 const CharacterBox = styled.div`
   width: 100%;
   height: 600px;
-  background-image: linear-gradient(to bottom, #ffdb00, rgba(255, 219, 0, 0));
+`;
+const CharacterLight = styled.div`
+  width:400px;
+  height:600px;
+  margin: 0 auto;
+  background-image: url(${lightImg});
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
 `;
 
 const CharacterNameBox = styled.div`
@@ -63,8 +73,7 @@ text-align: center;
 `; 
 
 const Tree = styled.img`
-  width:400px;
-  height:150px;
+  width:350px;
 `;
 
 const CharacterContainer = ({}) => {
@@ -72,6 +81,7 @@ const CharacterContainer = ({}) => {
     return(
       <CharacterContent>
         <CharacterBox>
+          <CharacterLight/>
           <CharacterNameBox>
             <CharacterNameBar>
               <CharacterNameTable>
