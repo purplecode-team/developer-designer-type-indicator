@@ -10,14 +10,15 @@ export default function useUpdateCount({ result, type }) {
       return await api.loadData(match);
     } catch (error) {
       console.log(error);
+      return null;
     }
   };
 
   useEffect(() => {
     const updateCount = () => {
-      loadCount().then((count) => {
-        setCount(count);
-        return api.updateData(`/${match}/${result}`, count[result] + 1);
+      loadCount().then((response) => {
+        setCount(response);
+        return api.updateData(`/${match}/${result}`, response[result] + 1);
       });
     };
     if (result) {

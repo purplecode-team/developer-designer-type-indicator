@@ -70,8 +70,7 @@ const InformationBoard = ({ img, title, leftPos, urlSlug, top }) => {
         <BoardTextWrap leftPos={leftPos}>
           <h2> {title}</h2>
           <p>
-            참여 수 : <CountUp end={100} />
-            {'명'}
+            참여 수 : <CountUp end={100} />명
           </p>
         </BoardTextWrap>
         <img src={img} alt={title} />
@@ -85,6 +84,7 @@ InformationBoard.propTypes = {
   title: PropTypes.string.isRequired,
   leftPos: PropTypes.string.isRequired,
   urlSlug: PropTypes.string.isRequired,
+  top: PropTypes.string.isRequired,
 };
 
 export default InformationBoard;

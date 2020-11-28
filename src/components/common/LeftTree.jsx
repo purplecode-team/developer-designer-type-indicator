@@ -1,14 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
-import IconM from '../main/IconM';
-import IconS from '../main/IconS';
-
-// img src
-import icon1 from '../../../public/img/f_icon1.png';
-import icon2 from '../../../public/img/f_icon2.png';
-import icon3 from '../../../public/img/f_icon3.png';
-import icon4 from '../../../public/img/f_icon4.png';
 import tree from '../../../public/img/tree_left.png';
 
 const Container = styled.div`
@@ -43,13 +36,17 @@ const Tree = styled.img`
   object-fit: contain;
 `;
 
-const LeftTree = (props) => {
+const LeftTree = ({ children }) => {
   return (
     <Container>
       <Tree src={tree} alt="left tree" />
-      <Content>{props.children}</Content>
+      <Content>{children}</Content>
     </Container>
   );
+};
+
+LeftTree.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default LeftTree;

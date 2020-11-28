@@ -32,14 +32,14 @@ const BoardContainer = () => {
         title="개발자 TEST 가는 길"
         leftPos="1"
         urlSlug="developer"
-        top={0}
+        top="0"
       />
       <InformationBoard
         img={rightBoard}
         title="디자이너 TEST 가는 길"
         leftPos="-1"
         urlSlug="designer"
-        top={7}
+        top="7"
       />
     </Container>
   );
