@@ -5,16 +5,14 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import { history } from './lib/helpers/history';
 import GlobalStyle from './lib/styles/GlobalStyle';
-import { Context } from './lib/helpers/Context';
+import { Context } from './lib/helpers/context';
 
 // pages
 import Main from './pages/Main';
 import Test from './pages/Test';
 import Result from './pages/Result';
-
-const history = createBrowserHistory();
 
 const reducer = (state, action) => {
   switch (action.type) {

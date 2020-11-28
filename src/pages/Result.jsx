@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { loadData, updateData } from '../lib/util/api';
 import styled from 'styled-components';
-import { createBrowserHistory } from 'history';
+import { history } from '../lib/helpers/history';
 import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
 import grassImg from '../../public/img/ground.png';
@@ -18,7 +18,6 @@ const MainWrapper = styled.div`
 `;
 
 const Result = () => {
-  const history = createBrowserHistory();
   const { type, result } = useParams();
   const { pathname, state } = useLocation();
   const typeCounts = useUpdateCount({

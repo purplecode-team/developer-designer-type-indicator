@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import useResultType from '../../lib/hooks/useResultType';
-import { Context } from '../../lib/helpers/Context';
+import { Context } from '../../lib/helpers/context';
 import media from '../../lib/styles/media';
 
 const ContentBtnBox = styled.div`

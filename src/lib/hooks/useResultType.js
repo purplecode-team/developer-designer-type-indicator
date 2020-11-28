@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Context } from '../helpers/Context';
+import { Context } from '../helpers/context';
 
 export default function useResultType() {
   const { state } = useContext(Context);
