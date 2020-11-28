@@ -1,12 +1,12 @@
-import React, { useState, useCallback, useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import useResultType from '../lib/hooks/useResultType';
-import { loadDevCount } from '../lib/util/api';
+import { createBrowserHistory } from 'history';
 import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
 import grassImg from '../../public/img/ground.png';
 import cloudImg from '../../public/img/cloud.png';
+import useUpdateCount from '../lib/hooks/useUpdateCount';
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -15,12 +15,18 @@ const MainWrapper = styled.div`
   position: relative;
   background-color: #c5f1fc;
 `;
+
 const Result = () => {
-  const { name } = useParams();
-  const [result] = useResultType();
+  const history = createBrowserHistory();
+  const { type, result } = useParams();
+  const { pathname, state } = useLocation();
+  const typeCounts = useUpdateCount({
+    type,
+    result: state?.result,
+  });
 
   useEffect(() => {
-    loadDevCount();
+    history.replace(pathname, { state: null });
   }, []);
 
   return (

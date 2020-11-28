@@ -68,12 +68,10 @@ const Container = styled.div`
   z-index: 12;
   box-shadow: #afafaf 5px 5px 20px;
 `;
-
 const ContentTitle = styled.div`
   margin: 20px 0;
   font-size: 25px;
 `;
-
 const ContentWrap = styled.div`
   width: 90%;
   margin: 0 auto;
@@ -145,6 +143,8 @@ const Test = ({ match, history }) => {
 
   return (
     <MainWrapper>
+      <RightTree src={rightTree} alt="Right tree" />
+      <LeftTree src={leftTree} alt="Left tree" />
       <Container>
         <ContentTitle>{match.params.type}</ContentTitle>
         <ContentWrap>
@@ -162,8 +162,6 @@ const Test = ({ match, history }) => {
         ariaLabel="clouds background"
         img={cloudImg}
       />
-      <RightTree src={rightTree} alt="Right tree" />
-      <LeftTree src={leftTree} alt="Left tree" />
       <GrassBackground role="img" ariaLabel="grass background" img={grassImg} />
     </MainWrapper>
   );
