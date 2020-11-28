@@ -1,7 +1,8 @@
 import React, { useState, useCallback, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import {Context} from '../lib/helpers/Context';
+import useResultType from '../lib/hooks/useResultType';
+import { loadDevCount } from '../lib/util/api';
 import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
 import grassImg from '../../public/img/ground.png';
@@ -16,39 +17,22 @@ const MainWrapper = styled.div`
 `;
 const Result = () => {
   const { name } = useParams();
-  const {state, dispatch } = useContext(Context);
-  const [result, setResult] = useState('');
-  const callResult = useCallback(()=>{
-      let temp = '';
-      if(state.E>2){
-        temp += 'E';
-      }else{
-        temp += 'I';
-      }
-      if(state.T>2){
-        temp += 'T';
-      }else{
-        temp += 'F';
-      }
-      if(state.J>2){
-        temp += 'J';
-      }else{
-        temp += 'P';
-      }
-      setResult(result+temp);
-      console.log(`최종 성향 = ${temp}`);
-  });
-  useEffect(()=>{
-    callResult();
-  },[])
+  const [result] = useResultType();
+
+  useEffect(() => {
+    loadDevCount();
+  }, []);
+
   return (
-    <>
-      <MainWrapper>
-        <p>{result}</p>
-        <CloudBackground role="img" ariaLabel="clouds background" img={cloudImg} />
-        <GrassBackground role="img" ariaLabel="grass background" img={grassImg} />
-      </MainWrapper>
-    </>
+    <MainWrapper>
+      <p>{result}</p>
+      <CloudBackground
+        role="img"
+        ariaLabel="clouds background"
+        img={cloudImg}
+      />
+      <GrassBackground role="img" ariaLabel="grass background" img={grassImg} />
+    </MainWrapper>
   );
 };
 

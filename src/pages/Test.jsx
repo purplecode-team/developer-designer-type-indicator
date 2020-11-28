@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import Content from '../components/test/Content';
 import ContentNav from '../components/test/ContentNav';
-import firebase from '../util/firebase';
+import firebase from '../lib/util/firebase';
 import leftTree from '../../public/img/tree_left.png';
 import rightTree from '../../public/img/tree_right.png';
 import media from '../lib/styles/media';
