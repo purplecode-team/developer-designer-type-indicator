@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import leftBoard from '../../../public/img/left_start.png';
 import rightBoard from '../../../public/img/right_start.png';
 import InformationBoard from '../../components/main/InformationBoard';
@@ -24,12 +25,13 @@ const Container = styled.div`
   }
 `;
 
-const BoardContainer = () => {
+const BoardContainer = ({ devSum, designerSum }) => {
   return (
     <Container>
       <InformationBoard
         img={leftBoard}
         title="개발자 TEST 가는 길"
+        sum={devSum}
         leftPos="1"
         urlSlug="developer"
         top="0"
@@ -37,12 +39,18 @@ const BoardContainer = () => {
       <InformationBoard
         img={rightBoard}
         title="디자이너 TEST 가는 길"
+        sum={designerSum}
         leftPos="-1"
         urlSlug="designer"
         top="7"
       />
     </Container>
   );
+};
+
+BoardContainer.propTypes = {
+  devSum: PropTypes.number.isRequired,
+  designerSum: PropTypes.number.isRequired,
 };
 
 export default BoardContainer;

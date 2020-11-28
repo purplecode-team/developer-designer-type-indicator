@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
+import { loadData, updateData } from '../lib/util/api';
 import styled from 'styled-components';
 import { createBrowserHistory } from 'history';
 import GrassBackground from '../components/common/GrassBackground';
@@ -23,6 +24,8 @@ const Result = () => {
   const typeCounts = useUpdateCount({
     type,
     result: state?.result,
+    update: updateData,
+    load: loadData,
   });
 
   useEffect(() => {

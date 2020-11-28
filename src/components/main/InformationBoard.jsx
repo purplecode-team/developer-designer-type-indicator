@@ -63,14 +63,14 @@ const BoardTextWrap = styled.div`
   }
 `;
 
-const InformationBoard = ({ img, title, leftPos, urlSlug, top }) => {
+const InformationBoard = ({ img, title, sum, leftPos, urlSlug, top }) => {
   return (
     <StyledLink to={`/test/${urlSlug}`} top={top}>
       <Button>
         <BoardTextWrap leftPos={leftPos}>
           <h2> {title}</h2>
           <p>
-            참여 수 : <CountUp end={100} />명
+            참여 수 : <CountUp end={sum} />명
           </p>
         </BoardTextWrap>
         <img src={img} alt={title} />
@@ -81,6 +81,7 @@ const InformationBoard = ({ img, title, leftPos, urlSlug, top }) => {
 
 InformationBoard.propTypes = {
   img: PropTypes.string.isRequired,
+  sum: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   leftPos: PropTypes.string.isRequired,
   urlSlug: PropTypes.string.isRequired,
