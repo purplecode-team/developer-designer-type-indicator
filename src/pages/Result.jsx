@@ -1,11 +1,13 @@
-import React, { useState, useCallback, useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import { loadData, updateData } from '../lib/util/api';
 import styled from 'styled-components';
-import {Context} from '../lib/helpers/Context';
+import { history } from '../lib/helpers/history';
 import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
 import grassImg from '../../public/img/ground.png';
 import cloudImg from '../../public/img/cloud.png';
+import useUpdateCount from '../lib/hooks/useUpdateCount';
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -14,41 +16,31 @@ const MainWrapper = styled.div`
   position: relative;
   background-color: #c5f1fc;
 `;
+
 const Result = () => {
-  const { name } = useParams();
-  const {state, dispatch } = useContext(Context);
-  const [result, setResult] = useState('');
-  const callResult = useCallback(()=>{
-      let temp = '';
-      if(state.E>2){
-        temp += 'E';
-      }else{
-        temp += 'I';
-      }
-      if(state.T>2){
-        temp += 'T';
-      }else{
-        temp += 'F';
-      }
-      if(state.J>2){
-        temp += 'J';
-      }else{
-        temp += 'P';
-      }
-      setResult(result+temp);
-      console.log(`최종 성향 = ${temp}`);
+  const { type, result } = useParams();
+  const { pathname, state } = useLocation();
+  const typeCounts = useUpdateCount({
+    type,
+    result: state?.result,
+    update: updateData,
+    load: loadData,
   });
-  useEffect(()=>{
-    callResult();
-  },[])
+
+  useEffect(() => {
+    history.replace(pathname, { state: null });
+  }, []);
+
   return (
-    <>
-      <MainWrapper>
-        <p>{result}</p>
-        <CloudBackground role="img" ariaLabel="clouds background" img={cloudImg} />
-        <GrassBackground role="img" ariaLabel="grass background" img={grassImg} />
-      </MainWrapper>
-    </>
+    <MainWrapper>
+      <p>{result}</p>
+      <CloudBackground
+        role="img"
+        ariaLabel="clouds background"
+        img={cloudImg}
+      />
+      <GrassBackground role="img" ariaLabel="grass background" img={grassImg} />
+    </MainWrapper>
   );
 };
 
