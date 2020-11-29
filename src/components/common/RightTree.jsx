@@ -1,29 +1,53 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
-import rightTree from '../../../public/img/tree_right.png';
+import tree from '../../../public/img/tree_right.png';
 
-
-const Tree = styled.img`
-  @media (max-width: ${media.laptopM}) {
-    right: -12rem;
-  };
-  @media (max-width: ${media.laptop}) {
-    display:none;
-  };
+const Container = styled.div`
   position: absolute;
-  right: -7rem;
-  height: 100vh;
-  object-fit: contain;
-  z-index:1;
+  top: -1rem;
+  right: -1rem;
+  @media (max-width: ${media.laptopM}) {
+    display: none;
+  }
 `;
 
-const RightTree = ()=>{
-    return(
-      <>
-        <Tree src={rightTree} alt='right Tree'/>
-      </>
-    );
+const Content = styled.div`
+  position: relative;
+  z-index: 5;
+  margin-top: 5rem;
+  width: 30rem;
+  height: 40%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: end;
+  @media (max-width: ${media.laptopL}) {
+    margin-top: 3rem;
+    width: 30rem;
+  }
+`;
+
+const Tree = styled.img`
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  z-index: 3;
+  height: 110vh;
+  object-fit: contain;
+`;
+
+const RightTree = ({ children }) => {
+  return (
+    <Container>
+      <Tree src={tree} alt="right tree" />
+      <Content>{children}</Content>
+    </Container>
+  );
+};
+
+RightTree.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default RightTree;

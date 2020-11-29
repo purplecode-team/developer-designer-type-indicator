@@ -1,7 +1,8 @@
-import React, { useState, useCallback, useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import { loadData, updateData } from '../lib/util/api';
 import styled from 'styled-components';
-import {Context} from '../lib/helpers/Context';
+import { history } from '../lib/helpers/history';
 import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
 import ResultContainer from '../containers/result/ResultContainer';
@@ -9,7 +10,7 @@ import RightTree from '../components/common/RightTree';
 import LeftTree from '../components/common/LeftTree';
 import grassImg from '../../public/img/ground.png';
 import cloudImg from '../../public/img/cloud.png';
-import media from '../lib/styles/media';
+import useUpdateCount from '../lib/hooks/useUpdateCount';
 
 const ResultWrapper = styled.div`
   height: 100vh;
@@ -30,32 +31,19 @@ const BackgroundDark = styled.div`
 `;
 
 const Result = () => {
-  const { name } = useParams();
-  const {state, dispatch } = useContext(Context);
-  const [result, setResult] = useState('');
-  const callResult = useCallback(()=>{
-      let temp = '';
-      if(state.E>2){
-        temp += 'E';
-      }else{
-        temp += 'I';
-      }
-      if(state.T>2){
-        temp += 'T';
-      }else{
-        temp += 'F';
-      }
-      if(state.J>2){
-        temp += 'J';
-      }else{
-        temp += 'P';
-      }
-      setResult(result+temp);
-      console.log(`최종 성향 = ${temp}`);
+  const { type, result } = useParams();
+  const { pathname, state } = useLocation();
+  const typeCounts = useUpdateCount({
+    type,
+    result: state?.result,
+    update: updateData,
+    load: loadData,
   });
-  useEffect(()=>{
-    callResult();
-  },[])
+
+  useEffect(() => {
+    history.replace(pathname, { state: null });
+  }, []);
+
   return (
     <>
       <ResultWrapper>
