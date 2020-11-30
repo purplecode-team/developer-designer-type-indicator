@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import ContentContainer from '../../src/containers/test/ContentContainer';
 import ContentNav from '../components/test/ContentNav';
-import firebase from '../lib/util/firebase';
+import firebase from '../lib/firebase/firebase';
 import leftTree from '../../public/img/tree_left.png';
 import rightTree from '../../public/img/tree_right.png';
 import media from '../lib/styles/media';
@@ -68,10 +68,12 @@ const Container = styled.div`
   z-index: 12;
   box-shadow: #afafaf 5px 5px 20px;
 `;
+
 const ContentTitle = styled.div`
   margin: 20px 0;
   font-size: 25px;
 `;
+
 const ContentWrap = styled.div`
   width: 90%;
   margin: 0 auto;

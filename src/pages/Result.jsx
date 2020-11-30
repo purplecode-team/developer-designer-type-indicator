@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import { loadData, updateData } from '../lib/util/api';
+import { loadData, updateData } from '../lib/firebase/api';
 import styled from 'styled-components';
 import { history } from '../lib/helpers/history';
 import GrassBackground from '../components/common/GrassBackground';
@@ -18,24 +18,24 @@ const ResultWrapper = styled.div`
   width: 100vw;
   position: relative;
   background-color: #436943;
-  @media (min-width: ${media.laptopM}){
-    overflow:hidden;
+  @media (min-width: ${media.laptopM}) {
+    overflow: hidden;
   }
-  @media (max-width: ${media.laptopM}){
-    overflow-x:hidden;
+  @media (max-width: ${media.laptopM}) {
+    overflow-x: hidden;
   }
 `;
 
 const BackgroundColor = styled.div`
-  width:100vw;
-  height:100vh;
+  width: 100vw;
+  height: 100vh;
   background-color: #c5f1fc;
 `;
 
 const BackgroundDark = styled.div`
   width: 100%;
   height: 100%;
-  overflow:auto;
+  overflow: auto;
   position: absolute;
   background-color: black;
   opacity: 0.5;
@@ -60,13 +60,23 @@ const Result = () => {
   return (
     <>
       <ResultWrapper>
-        <ResultContainer/>
-        <BackgroundDark/>
+        <ResultContainer />
+        <BackgroundDark />
         <RightTree />
         <LeftTree />
-        <CloudBackground role="img" ariaLabel="clouds background" img={cloudImg} style={{opacity:'0.6'}}/>
-        <GrassBackground role="img" ariaLabel="grass background" img={grassImg} style={{opacity:'0.6'}}/>
-        <BackgroundColor/>
+        <CloudBackground
+          role="img"
+          ariaLabel="clouds background"
+          img={cloudImg}
+          style={{ opacity: '0.6' }}
+        />
+        <GrassBackground
+          role="img"
+          ariaLabel="grass background"
+          img={grassImg}
+          style={{ opacity: '0.6' }}
+        />
+        <BackgroundColor />
       </ResultWrapper>
     </>
   );

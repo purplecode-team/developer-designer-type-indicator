@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { loadData } from '../util/api';
+import { loadData } from '../firebase/api';
 
 export default function useSumCount() {
   const [sum, setSum] = useState({
