@@ -2,9 +2,9 @@ import React, { useCallback, useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import useResultType from '../../lib/hooks/useResultType';
 import { Context } from '../../lib/helpers/context';
 import media from '../../lib/styles/media';
+import matchResultType from '../../lib/util/matchResultType';
 
 const ContentBtnBox = styled.div`
   position: relative;
@@ -47,9 +47,8 @@ const ContentBtn = styled.button`
 `;
 
 const ContentBtnContainer = ({ nextSlide, data, count, history }) => {
-  const { dispatch } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
   const { type } = useParams();
-  const [result] = useResultType();
 
   const classifySelection = (id, selection) => {
     if (selection === 'A') {
@@ -59,6 +58,7 @@ const ContentBtnContainer = ({ nextSlide, data, count, history }) => {
 
   const goToResult = () => {
     if (count === 15) {
+      const result = matchResultType(state);
       history.push({
         pathname: `/result/${type}/${result}`,
         state: { result, type },
