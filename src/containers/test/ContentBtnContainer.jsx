@@ -10,7 +10,7 @@ const ContentBtnBox = styled.div`
   position: relative;
 `;
 
-const ContentBtnButton = styled.button`
+const ContentBtn = styled.button`
   @media (max-width: ${media.mobileL}) {
     font-size: 14px;
   }
@@ -18,7 +18,7 @@ const ContentBtnButton = styled.button`
   margin: 20px auto;
   width: 100%;
   height: 65px;
-  font-family: 'jua';
+  font-family: 'jua', sans-serif;
   font-size: 16px;
   word-break: keep-all;
   white-space: break-spaces;
@@ -74,22 +74,22 @@ const ContentBtnContainer = ({ nextSlide, data, count, history }) => {
 
   return (
     <ContentBtnBox>
-      <ContentBtnButton
+      <ContentBtn
         type="button"
         onClick={() => {
           clickSelection({ type: data.id }, 'A');
         }}
       >
         {data.A}
-      </ContentBtnButton>
-      <ContentBtnButton
+      </ContentBtn>
+      <ContentBtn
         type="button"
         onClick={() => {
           clickSelection({ type: data.id }, 'B');
         }}
       >
         {data.B}
-      </ContentBtnButton>
+      </ContentBtn>
     </ContentBtnBox>
   );
 };

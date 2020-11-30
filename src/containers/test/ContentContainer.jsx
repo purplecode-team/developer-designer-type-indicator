@@ -24,7 +24,7 @@ const ContentQuestion = styled.p`
   display: table-cell;
   text-align: center;
   vertical-align: middle;
-  font-family: 'jua';
+  font-family: 'jua', sans-serif;
   font-size: 20px;
   margin: 40px 0;
   height: 100px;
