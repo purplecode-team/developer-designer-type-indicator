@@ -7,10 +7,10 @@ const Background = styled.span`
   height: 100%;
   display: block;
   position: absolute;
-  bottom: 0;
+  bottom: -2rem;
   background-image: url(${(props) => props.img});
   background-position: bottom;
-  background-size: 200% 10rem;
+  background-size: 200% 12rem;
   background-repeat: no-repeat;
 `;
 

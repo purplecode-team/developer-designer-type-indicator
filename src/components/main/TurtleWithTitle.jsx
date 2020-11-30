@@ -7,7 +7,7 @@ import media from '../../lib/styles/media';
 
 const Wrapper = styled.div`
   position: relative;
-  height: 90%;
+  height: 100%;
   display: grid;
   place-items: center;
 `;
@@ -15,15 +15,12 @@ const Wrapper = styled.div`
 const Content = styled.div`
   position: absolute;
   z-index: 1;
-  bottom: 0;
+  bottom: 5rem;
   text-align: center;
   width: 400px;
   @media (max-width: ${media.tablet}) {
-    bottom: 12.4rem;
+    bottom: 17rem;
     width: 70%;
-  }
-  @media (max-width: ${media.mobileL}) {
-
   }
 `;
 
@@ -37,22 +34,19 @@ const TitleWrapper = styled.div`
   margin: 0 auto;
   h1 {
     font-size: 24px;
-    padding: 3.2rem 0;
+    padding: 2.7rem 0;
     line-height: 1.3em;
-    font-family:'jua', sans-serif;
+    font-family: 'jua', sans-serif;
     color: gray;
   }
   @media (max-width: ${media.tablet}) {
     height: 10rem;
-    h1{
+    h1 {
       padding: 2.2rem 0;
     }
   }
   @media (max-width: ${media.mobileL}) {
     width: 100%;
-    h1 {
-
-    }
   }
 `;
 
@@ -67,14 +61,9 @@ const TurtleImg = styled.div`
   @media (max-width: ${media.tablet}) {
     width: 7rem;
     height: 8rem;
-    padding-top: 10px;
     background-image: url(${turtleImg2});
   }
-  @media (max-width: ${media.mobileL}) {
-
-  }
 `;
-
 
 const TurtleWithTitle = () => {
   return (

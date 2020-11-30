@@ -1,30 +1,52 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
-import leftTree from '../../../public/img/tree_left.png';
+import tree from '../../../public/img/tree_left.png';
 
-
-const Tree = styled.img`
-  @media (max-width: ${media.laptopM}) {
-    left: -12rem;
-  };
-  @media (max-width: ${media.laptop}) {
-    display:none;
-  };
+const Container = styled.div`
   position: absolute;
-  left: -7rem;
+  left: -1rem;
   top: -1rem;
-  height: 110vh;
-  object-fit: contain;
-  z-index:1;
+  @media (max-width: ${media.laptopM}) {
+    display: none;
+  }
 `;
 
-const LeftTree = ()=>{
-    return(
-      <>
-        <Tree src={leftTree} alt='left Tree'/>
-      </>
-    );
+const Content = styled.div`
+  position: relative;
+  z-index: 5;
+  margin-top: 5rem;
+  width: 30rem;
+  height: 40%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  @media (max-width: ${media.laptopL}) {
+    margin-top: 3rem;
+    width: 30rem;
+  }
+`;
+
+const Tree = styled.img`
+  position: absolute;
+  left: -1rem;
+  top: -1rem;
+  z-index: 3;
+  height: 110vh;
+  object-fit: contain;
+`;
+
+const LeftTree = ({ children }) => {
+  return (
+    <Container>
+      <Tree src={tree} alt="left tree" />
+      <Content>{children}</Content>
+    </Container>
+  );
+};
+
+LeftTree.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default LeftTree;
