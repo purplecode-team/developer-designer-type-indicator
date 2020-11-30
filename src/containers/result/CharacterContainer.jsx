@@ -24,6 +24,9 @@ const CharacterLight = styled.div`
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
+  @media (max-width:${media.mobileL}){
+    width:270px;
+  }
 `;
 
 const CharacterNameBox = styled.div`
@@ -53,27 +56,33 @@ const CharacterName = styled.p`
 `;
 
 const CharacterImgBox = styled.div`
-position:absolute;
-top: 255px;
-width: 100%;
-text-align: center;
-z-index: 99;
+  position:absolute;
+  bottom: 150px;
+  width: 100%;
+  text-align: center;
+  z-index: 99;
 `;
 
 const CharacterImg = styled.img`
-width:140px;
+  width:140px;
+  @media (max-width: ${media.mobileL}){
+    width:100px;
+  }
 `;
 
 const TreeBox = styled.div`
-position:absolute;
-bottom:50px;
-width: 100%;
-height: 150px;
-text-align: center;
+  position:absolute;
+  bottom:50px;
+  width: 100%;
+  height: 150px;
+  text-align: center;
 `; 
 
 const Tree = styled.img`
   width:350px;
+  @media (max-width: ${media.mobileL}){
+    width:270px;
+  }
 `;
 
 const CharacterContainer = ({}) => {
@@ -92,10 +101,11 @@ const CharacterContainer = ({}) => {
           <CharacterImgBox>
             <CharacterImg src={character}/>
           </CharacterImgBox>
+          <TreeBox>
+            <Tree src={treeBase} alt='tree base'/>
+          </TreeBox>
         </CharacterBox>
-        <TreeBox>
-          <Tree src={treeBase} alt='tree base'/>
-        </TreeBox>
+
       </CharacterContent>
     );
 };

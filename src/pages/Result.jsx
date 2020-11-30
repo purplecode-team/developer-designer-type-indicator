@@ -11,18 +11,31 @@ import LeftTree from '../components/common/LeftTree';
 import grassImg from '../../public/img/ground.png';
 import cloudImg from '../../public/img/cloud.png';
 import useUpdateCount from '../lib/hooks/useUpdateCount';
+import media from '../lib/styles/media';
 
 const ResultWrapper = styled.div`
   height: 100vh;
   width: 100vw;
-  overflow-x: hidden;
   position: relative;
+  background-color: #436943;
+  @media (min-width: ${media.laptopM}){
+    overflow:hidden;
+  }
+  @media (max-width: ${media.laptopM}){
+    overflow-x:hidden;
+  }
+`;
+
+const BackgroundColor = styled.div`
+  width:100vw;
+  height:100vh;
   background-color: #c5f1fc;
 `;
 
 const BackgroundDark = styled.div`
   width: 100%;
   height: 100%;
+  overflow:auto;
   position: absolute;
   background-color: black;
   opacity: 0.5;
@@ -53,6 +66,7 @@ const Result = () => {
         <LeftTree />
         <CloudBackground role="img" ariaLabel="clouds background" img={cloudImg} style={{opacity:'0.6'}}/>
         <GrassBackground role="img" ariaLabel="grass background" img={grassImg} style={{opacity:'0.6'}}/>
+        <BackgroundColor/>
       </ResultWrapper>
     </>
   );

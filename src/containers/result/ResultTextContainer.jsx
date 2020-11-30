@@ -10,7 +10,7 @@ const TextContentWrap = styled.div`
 `;
 const TextContentBox = styled.div`
   position:absolute;
-  top:100px;
+  top:80px;
   width: 100%;
 `;
 

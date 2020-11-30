@@ -46,7 +46,7 @@ const LeftTree = ({ children }) => {
 };
 
 LeftTree.propTypes = {
-  children: PropTypes.node.isRequired,
+  // children: PropTypes.node.isRequired,
 };
 
 export default LeftTree;
