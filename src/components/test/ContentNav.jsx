@@ -18,8 +18,7 @@ const NavIconWrap = styled.span`
   background-position: center;
   position: absolute;
   top: -1rem;
-  left: 0;
-  transform: translate(${(props) => props.left}px);
+  left: ${(props) => props.left}%;
   transition: 0.5s;
   transition-timing-function: ease-in-out;
   width: 30px;
@@ -33,7 +32,7 @@ const NavCount = styled.p`
 `;
 
 const ContentNav = ({ count }) => {
-  const STEP = 500 / 15;
+  const STEP = 6.78;
 
   return (
     <NavBar>
