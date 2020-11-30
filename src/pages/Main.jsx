@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import useSumCount from '../lib/hooks/useSumCount';
 
 // components
 import MainContainer from '../containers/main/MainContainer';
@@ -16,10 +17,12 @@ const MainWrapper = styled.div`
 `;
 
 const Main = () => {
+  const [sum] = useSumCount();
+
   return (
     <MainWrapper>
       <LeftIconContainer />
-      <BoardContainer />
+      <BoardContainer devSum={sum.developer} designerSum={sum.designer} />
       <MainContainer />
       <RightIconContainer />
     </MainWrapper>

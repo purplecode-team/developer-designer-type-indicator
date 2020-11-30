@@ -1,53 +1,51 @@
-import React, {useReducer} from 'react';
+import React, { useReducer } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import { history } from './lib/helpers/history';
 import GlobalStyle from './lib/styles/GlobalStyle';
-import {Context} from './lib/helpers/Context';
+import { Context } from './lib/helpers/context';
 
 // pages
 import Main from './pages/Main';
 import Test from './pages/Test';
 import Result from './pages/Result';
 
-const history = createBrowserHistory();
-
 const reducer = (state, action) => {
-  switch (action.type){
-    case "EI":
+  switch (action.type) {
+    case 'EI':
       console.log(`EI 실행 ${action.type}`);
-      ++state.E;
+      state.E+=1;
       return {...state};
     case "TF":
       console.log(`TF 실행 ${action.type}`);
-      ++state.T;
+      state.T+=1;
       return {...state};
     case "JP":
       console.log(`JP 실행 ${action.type}`);
-      ++state.J;
+      state.J+=1;
       return {...state};
     default:
       console.log(state);
       console.log('default 실행');
       return state;
-  };
+  }
 };
 
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, {E:0, T:0, J:0});
+  const [state, dispatch] = useReducer(reducer, { E: 0, T: 0, J: 0 });
 
   return (
-    <Context.Provider value={{state, dispatch}}>
+    <Context.Provider value={{ state, dispatch }}>
       <Router history={history}>
         <GlobalStyle />
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/test/:type" component={Test} />
-          <Route path="/result" component={Result} />
+          <Route path="/result/:type/:result" component={Result} />
           <Redirect from="*" to="/" />
         </Switch>
       </Router>
