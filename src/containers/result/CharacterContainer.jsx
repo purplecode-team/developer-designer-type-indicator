@@ -45,6 +45,7 @@ const CharacterNameBar = styled.div`
   opacity: 0.9;
   text-align: center;
 `;
+
 const CharacterNameTable = styled.div`
   display: table-cell;
   vertical-align: middle;

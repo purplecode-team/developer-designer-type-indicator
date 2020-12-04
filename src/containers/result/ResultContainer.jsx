@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import CharacterContainer from '../result/CharacterContainer';
-import ResultTextContainer from './ResultTextContainer.jsx';
 import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
+import TextWhiteboard from '../../components/result/TextWhiteBoard';
 
 const ResultBox = styled.div`
   position: absolute;
@@ -27,22 +27,14 @@ const Space = styled.div`
     display: none;
   }
 `;
-const ResultContent = styled.div`
-  width: 100%;
-  height: 100vh;
-`;
 
 const ResultContainer = ({}) => {
   return (
     <ResultBox>
-      <Space></Space>
-      <ResultContent>
-        <CharacterContainer />
-      </ResultContent>
-      <ResultContent>
-        <ResultTextContainer />
-      </ResultContent>
-      <Space></Space>
+      <Space />
+      <CharacterContainer />
+      <TextWhiteboard />
+      <Space />
     </ResultBox>
   );
 };
