@@ -199,16 +199,26 @@ const RestartButton = styled.button`
 
 const RestartLink = styled(Link)``;
 
-const TextWhiteboard = ({}) => {
+const TextWhiteboard = ({
+  title,
+  subtitle,
+  bestPartner,
+  worstPartner,
+  designerDesc,
+  devDesc,
+  type,
+}) => {
   return (
     <Board>
       <Test>
         <TestBox>
           <TitleWrap>
-            <SmallTitle>누가 뭐래도 마이웨이</SmallTitle>
-            <Title>고양이 디자이너</Title>
+            <SmallTitle>{subtitle}</SmallTitle>
+            <Title>{title}</Title>
           </TitleWrap>
-          <Description>당신은 고양이입니다 고양이 고양이....</Description>
+          <Description>
+            {type === 'designer' ? designerDesc : devDesc}
+          </Description>
         </TestBox>
       </Test>
       <Graph>
@@ -217,15 +227,15 @@ const TextWhiteboard = ({}) => {
       <Side>
         <SideBox>
           <PartnerTitle>최고의 짝궁</PartnerTitle>
-          <PartnerImg src={partner} alt="partner" />
-          <PartnerName>핵인싸 카피바라</PartnerName>
+          <PartnerImg src={partner} alt={`best partner ${bestPartner}`} />
+          <PartnerName>{bestPartner}</PartnerName>
         </SideBox>
       </Side>
       <Side2>
         <SideBox>
           <PartnerTitle>최악의 짝궁</PartnerTitle>
-          <PartnerImg src={partner} alt="partner" />
-          <PartnerName>핵아싸 카피바라</PartnerName>
+          <PartnerImg src={partner} alt={`worst partner ${worstPartner}`} />
+          <PartnerName>{worstPartner}</PartnerName>
         </SideBox>
       </Side2>
       <Share>
@@ -244,6 +254,16 @@ const TextWhiteboard = ({}) => {
       </Share>
     </Board>
   );
+};
+
+TextWhiteboard.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  bestPartner: PropTypes.string.isRequired,
+  worstPartner: PropTypes.string.isRequired,
+  designerDesc: PropTypes.string.isRequired,
+  devDesc: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default TextWhiteboard;

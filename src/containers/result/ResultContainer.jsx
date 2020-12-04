@@ -28,15 +28,41 @@ const Space = styled.div`
   }
 `;
 
-const ResultContainer = ({}) => {
+const ResultContainer = ({
+  title,
+  subtitle,
+  bestPartner,
+  worstPartner,
+  designerDesc,
+  devDesc,
+  type,
+}) => {
   return (
     <ResultBox>
       <Space />
       <CharacterContainer />
-      <TextWhiteboard />
+      <TextWhiteboard
+        type={type}
+        title={title}
+        subtitle={subtitle}
+        devDesc={devDesc}
+        designerDesc={designerDesc}
+        bestPartner={bestPartner}
+        worstPartner={worstPartner}
+      />
       <Space />
     </ResultBox>
   );
+};
+
+ResultContainer.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  bestPartner: PropTypes.string.isRequired,
+  worstPartner: PropTypes.string.isRequired,
+  designerDesc: PropTypes.string.isRequired,
+  devDesc: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default ResultContainer;
