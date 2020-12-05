@@ -32,8 +32,12 @@ const CharacterName = styled.h2`
   background-color: white;
   opacity: 0.9;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 24px;
   font-family: 'jua', sans-serif;
+  line-height: 1.2em;
+  span {
+    font-size: 16px;
+  }
 `;
 
 const CharacterWrapper = styled.div`
@@ -63,17 +67,24 @@ const Tree = styled.img`
   }
 `;
 
-const CharacterContainer = () => {
+const CharacterContainer = ({ shortBio }) => {
   return (
     <CharacterContent>
       <CharacterLight />
       <CharacterWrapper>
-        <CharacterName>뒷짐지는 곰돌이</CharacterName>
+        <CharacterName>
+          <span> 당신은... </span> <br />
+          {shortBio}
+        </CharacterName>
         <CharacterImg src={character} />
         <Tree src={treeBase} alt="tree base" />
       </CharacterWrapper>
     </CharacterContent>
   );
+};
+
+CharacterContainer.propTypes = {
+  shortBio: PropTypes.string.isRequired,
 };
 
 export default CharacterContainer;

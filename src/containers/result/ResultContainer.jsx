@@ -36,11 +36,12 @@ const ResultContainer = ({
   designerDesc,
   devDesc,
   type,
+  shortBio,
 }) => {
   return (
     <ResultBox>
       <Space />
-      <CharacterContainer />
+      <CharacterContainer shortBio={shortBio} />
       <TextWhiteboard
         type={type}
         title={title}
@@ -63,6 +64,7 @@ ResultContainer.propTypes = {
   designerDesc: PropTypes.string.isRequired,
   devDesc: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  shortBio: PropTypes.string.isRequired,
 };
 
 export default ResultContainer;

@@ -76,6 +76,7 @@ const Result = () => {
             designerDesc={data.designerDesc}
             bestPartner={data.bestPartner}
             worstPartner={data.worstPartner}
+            shortBio={data.shortBio}
           />
         )}
         <BackgroundDark />
