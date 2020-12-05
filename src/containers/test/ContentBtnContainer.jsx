@@ -1,10 +1,11 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { Context } from '../../lib/helpers/context';
 import media from '../../lib/styles/media';
 import matchResultType from '../../lib/util/matchResultType';
+import convertResultToName from '../../lib/util/convertResultToName';
 
 const ContentBtnBox = styled.div`
   position: relative;
@@ -59,18 +60,19 @@ const ContentBtnContainer = ({ nextSlide, data, count, history }) => {
   const goToResult = () => {
     if (count === 15) {
       const result = matchResultType(state);
+      const name = convertResultToName(result);
       history.push({
-        pathname: `/result/${type}/${result}`,
+        pathname: `/result/${type}/${name}`,
         state: { result, type },
       });
     }
   };
 
-  const clickSelection = useCallback((id, selection) => {
+  const clickSelection = (id, selection) => {
     classifySelection(id, selection);
     goToResult();
     nextSlide();
-  });
+  };
 
   return (
     <ContentBtnBox>

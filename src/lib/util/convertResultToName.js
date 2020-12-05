@@ -1,26 +1,27 @@
-export default function convertNameToResult(name) {
-  if (name === 'EFJ') {
+export default function convertResultToName(result) {
+  if (result === 'EFJ') {
     return 'fox';
   }
-  if (name === 'EFP') {
-    return 'capybara';
+  if (result === 'EFP') {
+    return 'quokka';
   }
-  if (name === 'ETJ') {
+  if (result === 'ETJ') {
     return 'pelican';
   }
-  if (name === 'ETP') {
+  if (result === 'ETP') {
     return 'monkey';
   }
-  if (name === 'IFJ') {
+  if (result === 'IFJ') {
     return 'squirrel';
   }
-  if (name === 'IFP') {
+  if (result === 'IFP') {
     return 'sloth';
   }
-  if (name === 'ITJ') {
+  if (result === 'ITJ') {
     return 'bear';
   }
-  if (name === 'ITP') {
+  if (result === 'ITP') {
     return 'cat';
   }
+  return '';
 }

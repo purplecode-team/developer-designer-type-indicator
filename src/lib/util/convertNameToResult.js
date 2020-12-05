@@ -2,7 +2,7 @@ export default function convertNameToResult(name) {
   if (name === 'fox') {
     return 'EFJ';
   }
-  if (name === 'capybara') {
+  if (name === 'quokka') {
     return 'EFP';
   }
   if (name === 'pelican') {
@@ -23,4 +23,5 @@ export default function convertNameToResult(name) {
   if (name === 'cat') {
     return 'ITP';
   }
+  return '';
 }
