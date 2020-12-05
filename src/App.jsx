@@ -8,6 +8,7 @@ import {
 import { history } from './lib/helpers/history';
 import GlobalStyle from './lib/styles/GlobalStyle';
 import { Context } from './lib/helpers/context';
+import './app.css';
 
 // pages
 import Main from './pages/Main';
