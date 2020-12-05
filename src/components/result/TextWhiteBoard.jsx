@@ -14,7 +14,7 @@ const Board = styled.div`
   width: 130%;
   margin: auto;
   background-color: white;
-  font-family: 'jua', sans-serif;
+  font-family: 'hannaPro', sans-serif;
   padding: 20px;
   border: 2px solid #b6af4a;
   border-radius: 2rem;
@@ -156,7 +156,7 @@ const PartnerName = styled.h3`
 const IconTitle = styled.h4`
   padding: 10px 0;
   font-size: 16px;
-  font-family: 'jua', sans-serif;
+  font-family: 'hannaPro', sans-serif;
 `;
 
 const IconBox = styled.div`
@@ -182,7 +182,7 @@ const RestartButton = styled.button`
   background-color: #d1c873;
   color: white;
   border-style: none;
-  font-family: 'jua', sans-serif;
+  font-family: 'hannaPro', sans-serif;
   cursor: pointer;
   &:hover {
     transform: scale(1.05);

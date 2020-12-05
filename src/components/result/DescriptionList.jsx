@@ -7,7 +7,7 @@ const List = styled.ul`
   margin: 0 auto;
   color: #5c5c5c;
   font-size: 16px;
-  font-family: 'jua', sans-serif;
+  font-family: 'hannaAir', sans-serif;
   white-space: pre-wrap;
 `;
 
