@@ -26,7 +26,7 @@ const CharacterLight = styled.div`
 
 const CharacterName = styled.h2`
   width: 250px;
-  padding: 2.5rem 0;
+  padding: 12px 0;
   margin: 0 auto;
   border-radius: 2rem;
   background-color: white;

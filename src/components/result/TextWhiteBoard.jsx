@@ -27,7 +27,8 @@ const Board = styled.div`
     'Test Test Side Side2'
     'Test Test Side Side2'
     'Test Test Share Share'
-    'Test Test Share Share';
+    'Test Test Share Share'
+    'Test Test Shart Shart';
   @media (max-width: ${media.laptopM}) {
     width: 450px;
     height: 90%;
@@ -37,42 +38,29 @@ const Board = styled.div`
     row-gap: 10px;
   }
   @media (max-width: ${media.laptop}) {
-    column-gap: 20px;
+    padding: 20px 10px;
+    column-gap: 10px;
     row-gap: 10px;
-    margin: 0 auto;
+    margin: 0 auto 5rem auto;
     width: 80%;
+    height: auto;
+    grid-template-rows: repeat(6, 100px);
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
       'Graph Graph'
       'Graph Graph'
-      'Test Test'
-      'Test Test'
-      'Test Test'
-      'Test Test'
       'Side Side2'
       'Side Side2'
+      'Share Share'
+      'Share Share'
+      'Share Share'
       'Share Share';
   }
-`;
-
-const Test = styled.div`
-  grid-area: Test;
-`;
-
-const Graph = styled.div`
-  grid-area: Graph;
-`;
-
-const Side = styled.div`
-  grid-area: Side;
-`;
-
-const Side2 = styled.div`
-  grid-area: Side2;
-`;
-
-const Share = styled.div`
-  grid-area: Share;
 `;
 
 const TestBox = styled.div`
@@ -82,41 +70,35 @@ const TestBox = styled.div`
   @media (max-width: ${media.laptop}) {
     width: 100%;
     border-radius: 2rem;
-    background-color: #eee;
   }
-  /* background-color: #eeeeee; */
 `;
 
 const GraphBox = styled.div`
-  width: 100%;
-  height: 100%;
+  height: 14.5rem;
   border-radius: 1rem 1rem 0 0;
   background-color: #eeeeee;
   @media (max-width: ${media.laptop}) {
     width: 100%;
-    border-radius: 2rem;
   }
 `;
 
 const SideBox = styled.div`
-  width: 100%;
-  border-radius: 0 0 1rem 1rem;
+  border-radius: ${(props) => props.borderRadius};
   background-color: #eeeeee;
   text-align: center;
   padding: 10px 0;
-  @media (max-width: ${media.laptop}) {
-    width: 100%;
-    border-radius: 2rem;
-  }
 `;
 
 const ShareBox = styled.div`
   width: 85%;
-  /* background-color: #eeeeee; */
-  margin: 20px auto;
+  padding-top: 4rem;
+  margin: auto;
   text-align: center;
   @media (max-width: ${media.laptop}) {
     width: 100%;
+  }
+  @media (max-width: ${media.laptop}) {
+    padding-top: 1rem;
   }
 `;
 
@@ -133,6 +115,9 @@ const SmallTitle = styled.h2`
   font-size: 16px;
   word-break: keep-all;
   margin-bottom: 0.5em;
+  @media (max-width: ${media.laptop}) {
+    margin-top: 0.5rem;
+  }
 `;
 
 const Title = styled.h1`
@@ -165,6 +150,7 @@ const IconBox = styled.div`
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  margin-bottom: 0.5rem;
 `;
 
 const Icon = styled.img`
@@ -173,6 +159,7 @@ const Icon = styled.img`
   cursor: pointer;
   &:hover {
     transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
   }
 `;
 
@@ -187,13 +174,32 @@ const RestartButton = styled.button`
   cursor: pointer;
   &:hover {
     transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
   }
   &:focus {
     outline: none;
   }
 `;
 
-const RestartLink = styled(Link)``;
+const Test = styled.div`
+  grid-area: Test;
+`;
+
+const Graph = styled.div`
+  grid-area: Graph;
+`;
+
+const Side = styled.div`
+  grid-area: Side;
+`;
+
+const Side2 = styled.div`
+  grid-area: Side2;
+`;
+
+const Share = styled.div`
+  grid-area: Share;
+`;
 
 const TextWhiteboard = ({
   title,
@@ -225,14 +231,14 @@ const TextWhiteboard = ({
         <GraphBox />
       </Graph>
       <Side>
-        <SideBox>
+        <SideBox borderRadius="0 0 0 1rem">
           <PartnerTitle>최고의 짝궁</PartnerTitle>
           <PartnerImg src={partner} alt={`best partner ${bestPartner}`} />
           <PartnerName>{bestPartnerTitle}</PartnerName>
         </SideBox>
       </Side>
       <Side2>
-        <SideBox>
+        <SideBox borderRadius="0 0 1rem 0">
           <PartnerTitle>최악의 짝궁</PartnerTitle>
           <PartnerImg src={partner} alt={`worst partner ${worstPartner}`} />
           <PartnerName>{worstPartnerTitle}</PartnerName>
@@ -248,9 +254,9 @@ const TextWhiteboard = ({
             <Icon src={clip} alt="clip" />
           </IconBox>
         </ShareBox>
-        <RestartLink to={`/`}>
+        <Link to={`/`}>
           <RestartButton>테스트 다시하기</RestartButton>
-        </RestartLink>
+        </Link>
       </Share>
     </Board>
   );
