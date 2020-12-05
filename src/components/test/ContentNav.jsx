@@ -1,14 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import foot from '../../../public/img/foot.png';
+import media from '../../lib/styles/media';
 
 const NavBar = styled.div`
   position: absolute;
-  top: -40px;
-  width: 100%;
+  bottom: -100px;
+  width: 700px;
   height: 12px;
   border-radius: 10px;
   background-color: #ffd4d7;
+  left: -100px;
+  @media (max-width: ${media.tablet}){
+    width:100%;
+    left:0;
+  }
 `;
 
 const NavIconWrap = styled.span`
