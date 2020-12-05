@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { loadData, updateData } from '../lib/firebase/api';
 import styled from 'styled-components';
@@ -44,6 +44,7 @@ const BackgroundDark = styled.div`
 `;
 
 const Result = () => {
+  const [data, setData] = useState(null);
   const { type, result } = useParams();
   const { pathname, state } = useLocation();
   const typeCounts = useUpdateCount({
@@ -57,10 +58,26 @@ const Result = () => {
     history.replace(pathname, { state: null });
   }, []);
 
+  useEffect(() => {
+    loadData(`result/${result}`).then((res) => {
+      setData(res);
+    });
+  }, [type, result]);
+
   return (
     <>
       <ResultWrapper>
-        <ResultContainer />
+        {data && (
+          <ResultContainer
+            type={type}
+            title={data.title}
+            subtitle={data.subtitle}
+            devDesc={data.devDesc}
+            designerDesc={data.designerDesc}
+            bestPartner={data.bestPartner}
+            worstPartner={data.worstPartner}
+          />
+        )}
         <BackgroundDark />
         <RightTree />
         <LeftTree />
