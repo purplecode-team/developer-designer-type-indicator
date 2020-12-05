@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
 import treeBase from '../../../public/img/tree_base.png';
-import character from '../../../public/img/bear.png';
+import character from '../../../public/img/result_bear.png';
 import lightImg from '../../../public/img/light.png';
 
 const CharacterContent = styled.div`

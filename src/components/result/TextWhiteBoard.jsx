@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
-import partner from '../../../public/img/bear.png';
+import partner from '../../../public/img/result_bear.png';
 import insta from '../../../public/img/insta.png';
 import kakao from '../../../public/img/kakao.png';
 import twitter from '../../../public/img/twitter.png';
 import clip from '../../../public/img/clip.png';
 import { Link } from 'react-router-dom';
+import DescriptionList from './DescriptionList';
 
 const Board = styled.div`
   width: 130%;
@@ -128,23 +129,17 @@ const TitleWrap = styled.div`
   }
 `;
 
-const SmallTitle = styled.p`
+const SmallTitle = styled.h2`
   font-size: 16px;
+  word-break: keep-all;
+  margin-bottom: 0.5em;
 `;
 
-const Title = styled.p`
+const Title = styled.h1`
   font-size: 25px;
 `;
 
-const Description = styled.p`
-  width: 90%;
-  margin: 0 auto;
-  color: #5c5c5c;
-  font-size: 14px;
-  font-family: 'jua', sans-serif;
-`;
-
-const PartnerTitle = styled.p`
+const PartnerTitle = styled.h3`
   margin: 5px 0;
 `;
 
@@ -153,12 +148,12 @@ const PartnerImg = styled.img`
   padding: 10px 0;
 `;
 
-const PartnerName = styled.p`
+const PartnerName = styled.h3`
   margin: 5px 0;
   font-size: 13px;
 `;
 
-const IconTitle = styled.p`
+const IconTitle = styled.h4`
   padding: 10px 0;
   font-size: 16px;
   font-family: 'jua', sans-serif;
@@ -216,9 +211,11 @@ const TextWhiteboard = ({
             <SmallTitle>{subtitle}</SmallTitle>
             <Title>{title}</Title>
           </TitleWrap>
-          <Description>
-            {type === 'designer' ? designerDesc : devDesc}
-          </Description>
+          {type === 'designer' ? (
+            <DescriptionList description={designerDesc} />
+          ) : (
+            <DescriptionList description={devDesc} />
+          )}
         </TestBox>
       </Test>
       <Graph>
