@@ -141,6 +141,7 @@ const Title = styled.h1`
 
 const PartnerTitle = styled.h3`
   margin: 5px 0;
+  font-size: 16px;
 `;
 
 const PartnerImg = styled.img`
@@ -202,6 +203,8 @@ const TextWhiteboard = ({
   designerDesc,
   devDesc,
   type,
+  worstPartnerTitle,
+  bestPartnerTitle,
 }) => {
   return (
     <Board>
@@ -225,14 +228,14 @@ const TextWhiteboard = ({
         <SideBox>
           <PartnerTitle>최고의 짝궁</PartnerTitle>
           <PartnerImg src={partner} alt={`best partner ${bestPartner}`} />
-          <PartnerName>{bestPartner}</PartnerName>
+          <PartnerName>{bestPartnerTitle}</PartnerName>
         </SideBox>
       </Side>
       <Side2>
         <SideBox>
           <PartnerTitle>최악의 짝궁</PartnerTitle>
           <PartnerImg src={partner} alt={`worst partner ${worstPartner}`} />
-          <PartnerName>{worstPartner}</PartnerName>
+          <PartnerName>{worstPartnerTitle}</PartnerName>
         </SideBox>
       </Side2>
       <Share>
@@ -258,9 +261,11 @@ TextWhiteboard.propTypes = {
   subtitle: PropTypes.string.isRequired,
   bestPartner: PropTypes.string.isRequired,
   worstPartner: PropTypes.string.isRequired,
-  designerDesc: PropTypes.string.isRequired,
-  devDesc: PropTypes.string.isRequired,
+  designerDesc: PropTypes.array.isRequired,
+  devDesc: PropTypes.array.isRequired,
   type: PropTypes.string.isRequired,
+  worstPartnerTitle: PropTypes.string.isRequired,
+  bestPartnerTitle: PropTypes.string.isRequired,
 };
 
 export default TextWhiteboard;

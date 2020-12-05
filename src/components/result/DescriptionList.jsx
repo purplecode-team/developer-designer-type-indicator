@@ -9,11 +9,20 @@ const List = styled.ul`
   font-size: 16px;
   font-family: 'jua', sans-serif;
   white-space: pre-wrap;
+  list-style-type: '-';
+  li {
+    padding: 0.5em 0;
+  }
 `;
 
 const DescriptionList = ({ description }) => {
   const descArray = Object.values(description);
-  return <List>{descArray && descArray.map((item) => <li> {item} </li>)}</List>;
+  return (
+    <List>
+      {descArray &&
+        descArray.map((item, index) => <li key={index}> {item} </li>)}
+    </List>
+  );
 };
 
 export default DescriptionList;

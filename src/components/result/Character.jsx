@@ -67,7 +67,7 @@ const Tree = styled.img`
   }
 `;
 
-const CharacterContainer = ({ shortBio }) => {
+const Character = ({ shortBio }) => {
   return (
     <CharacterContent>
       <CharacterLight />
@@ -83,8 +83,8 @@ const CharacterContainer = ({ shortBio }) => {
   );
 };
 
-CharacterContainer.propTypes = {
+Character.propTypes = {
   shortBio: PropTypes.string.isRequired,
 };
 
-export default CharacterContainer;
+export default Character;

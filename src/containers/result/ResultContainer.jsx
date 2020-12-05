@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import CharacterContainer from '../result/CharacterContainer';
+import Character from '../../components/result/Character';
 import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
 import TextWhiteboard from '../../components/result/TextWhiteBoard';
@@ -37,11 +37,13 @@ const ResultContainer = ({
   devDesc,
   type,
   shortBio,
+  bestPartnerTitle,
+  worstPartnerTitle,
 }) => {
   return (
     <ResultBox>
       <Space />
-      <CharacterContainer shortBio={shortBio} />
+      <Character shortBio={shortBio} />
       <TextWhiteboard
         type={type}
         title={title}
@@ -50,6 +52,8 @@ const ResultContainer = ({
         designerDesc={designerDesc}
         bestPartner={bestPartner}
         worstPartner={worstPartner}
+        bestPartnerTitle={bestPartnerTitle}
+        worstPartnerTitle={worstPartnerTitle}
       />
       <Space />
     </ResultBox>
@@ -61,10 +65,12 @@ ResultContainer.propTypes = {
   subtitle: PropTypes.string.isRequired,
   bestPartner: PropTypes.string.isRequired,
   worstPartner: PropTypes.string.isRequired,
-  designerDesc: PropTypes.string.isRequired,
-  devDesc: PropTypes.string.isRequired,
+  designerDesc: PropTypes.array.isRequired,
+  devDesc: PropTypes.array.isRequired,
   type: PropTypes.string.isRequired,
   shortBio: PropTypes.string.isRequired,
+  bestPartnerTitle: PropTypes.string.isRequired,
+  worstPartnerTitle: PropTypes.string.isRequired,
 };
 
 export default ResultContainer;

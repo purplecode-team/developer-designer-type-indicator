@@ -77,6 +77,8 @@ const Result = () => {
             bestPartner={data.bestPartner}
             worstPartner={data.worstPartner}
             shortBio={data.shortBio}
+            bestPartnerTitle={data.bestPartnerTitle}
+            worstPartnerTitle={data.worstPartnerTitle}
           />
         )}
         <BackgroundDark />
