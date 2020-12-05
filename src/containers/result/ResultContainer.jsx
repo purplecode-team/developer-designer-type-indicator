@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import CharacterContainer from '../result/CharacterContainer';
+import Character from '../../components/result/Character';
 import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
 import TextWhiteboard from '../../components/result/TextWhiteBoard';
@@ -40,7 +40,7 @@ const ResultContainer = ({
   return (
     <ResultBox>
       <Space />
-      <CharacterContainer />
+      <Character />
       <TextWhiteboard
         type={type}
         title={title}

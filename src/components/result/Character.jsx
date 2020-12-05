@@ -33,7 +33,7 @@ const CharacterName = styled.h2`
   opacity: 0.9;
   text-align: center;
   font-size: 1.5rem;
-  font-family: 'jua', sans-serif;
+  font-family: 'hannaPro', sans-serif;
 `;
 
 const CharacterWrapper = styled.div`
