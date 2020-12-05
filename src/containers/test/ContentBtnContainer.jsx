@@ -2,15 +2,15 @@ import React, { useCallback, useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import useResultType from '../../lib/hooks/useResultType';
 import { Context } from '../../lib/helpers/context';
 import media from '../../lib/styles/media';
+import matchResultType from '../../lib/util/matchResultType';
 
 const ContentBtnBox = styled.div`
   position: relative;
 `;
 
-const ContentBtnButton = styled.button`
+const ContentBtn = styled.button`
   @media (max-width: ${media.mobileL}) {
     font-size: 14px;
   }
@@ -18,7 +18,7 @@ const ContentBtnButton = styled.button`
   margin: 20px auto;
   width: 100%;
   height: 65px;
-  font-family: 'jua';
+  font-family: 'jua', sans-serif;
   font-size: 16px;
   word-break: keep-all;
   white-space: break-spaces;
@@ -47,9 +47,8 @@ const ContentBtnButton = styled.button`
 `;
 
 const ContentBtnContainer = ({ nextSlide, data, count, history }) => {
-  const { dispatch } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
   const { type } = useParams();
-  const [result] = useResultType();
 
   const classifySelection = (id, selection) => {
     if (selection === 'A') {
@@ -59,6 +58,7 @@ const ContentBtnContainer = ({ nextSlide, data, count, history }) => {
 
   const goToResult = () => {
     if (count === 15) {
+      const result = matchResultType(state);
       history.push({
         pathname: `/result/${type}/${result}`,
         state: { result, type },
@@ -74,22 +74,22 @@ const ContentBtnContainer = ({ nextSlide, data, count, history }) => {
 
   return (
     <ContentBtnBox>
-      <ContentBtnButton
+      <ContentBtn
         type="button"
         onClick={() => {
           clickSelection({ type: data.id }, 'A');
         }}
       >
         {data.A}
-      </ContentBtnButton>
-      <ContentBtnButton
+      </ContentBtn>
+      <ContentBtn
         type="button"
         onClick={() => {
           clickSelection({ type: data.id }, 'B');
         }}
       >
         {data.B}
-      </ContentBtnButton>
+      </ContentBtn>
     </ContentBtnBox>
   );
 };

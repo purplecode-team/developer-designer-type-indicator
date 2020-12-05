@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
-import ContentContainer from '../containers/test/ContentContainer';
+import ContentContainer from '../../src/containers/test/ContentContainer';
 import ContentNav from '../components/test/ContentNav';
-import firebase from '../lib/util/firebase';
+import firebase from '../lib/firebase/firebase';
 import leftTree from '../../public/img/tree_left.png';
 import rightTree from '../../public/img/tree_right.png';
 import media from '../lib/styles/media';
@@ -10,8 +10,6 @@ import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
 import grassImg from '../../public/img/ground.png';
 import cloudImg from '../../public/img/cloud.png';
-import RightTree from '../components/common/RightTree';
-import LeftTree from '../components/common/LeftTree';
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -70,10 +68,12 @@ const Container = styled.div`
   z-index: 12;
   box-shadow: #afafaf 5px 5px 20px;
 `;
+
 const ContentTitle = styled.div`
   margin: 20px 0;
   font-size: 25px;
 `;
+
 const ContentWrap = styled.div`
   width: 90%;
   margin: 0 auto;
@@ -145,11 +145,12 @@ const Test = ({ match, history }) => {
 
   return (
     <MainWrapper>
-
+      <RightTree src={rightTree} alt="Right tree" />
+      <LeftTree src={leftTree} alt="Left tree" />
       <Container>
         <ContentTitle>{match.params.type}</ContentTitle>
         <ContentWrap>
-          <Content
+          <ContentContainer
             nextSlide={nextSlide}
             data={currentData}
             count={count}

@@ -8,6 +8,7 @@ import {
 import { history } from './lib/helpers/history';
 import GlobalStyle from './lib/styles/GlobalStyle';
 import { Context } from './lib/helpers/context';
+import './app.css';
 
 // pages
 import Main from './pages/Main';
@@ -18,16 +19,16 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'EI':
       console.log(`EI 실행 ${action.type}`);
-      ++state.E;
-      return { ...state };
-    case 'TF':
+      state.E+=1;
+      return {...state};
+    case "TF":
       console.log(`TF 실행 ${action.type}`);
-      ++state.T;
-      return { ...state };
-    case 'JP':
+      state.T+=1;
+      return {...state};
+    case "JP":
       console.log(`JP 실행 ${action.type}`);
-      ++state.J;
-      return { ...state };
+      state.J+=1;
+      return {...state};
     default:
       console.log(state);
       console.log('default 실행');
