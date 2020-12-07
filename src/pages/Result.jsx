@@ -73,6 +73,7 @@ const Result = () => {
       <ResultWrapper>
         {data && (
           <ResultContainer
+            name={name}
             type={type}
             title={data.title}
             subtitle={data.subtitle}

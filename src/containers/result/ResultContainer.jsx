@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Character from '../../components/result/Character';
 import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
-import TextWhiteboard from '../../components/result/TextWhiteBoard';
+import TextWhiteboard from './TextWhiteBoard';
 
 const ResultBox = styled.div`
   position: absolute;
@@ -39,11 +39,12 @@ const ResultContainer = ({
   shortBio,
   bestPartnerTitle,
   worstPartnerTitle,
+  name,
 }) => {
   return (
     <ResultBox>
       <Space />
-      <Character shortBio={shortBio} />
+      <Character shortBio={shortBio} name={name} />
       <TextWhiteboard
         type={type}
         title={title}
@@ -65,12 +66,13 @@ ResultContainer.propTypes = {
   subtitle: PropTypes.string.isRequired,
   bestPartner: PropTypes.string.isRequired,
   worstPartner: PropTypes.string.isRequired,
-  designerDesc: PropTypes.array.isRequired,
-  devDesc: PropTypes.array.isRequired,
+  designerDesc: PropTypes.object.isRequired,
+  devDesc: PropTypes.object.isRequired,
   type: PropTypes.string.isRequired,
   shortBio: PropTypes.string.isRequired,
   bestPartnerTitle: PropTypes.string.isRequired,
   worstPartnerTitle: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default ResultContainer;

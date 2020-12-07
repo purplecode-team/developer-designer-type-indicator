@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
-import partner from '../../../public/img/result_bear.png';
 import insta from '../../../public/img/insta.png';
 import kakao from '../../../public/img/kakao.png';
 import twitter from '../../../public/img/twitter.png';
 import clip from '../../../public/img/clip.png';
 import { Link } from 'react-router-dom';
-import DescriptionList from './DescriptionList';
+import DescriptionList from '../../components/result/DescriptionList';
+import Partner from '../../components/result/Partner';
 
 const Board = styled.div`
   width: 130%;
@@ -86,7 +86,7 @@ const SideBox = styled.div`
   border-radius: ${(props) => props.borderRadius};
   background-color: #eeeeee;
   text-align: center;
-  padding: 10px 0;
+  padding: 5px 0;
 `;
 
 const ShareBox = styled.div`
@@ -103,7 +103,7 @@ const ShareBox = styled.div`
 `;
 
 const TitleWrap = styled.div`
-  padding: 40px 0 20px;
+  padding: 5px 0 10px 0;
   width: 100%;
   text-align: center;
   @media (max-width: ${media.laptop}) {
@@ -122,21 +122,6 @@ const SmallTitle = styled.h2`
 
 const Title = styled.h1`
   font-size: 25px;
-`;
-
-const PartnerTitle = styled.h3`
-  margin: 5px 0;
-  font-size: 16px;
-`;
-
-const PartnerImg = styled.img`
-  width: 40px;
-  padding: 10px 0;
-`;
-
-const PartnerName = styled.h3`
-  margin: 5px 0;
-  font-size: 13px;
 `;
 
 const IconTitle = styled.h4`
@@ -232,16 +217,22 @@ const TextWhiteboard = ({
       </Graph>
       <Side>
         <SideBox borderRadius="0 0 0 1rem">
-          <PartnerTitle>최고의 짝궁</PartnerTitle>
-          <PartnerImg src={partner} alt={`best partner ${bestPartner}`} />
-          <PartnerName>{bestPartnerTitle}</PartnerName>
+          <Partner
+            alt={`best partner ${bestPartner}`}
+            title="최고의 짝궁"
+            name={bestPartner}
+            shortBio={bestPartnerTitle}
+          />
         </SideBox>
       </Side>
       <Side2>
         <SideBox borderRadius="0 0 1rem 0">
-          <PartnerTitle>최악의 짝궁</PartnerTitle>
-          <PartnerImg src={partner} alt={`worst partner ${worstPartner}`} />
-          <PartnerName>{worstPartnerTitle}</PartnerName>
+          <Partner
+            alt={`worst partner ${worstPartner}`}
+            title="최악의 짝궁"
+            name={worstPartner}
+            shortBio={worstPartnerTitle}
+          />
         </SideBox>
       </Side2>
       <Share>
@@ -267,8 +258,8 @@ TextWhiteboard.propTypes = {
   subtitle: PropTypes.string.isRequired,
   bestPartner: PropTypes.string.isRequired,
   worstPartner: PropTypes.string.isRequired,
-  designerDesc: PropTypes.array.isRequired,
-  devDesc: PropTypes.array.isRequired,
+  designerDesc: PropTypes.object.isRequired,
+  devDesc: PropTypes.object.isRequired,
   type: PropTypes.string.isRequired,
   worstPartnerTitle: PropTypes.string.isRequired,
   bestPartnerTitle: PropTypes.string.isRequired,
