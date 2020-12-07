@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import { loadData, updateData } from '../lib/firebase/api';
 import styled from 'styled-components';
+import { loadData, updateData } from '../lib/firebase/api';
 import { history } from '../lib/helpers/history';
 import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
@@ -48,7 +48,7 @@ const Result = () => {
   const [data, setData] = useState(null);
   const { type, name } = useParams();
   const { pathname, state } = useLocation();
-  const typeCounts = useUpdateCount({
+  useUpdateCount({
     type,
     result: state?.result,
     update: updateData,
@@ -74,8 +74,8 @@ const Result = () => {
             type={type}
             title={data.title}
             subtitle={data.subtitle}
-            devDesc={data.devDesc}
-            designerDesc={data.designerDesc}
+            devDesc={Object.values(data.devDesc)}
+            designerDesc={Object.values(data.designerDesc)}
             bestPartner={data.bestPartner}
             worstPartner={data.worstPartner}
             shortBio={data.shortBio}

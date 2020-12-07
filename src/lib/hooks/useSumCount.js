@@ -16,8 +16,10 @@ export default function useSumCount() {
   useEffect(() => {
     loadCount().then(({ devCount, designerCount }) => {
       setSum({
-        developer: Object.values(devCount).reduce((sum, val) => sum + val),
-        designer: Object.values(designerCount).reduce((sum, val) => sum + val),
+        developer: Object.values(devCount).reduce((total, val) => total + val),
+        designer: Object.values(designerCount).reduce(
+          (total, val) => total + val
+        ),
       });
     });
   }, []);

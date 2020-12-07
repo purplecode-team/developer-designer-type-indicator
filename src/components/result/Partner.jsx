@@ -47,7 +47,8 @@ const Partner = ({ title, name, shortBio, alt, borderRadius }) => {
   );
 };
 
-Partner.propType = {
+Partner.propTypes = {
+  title: PropTypes.string.isRequired,
   borderRadius: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   shortBio: PropTypes.string.isRequired,

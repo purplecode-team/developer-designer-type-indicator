@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import media from '../../lib/styles/media';
 import insta from '../../../public/img/insta.png';
 import kakao from '../../../public/img/kakao.png';
 import twitter from '../../../public/img/twitter.png';
 import clip from '../../../public/img/clip.png';
-import { Link } from 'react-router-dom';
 import DescriptionList from '../../components/result/DescriptionList';
 import Partner from '../../components/result/Partner';
 import TypeGraph from '../../components/result/TypeGraph';
@@ -237,7 +237,7 @@ const TextWhiteboard = ({
         </TestBox>
       </Test>
       <Graph>
-        <TypeGraph result={'EFP'} />
+        <TypeGraph result="EFP" />
       </Graph>
       <Side>
         <Partner
@@ -267,7 +267,7 @@ const TextWhiteboard = ({
             <Icon src={clip} alt="clip" />
           </IconBox>
         </ShareBox>
-        <Link to={`/`}>
+        <Link to="/">
           <RestartButton>테스트 다시하기</RestartButton>
         </Link>
       </Share>
@@ -280,8 +280,8 @@ TextWhiteboard.propTypes = {
   subtitle: PropTypes.string.isRequired,
   bestPartner: PropTypes.string.isRequired,
   worstPartner: PropTypes.string.isRequired,
-  designerDesc: PropTypes.object.isRequired,
-  devDesc: PropTypes.object.isRequired,
+  designerDesc: PropTypes.arrayOf(PropTypes.string).isRequired,
+  devDesc: PropTypes.arrayOf(PropTypes.string).isRequired,
   type: PropTypes.string.isRequired,
   worstPartnerTitle: PropTypes.string.isRequired,
   bestPartnerTitle: PropTypes.string.isRequired,

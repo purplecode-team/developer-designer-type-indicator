@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Character from '../../components/result/Character';
 import PropTypes from 'prop-types';
+import Character from '../../components/result/Character';
 import media from '../../lib/styles/media';
 import TextWhiteboard from './TextWhiteBoard';
 
@@ -66,8 +66,8 @@ ResultContainer.propTypes = {
   subtitle: PropTypes.string.isRequired,
   bestPartner: PropTypes.string.isRequired,
   worstPartner: PropTypes.string.isRequired,
-  designerDesc: PropTypes.object.isRequired,
-  devDesc: PropTypes.object.isRequired,
+  designerDesc: PropTypes.arrayOf(PropTypes.string).isRequired,
+  devDesc: PropTypes.arrayOf(PropTypes.string).isRequired,
   type: PropTypes.string.isRequired,
   shortBio: PropTypes.string.isRequired,
   bestPartnerTitle: PropTypes.string.isRequired,

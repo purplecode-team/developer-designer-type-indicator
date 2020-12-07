@@ -57,7 +57,7 @@ const TypeGraph = ({ result }) => {
   );
 };
 
-TypeGraph.propType = {
+TypeGraph.propTypes = {
   result: PropTypes.string.isRequired,
 };
 

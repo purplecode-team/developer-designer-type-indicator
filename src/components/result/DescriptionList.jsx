@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const List = styled.ul`
   width: 92%;
@@ -16,13 +17,16 @@ const List = styled.ul`
 `;
 
 const DescriptionList = ({ description }) => {
-  const descArray = Object.values(description);
   return (
     <List>
-      {descArray &&
-        descArray.map((item, index) => <li key={index}> {item} </li>)}
+      {description &&
+        description.map((item, index) => <li key={index}> {item} </li>)}
     </List>
   );
+};
+
+DescriptionList.propTypes = {
+  description: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default DescriptionList;
