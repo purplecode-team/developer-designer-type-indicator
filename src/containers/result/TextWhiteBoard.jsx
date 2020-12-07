@@ -9,9 +9,10 @@ import clip from '../../../public/img/clip.png';
 import { Link } from 'react-router-dom';
 import DescriptionList from '../../components/result/DescriptionList';
 import Partner from '../../components/result/Partner';
+import TypeGraph from '../../components/result/TypeGraph';
 
 const Board = styled.div`
-  width: 130%;
+  width: 100%;
   margin: auto;
   background-color: white;
   font-family: 'jua', sans-serif;
@@ -19,22 +20,24 @@ const Board = styled.div`
   border: 2px solid #b6af4a;
   border-radius: 2rem;
   display: grid;
-  grid-template-rows: repeat(6, 80px);
+  grid-template-rows: repeat(6, 40px);
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
     'Test Test Graph Graph'
     'Test Test Graph Graph'
+    'Test Test Graph Graph'
+    'Test Test Graph Graph'
     'Test Test Side Side2'
     'Test Test Side Side2'
-    'Test Test Share Share'
-    'Test Test Share Share'
-    'Test Test Shart Shart';
+    'Test Test Side Side2'
+    'Test Test Side Side2'
+    'Test Test Share Share';
   @media (max-width: ${media.laptopM}) {
     width: 450px;
     height: 90%;
   }
   @media (min-width: ${media.laptop}) {
-    column-gap: 10px;
+    column-gap: 15px;
     row-gap: 10px;
   }
   @media (max-width: ${media.laptop}) {
@@ -61,6 +64,43 @@ const Board = styled.div`
       'Share Share'
       'Share Share';
   }
+  @media (max-width: ${media.mobileM}) {
+    grid-template-rows: repeat(6, 90px);
+    grid-template-areas:
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Graph Graph'
+      'Graph Graph'
+      'Side Side2'
+      'Side Side2'
+      'Share Share'
+      'Share Share'
+      'Share Share'
+      'Share Share';
+  }
+  @media (max-width: ${media.mobileS}) {
+    grid-template-rows: repeat(6, 90px);
+    grid-template-areas:
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Graph Graph'
+      'Graph Graph'
+      'Side Side2'
+      'Side Side2'
+      'Share Share'
+      'Share Share'
+      'Share Share'
+      'Share Share';
+  }
 `;
 
 const TestBox = styled.div`
@@ -71,22 +111,6 @@ const TestBox = styled.div`
     width: 100%;
     border-radius: 2rem;
   }
-`;
-
-const GraphBox = styled.div`
-  height: 14.5rem;
-  border-radius: 1rem 1rem 0 0;
-  background-color: #eeeeee;
-  @media (max-width: ${media.laptop}) {
-    width: 100%;
-  }
-`;
-
-const SideBox = styled.div`
-  border-radius: ${(props) => props.borderRadius};
-  background-color: #eeeeee;
-  text-align: center;
-  padding: 5px 0;
 `;
 
 const ShareBox = styled.div`
@@ -213,27 +237,25 @@ const TextWhiteboard = ({
         </TestBox>
       </Test>
       <Graph>
-        <GraphBox />
+        <TypeGraph result={'EFP'} />
       </Graph>
       <Side>
-        <SideBox borderRadius="0 0 0 1rem">
-          <Partner
-            alt={`best partner ${bestPartner}`}
-            title="최고의 짝궁"
-            name={bestPartner}
-            shortBio={bestPartnerTitle}
-          />
-        </SideBox>
+        <Partner
+          borderRadius="0 0 0 1rem"
+          alt={`best partner ${bestPartner}`}
+          title="최고의 짝궁"
+          name={bestPartner}
+          shortBio={bestPartnerTitle}
+        />
       </Side>
       <Side2>
-        <SideBox borderRadius="0 0 1rem 0">
-          <Partner
-            alt={`worst partner ${worstPartner}`}
-            title="최악의 짝궁"
-            name={worstPartner}
-            shortBio={worstPartnerTitle}
-          />
-        </SideBox>
+        <Partner
+          borderRadius="0 0 1rem 0"
+          alt={`worst partner ${worstPartner}`}
+          title="최악의 짝궁"
+          name={worstPartner}
+          shortBio={worstPartnerTitle}
+        />
       </Side2>
       <Share>
         <ShareBox>

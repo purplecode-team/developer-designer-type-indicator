@@ -11,7 +11,7 @@ const ResultBox = styled.div`
   display: grid;
   width: 100%;
   @media (min-width: ${media.laptop}) {
-    grid-template-columns: 1fr 3fr 3fr 2fr;
+    grid-template-columns: 0.5fr 3fr 4fr 0.5fr;
   }
   @media (max-width: ${media.laptop}) {
     grid-template-rows: 1fr 1fr;

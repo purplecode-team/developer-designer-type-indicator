@@ -28,15 +28,16 @@ const PartnerWrapper = styled.div`
   background-color: #eeeeee;
   text-align: center;
   padding: 10px 0;
+  border-radius: ${(props) => props.borderRadius};
   a {
     text-decoration: none;
     color: black;
   }
 `;
 
-const Partner = ({ title, name, shortBio, alt }) => {
+const Partner = ({ title, name, shortBio, alt, borderRadius }) => {
   return (
-    <PartnerWrapper>
+    <PartnerWrapper borderRadius={borderRadius}>
       <PartnerTitle>{title}</PartnerTitle>
       <Link to={`/result/developer/${name}`}>
         <PartnerImg src={getCharacterImg(name)} alt={alt} />
