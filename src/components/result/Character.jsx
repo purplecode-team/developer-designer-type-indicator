@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
 import treeBase from '../../../public/img/tree_base.png';
-import character from '../../../public/img/result_bear.png';
 import lightImg from '../../../public/img/light.png';
-import getCharacterImg from '../../lib/util/getCharacterImg';
+import { characters } from '../../lib/util/util';
 
 const CharacterContent = styled.div`
   position: relative;
@@ -77,7 +76,7 @@ const Character = ({ name, shortBio }) => {
           <span> 당신은... </span> <br />
           {shortBio}
         </CharacterName>
-        <CharacterImg src={getCharacterImg(name)} />
+        <CharacterImg src={characters[name]} />
         <Tree src={treeBase} alt="tree base" />
       </CharacterWrapper>
     </CharacterContent>

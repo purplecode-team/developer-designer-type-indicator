@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import getCharacterImg from '../../lib/util/getCharacterImg';
+import { characters } from '../../lib/util/util';
 
 const PartnerTitle = styled.h3`
   margin: 5px 0;
@@ -40,7 +40,7 @@ const Partner = ({ title, name, shortBio, alt, borderRadius }) => {
     <PartnerWrapper borderRadius={borderRadius}>
       <PartnerTitle>{title}</PartnerTitle>
       <Link to={`/result/developer/${name}`}>
-        <PartnerImg src={getCharacterImg(name)} alt={alt} />
+        <PartnerImg src={characters[name]} alt={alt} />
         <PartnerName>{shortBio}</PartnerName>
       </Link>
     </PartnerWrapper>

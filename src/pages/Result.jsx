@@ -12,7 +12,7 @@ import grassImg from '../../public/img/ground.png';
 import cloudImg from '../../public/img/cloud.png';
 import useUpdateCount from '../lib/hooks/useUpdateCount';
 import media from '../lib/styles/media';
-import convertNameToResult from '../lib/util/convertNameToResult';
+import { results } from '../lib/util/util';
 
 const ResultWrapper = styled.div`
   height: 100vh;
@@ -60,12 +60,9 @@ const Result = () => {
   }, []);
 
   useEffect(() => {
-    const result = convertNameToResult(name);
-    if (result) {
-      loadData(`result/${result}`).then((res) => {
-        setData(res);
-      });
-    }
+    loadData(`result/${results[name]}`).then((res) => {
+      setData(res);
+    });
   }, [type, name]);
 
   return (

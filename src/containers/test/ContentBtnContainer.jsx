@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { Context } from '../../lib/helpers/context';
 import media from '../../lib/styles/media';
 import matchResultType from '../../lib/util/matchResultType';
-import convertResultToName from '../../lib/util/convertResultToName';
+import { names } from '../../lib/util/util';
 
 const ContentBtnBox = styled.div`
   position: relative;
@@ -60,9 +60,8 @@ const ContentBtnContainer = ({ nextSlide, data, count, history }) => {
   const goToResult = () => {
     if (count === 15) {
       const result = matchResultType(state);
-      const name = convertResultToName(result);
       history.push({
-        pathname: `/result/${type}/${name}`,
+        pathname: `/result/${type}/${names[result]}`,
         state: { result, type },
       });
     }
