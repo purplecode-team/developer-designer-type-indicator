@@ -10,6 +10,7 @@ import clip from '../../../public/img/clip.png';
 import DescriptionList from '../../components/result/DescriptionList';
 import Partner from '../../components/result/Partner';
 import TypeGraph from '../../components/result/TypeGraph';
+import KaKaoLinkBtn from '../../components/result/KaKaoLinkBtn';
 
 const Board = styled.div`
   width: 100%;
@@ -218,16 +219,21 @@ const TextWhiteboard = ({
   designerDesc,
   devDesc,
   type,
+  name,
   worstPartnerTitle,
   bestPartnerTitle,
 }) => {
+  const titleWithType = `${title} ${
+    type === 'designer' ? '디자이너' : '개발자'
+  }`;
+
   return (
     <Board>
       <Test>
         <TestBox>
           <TitleWrap>
             <SmallTitle>{subtitle}</SmallTitle>
-            <Title>{title}</Title>
+            <Title>{titleWithType}</Title>
           </TitleWrap>
           {type === 'designer' ? (
             <DescriptionList description={designerDesc} />
@@ -261,7 +267,7 @@ const TextWhiteboard = ({
         <ShareBox>
           <IconTitle>내 결과 공유하기</IconTitle>
           <IconBox>
-            <Icon src={kakao} alt="kakao" />
+            <KaKaoLinkBtn title={`${subtitle}, ${titleWithType}`} />
             <Icon src={insta} alt="instagram" />
             <Icon src={twitter} alt="twitter" />
             <Icon src={clip} alt="clip" />
