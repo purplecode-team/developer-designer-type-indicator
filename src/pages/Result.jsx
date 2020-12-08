@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
-import { loadData, updateData } from '../lib/firebase/api';
 import styled from 'styled-components';
+import { loadData, updateData } from '../lib/firebase/api';
 import { history } from '../lib/helpers/history';
 import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
@@ -12,6 +12,7 @@ import grassImg from '../../public/img/ground.png';
 import cloudImg from '../../public/img/cloud.png';
 import useUpdateCount from '../lib/hooks/useUpdateCount';
 import media from '../lib/styles/media';
+import { results } from '../lib/util/util';
 
 const ResultWrapper = styled.div`
   height: 100vh;
@@ -45,9 +46,9 @@ const BackgroundDark = styled.div`
 
 const Result = () => {
   const [data, setData] = useState(null);
-  const { type, result } = useParams();
+  const { type, name } = useParams();
   const { pathname, state } = useLocation();
-  const typeCounts = useUpdateCount({
+  useUpdateCount({
     type,
     result: state?.result,
     update: updateData,
@@ -59,23 +60,27 @@ const Result = () => {
   }, []);
 
   useEffect(() => {
-    loadData(`result/${result}`).then((res) => {
+    loadData(`result/${results[name]}`).then((res) => {
       setData(res);
     });
-  }, [type, result]);
+  }, [type, name]);
 
   return (
     <>
       <ResultWrapper>
         {data && (
           <ResultContainer
+            name={name}
             type={type}
             title={data.title}
             subtitle={data.subtitle}
-            devDesc={data.devDesc}
-            designerDesc={data.designerDesc}
+            devDesc={Object.values(data.devDesc)}
+            designerDesc={Object.values(data.designerDesc)}
             bestPartner={data.bestPartner}
             worstPartner={data.worstPartner}
+            shortBio={data.shortBio}
+            bestPartnerTitle={data.bestPartnerTitle}
+            worstPartnerTitle={data.worstPartnerTitle}
           />
         )}
         <BackgroundDark />

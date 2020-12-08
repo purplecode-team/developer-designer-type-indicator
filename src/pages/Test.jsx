@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
-import ContentContainer from '../../src/containers/test/ContentContainer';
+import ContentContainer from '../containers/test/ContentContainer';
 import ContentNav from '../components/test/ContentNav';
 import firebase from '../lib/firebase/firebase';
 import leftTree from '../../public/img/tree_left.png';

@@ -8,7 +8,6 @@ export default function useUpdateCount({ result, type, load, update }) {
     try {
       return await load(match);
     } catch (error) {
-      console.log(error);
       return null;
     }
   };

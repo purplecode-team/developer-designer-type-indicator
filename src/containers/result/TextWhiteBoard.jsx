@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import media from '../../lib/styles/media';
-import partner from '../../../public/img/result_bear.png';
 import insta from '../../../public/img/insta.png';
 import kakao from '../../../public/img/kakao.png';
 import twitter from '../../../public/img/twitter.png';
 import clip from '../../../public/img/clip.png';
-import { Link } from 'react-router-dom';
-import DescriptionList from './DescriptionList';
+import DescriptionList from '../../components/result/DescriptionList';
+import Partner from '../../components/result/Partner';
+import TypeGraph from '../../components/result/TypeGraph';
 
 const Board = styled.div`
-  width: 130%;
+  width: 100%;
   margin: auto;
   background-color: white;
   font-family: 'jua', sans-serif;
@@ -19,39 +20,173 @@ const Board = styled.div`
   border: 2px solid #b6af4a;
   border-radius: 2rem;
   display: grid;
-  grid-template-rows: repeat(6, 80px);
+  grid-template-rows: repeat(6, 40px);
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
     'Test Test Graph Graph'
     'Test Test Graph Graph'
+    'Test Test Graph Graph'
+    'Test Test Graph Graph'
     'Test Test Side Side2'
     'Test Test Side Side2'
-    'Test Test Share Share'
+    'Test Test Side Side2'
+    'Test Test Side Side2'
     'Test Test Share Share';
   @media (max-width: ${media.laptopM}) {
     width: 450px;
     height: 90%;
   }
   @media (min-width: ${media.laptop}) {
-    column-gap: 10px;
+    column-gap: 15px;
     row-gap: 10px;
   }
   @media (max-width: ${media.laptop}) {
-    column-gap: 20px;
+    padding: 20px 10px;
+    column-gap: 10px;
     row-gap: 10px;
-    margin: 0 auto;
+    margin: 0 auto 5rem auto;
     width: 80%;
+    height: auto;
+    grid-template-rows: repeat(6, 100px);
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
       'Graph Graph'
       'Graph Graph'
-      'Test Test'
-      'Test Test'
-      'Test Test'
-      'Test Test'
       'Side Side2'
       'Side Side2'
+      'Share Share'
+      'Share Share'
+      'Share Share'
       'Share Share';
+  }
+  @media (max-width: ${media.mobileM}) {
+    grid-template-rows: repeat(6, 90px);
+    grid-template-areas:
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Graph Graph'
+      'Graph Graph'
+      'Side Side2'
+      'Side Side2'
+      'Share Share'
+      'Share Share'
+      'Share Share'
+      'Share Share';
+  }
+  @media (max-width: ${media.mobileS}) {
+    grid-template-rows: repeat(6, 90px);
+    grid-template-areas:
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Test Test'
+      'Graph Graph'
+      'Graph Graph'
+      'Side Side2'
+      'Side Side2'
+      'Share Share'
+      'Share Share'
+      'Share Share'
+      'Share Share';
+  }
+`;
+
+const TestBox = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  @media (max-width: ${media.laptop}) {
+    width: 100%;
+    border-radius: 2rem;
+  }
+`;
+
+const ShareBox = styled.div`
+  width: 85%;
+  padding-top: 4rem;
+  margin: auto;
+  text-align: center;
+  @media (max-width: ${media.laptop}) {
+    width: 100%;
+  }
+  @media (max-width: ${media.laptop}) {
+    padding-top: 1rem;
+  }
+`;
+
+const TitleWrap = styled.div`
+  padding: 5px 0 10px 0;
+  width: 100%;
+  text-align: center;
+  @media (max-width: ${media.laptop}) {
+    padding: 20px 0 20px;
+  }
+`;
+
+const SmallTitle = styled.h2`
+  font-size: 16px;
+  word-break: keep-all;
+  margin-bottom: 0.5em;
+  @media (max-width: ${media.laptop}) {
+    margin-top: 0.5rem;
+  }
+`;
+
+const Title = styled.h1`
+  font-size: 25px;
+`;
+
+const IconTitle = styled.h4`
+  padding: 10px 0;
+  font-size: 16px;
+  font-family: 'jua', sans-serif;
+`;
+
+const IconBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+`;
+
+const Icon = styled.img`
+  width: 40px;
+  margin: 0 5px;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+  }
+`;
+
+const RestartButton = styled.button`
+  width: 100%;
+  height: 50px;
+  border-radius: 1rem;
+  background-color: #d1c873;
+  color: white;
+  border-style: none;
+  font-family: 'jua', sans-serif;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+  }
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -75,125 +210,6 @@ const Share = styled.div`
   grid-area: Share;
 `;
 
-const TestBox = styled.div`
-  width: 100%;
-  height: 100%;
-  border-radius: 2rem;
-  @media (max-width: ${media.laptop}) {
-    width: 100%;
-    border-radius: 2rem;
-    background-color: #eee;
-  }
-  /* background-color: #eeeeee; */
-`;
-
-const GraphBox = styled.div`
-  width: 100%;
-  height: 100%;
-  border-radius: 1rem 1rem 0 0;
-  background-color: #eeeeee;
-  @media (max-width: ${media.laptop}) {
-    width: 100%;
-    border-radius: 2rem;
-  }
-`;
-
-const SideBox = styled.div`
-  width: 100%;
-  border-radius: 0 0 1rem 1rem;
-  background-color: #eeeeee;
-  text-align: center;
-  padding: 10px 0;
-  @media (max-width: ${media.laptop}) {
-    width: 100%;
-    border-radius: 2rem;
-  }
-`;
-
-const ShareBox = styled.div`
-  width: 85%;
-  /* background-color: #eeeeee; */
-  margin: 20px auto;
-  text-align: center;
-  @media (max-width: ${media.laptop}) {
-    width: 100%;
-  }
-`;
-
-const TitleWrap = styled.div`
-  padding: 40px 0 20px;
-  width: 100%;
-  text-align: center;
-  @media (max-width: ${media.laptop}) {
-    padding: 20px 0 20px;
-  }
-`;
-
-const SmallTitle = styled.h2`
-  font-size: 16px;
-  word-break: keep-all;
-  margin-bottom: 0.5em;
-`;
-
-const Title = styled.h1`
-  font-size: 25px;
-`;
-
-const PartnerTitle = styled.h3`
-  margin: 5px 0;
-`;
-
-const PartnerImg = styled.img`
-  width: 40px;
-  padding: 10px 0;
-`;
-
-const PartnerName = styled.h3`
-  margin: 5px 0;
-  font-size: 13px;
-`;
-
-const IconTitle = styled.h4`
-  padding: 10px 0;
-  font-size: 16px;
-  font-family: 'jua', sans-serif;
-`;
-
-const IconBox = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-`;
-
-const Icon = styled.img`
-  width: 40px;
-  margin: 0 5px;
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
-
-const RestartButton = styled.button`
-  width: 100%;
-  height: 50px;
-  border-radius: 1rem;
-  background-color: #d1c873;
-  color: white;
-  border-style: none;
-  font-family: 'jua', sans-serif;
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.05);
-  }
-  &:focus {
-    outline: none;
-  }
-`;
-
-const RestartLink = styled(Link)``;
-
 const TextWhiteboard = ({
   title,
   subtitle,
@@ -202,6 +218,8 @@ const TextWhiteboard = ({
   designerDesc,
   devDesc,
   type,
+  worstPartnerTitle,
+  bestPartnerTitle,
 }) => {
   return (
     <Board>
@@ -219,21 +237,25 @@ const TextWhiteboard = ({
         </TestBox>
       </Test>
       <Graph>
-        <GraphBox />
+        <TypeGraph result="EFP" />
       </Graph>
       <Side>
-        <SideBox>
-          <PartnerTitle>최고의 짝궁</PartnerTitle>
-          <PartnerImg src={partner} alt={`best partner ${bestPartner}`} />
-          <PartnerName>{bestPartner}</PartnerName>
-        </SideBox>
+        <Partner
+          borderRadius="0 0 0 1rem"
+          alt={`best partner ${bestPartner}`}
+          title="최고의 짝궁"
+          name={bestPartner}
+          shortBio={bestPartnerTitle}
+        />
       </Side>
       <Side2>
-        <SideBox>
-          <PartnerTitle>최악의 짝궁</PartnerTitle>
-          <PartnerImg src={partner} alt={`worst partner ${worstPartner}`} />
-          <PartnerName>{worstPartner}</PartnerName>
-        </SideBox>
+        <Partner
+          borderRadius="0 0 1rem 0"
+          alt={`worst partner ${worstPartner}`}
+          title="최악의 짝궁"
+          name={worstPartner}
+          shortBio={worstPartnerTitle}
+        />
       </Side2>
       <Share>
         <ShareBox>
@@ -245,9 +267,9 @@ const TextWhiteboard = ({
             <Icon src={clip} alt="clip" />
           </IconBox>
         </ShareBox>
-        <RestartLink to={`/`}>
+        <Link to="/">
           <RestartButton>테스트 다시하기</RestartButton>
-        </RestartLink>
+        </Link>
       </Share>
     </Board>
   );
@@ -258,9 +280,11 @@ TextWhiteboard.propTypes = {
   subtitle: PropTypes.string.isRequired,
   bestPartner: PropTypes.string.isRequired,
   worstPartner: PropTypes.string.isRequired,
-  designerDesc: PropTypes.string.isRequired,
-  devDesc: PropTypes.string.isRequired,
+  designerDesc: PropTypes.arrayOf(PropTypes.string).isRequired,
+  devDesc: PropTypes.arrayOf(PropTypes.string).isRequired,
   type: PropTypes.string.isRequired,
+  worstPartnerTitle: PropTypes.string.isRequired,
+  bestPartnerTitle: PropTypes.string.isRequired,
 };
 
 export default TextWhiteboard;
