@@ -13,6 +13,7 @@ import cloudImg from '../../public/img/cloud.png';
 import useUpdateCount from '../lib/hooks/useUpdateCount';
 import media from '../lib/styles/media';
 import { results } from '../lib/util/util';
+import { Helmet } from 'react-helmet';
 
 const ResultWrapper = styled.div`
   height: 100vh;
@@ -67,6 +68,9 @@ const Result = () => {
 
   return (
     <>
+      <Helmet>
+        <script src="https://developers.kakao.com/sdk/js/kakao.js" />
+      </Helmet>
       <ResultWrapper>
         {data && (
           <ResultContainer

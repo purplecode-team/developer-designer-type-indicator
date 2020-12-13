@@ -48,6 +48,7 @@ const ResultContainer = ({
       <TextWhiteboard
         type={type}
         title={title}
+        name={name}
         subtitle={subtitle}
         devDesc={devDesc}
         designerDesc={designerDesc}

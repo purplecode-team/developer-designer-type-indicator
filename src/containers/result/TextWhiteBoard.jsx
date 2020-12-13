@@ -3,13 +3,15 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import media from '../../lib/styles/media';
-import insta from '../../../public/img/insta.png';
-import kakao from '../../../public/img/kakao.png';
-import twitter from '../../../public/img/twitter.png';
-import clip from '../../../public/img/clip.png';
 import DescriptionList from '../../components/result/DescriptionList';
 import Partner from '../../components/result/Partner';
 import TypeGraph from '../../components/result/TypeGraph';
+import {
+  FacebookShareBtn,
+  KaKaoShareBtn,
+  TwitterShareBtn,
+} from '../../components/result/ShareButton';
+import CopyButton from '../../components/result/CopyButton';
 
 const Board = styled.div`
   width: 100%;
@@ -157,9 +159,24 @@ const IconTitle = styled.h4`
 const IconBox = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   width: 100%;
   margin-bottom: 0.5rem;
+  button {
+    border: none;
+    background: none;
+    outline: none;
+    width: 45px;
+    height: 45px;
+    &:hover {
+      transform: scale(1.05);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+  img {
+    height: 45px;
+    width: 45px;
+  }
 `;
 
 const Icon = styled.img`
@@ -218,16 +235,21 @@ const TextWhiteboard = ({
   designerDesc,
   devDesc,
   type,
+  name,
   worstPartnerTitle,
   bestPartnerTitle,
 }) => {
+  const titleWithType = `${title} ${
+    type === 'designer' ? '디자이너' : '개발자'
+  }`;
+
   return (
     <Board>
       <Test>
         <TestBox>
           <TitleWrap>
             <SmallTitle>{subtitle}</SmallTitle>
-            <Title>{title}</Title>
+            <Title>{titleWithType}</Title>
           </TitleWrap>
           {type === 'designer' ? (
             <DescriptionList description={designerDesc} />
@@ -261,10 +283,14 @@ const TextWhiteboard = ({
         <ShareBox>
           <IconTitle>내 결과 공유하기</IconTitle>
           <IconBox>
-            <Icon src={kakao} alt="kakao" />
-            <Icon src={insta} alt="instagram" />
-            <Icon src={twitter} alt="twitter" />
-            <Icon src={clip} alt="clip" />
+            <KaKaoShareBtn title={`${subtitle}, ${titleWithType}`} />
+            <FacebookShareBtn
+              title={`${subtitle}, ${titleWithType} \n #개발자_디자이너_성향_테스트\n`}
+            />
+            <TwitterShareBtn
+              title={`${subtitle}, ${titleWithType} \n #개발자_디자이너_성향_테스트\n`}
+            />
+            <CopyButton />
           </IconBox>
         </ShareBox>
         <Link to="/">
