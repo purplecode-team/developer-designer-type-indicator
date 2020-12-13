@@ -1,16 +1,17 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { Context } from '../../lib/helpers/context';
 import media from '../../lib/styles/media';
 import matchResultType from '../../lib/util/matchResultType';
+import { names } from '../../lib/util/util';
 
 const ContentBtnBox = styled.div`
   position: relative;
 `;
 
-const ContentBtn = styled.button`
+const SmallBtn = styled.button`
   @media (max-width: ${media.mobileL}) {
     font-size: 14px;
   }
@@ -18,7 +19,7 @@ const ContentBtn = styled.button`
   margin: 20px auto;
   width: 100%;
   height: 65px;
-  font-family: 'jua', sans-serif;
+  font-family: 'hannaPro', sans-serif;
   font-size: 16px;
   word-break: keep-all;
   white-space: break-spaces;
@@ -46,7 +47,7 @@ const ContentBtn = styled.button`
   -webkit-tap-highlight-color: transparent;
 `;
 
-const ContentBtnContainer = ({ nextSlide, data, count, history }) => {
+const ContentBtn = ({ nextSlide, data, count, history }) => {
   const { state, dispatch } = useContext(Context);
   const { type } = useParams();
 
@@ -60,44 +61,44 @@ const ContentBtnContainer = ({ nextSlide, data, count, history }) => {
     if (count === 15) {
       const result = matchResultType(state);
       history.push({
-        pathname: `/result/${type}/${result}`,
+        pathname: `/result/${type}/${names[result]}`,
         state: { result, type },
       });
     }
   };
 
-  const clickSelection = useCallback((id, selection) => {
+  const clickSelection = (id, selection) => {
     classifySelection(id, selection);
     goToResult();
     nextSlide();
-  });
+  };
 
   return (
     <ContentBtnBox>
-      <ContentBtn
+      <SmallBtn
         type="button"
         onClick={() => {
           clickSelection({ type: data.id }, 'A');
         }}
       >
         {data.A}
-      </ContentBtn>
-      <ContentBtn
+      </SmallBtn>
+      <SmallBtn
         type="button"
         onClick={() => {
           clickSelection({ type: data.id }, 'B');
         }}
       >
         {data.B}
-      </ContentBtn>
+      </SmallBtn>
     </ContentBtnBox>
   );
 };
 
-ContentBtnContainer.propTypes = {
+ContentBtn.propTypes = {
   nextSlide: PropTypes.func,
   data: PropTypes.object,
   count: PropTypes.number,
 };
 
-export default ContentBtnContainer;
+export default ContentBtn;

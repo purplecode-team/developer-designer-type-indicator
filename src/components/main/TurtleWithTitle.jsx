@@ -36,7 +36,7 @@ const TitleWrapper = styled.div`
     font-size: 24px;
     padding: 2.7rem 0;
     line-height: 1.3em;
-    font-family: 'jua', sans-serif;
+    font-family: 'hannaPro', sans-serif;
     color: gray;
   }
   @media (max-width: ${media.tablet}) {

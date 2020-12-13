@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
-import ContentBtnContainer from './ContentBtnContainer';
+import ContentBtn from '../../components/test/ContentBtn';
 
 const ContentBox = styled.div`
   width: 100%;
@@ -24,7 +24,7 @@ const ContentQuestion = styled.p`
   display: table-cell;
   text-align: center;
   vertical-align: middle;
-  font-family: 'jua', sans-serif;
+  font-family: 'hannaPro', sans-serif;
   font-size: 20px;
   margin: 40px 0;
   height: 100px;
@@ -37,9 +37,9 @@ const Content = ({ nextSlide, data, count, history }) => {
   return (
     <ContentBox>
       <ContentQuestionWrap>
-        <ContentQuestion>{data.question}</ContentQuestion>
+        <ContentQuestion>Q. {data.question}</ContentQuestion>
       </ContentQuestionWrap>
-      <ContentBtnContainer
+      <ContentBtn
         nextSlide={nextSlide}
         data={data}
         count={count}
@@ -49,7 +49,7 @@ const Content = ({ nextSlide, data, count, history }) => {
   );
 };
 
-ContentBtnContainer.propTypes = {
+ContentBtn.propTypes = {
   nextSlide: PropTypes.func,
   data: PropTypes.object,
   count: PropTypes.number,

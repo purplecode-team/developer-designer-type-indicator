@@ -18,7 +18,7 @@ const StyledLink = styled(Link)`
 
 const Button = styled.button`
   position: relative;
-  font-family: 'jua';
+  font-family: 'hannaPro', sans-serif;
   background: none;
   border: none;
   outline: none;

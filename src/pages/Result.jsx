@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useParams, useLocation } from 'react-router-dom';
-import { loadData, updateData } from '../lib/firebase/api';
 import styled from 'styled-components';
+import { loadData, updateData } from '../lib/firebase/api';
 import { history } from '../lib/helpers/history';
 import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
@@ -12,6 +13,7 @@ import grassImg from '../../public/img/ground.png';
 import cloudImg from '../../public/img/cloud.png';
 import useUpdateCount from '../lib/hooks/useUpdateCount';
 import media from '../lib/styles/media';
+import { results } from '../lib/util/util';
 
 const ResultWrapper = styled.div`
   height: 100vh;
@@ -44,9 +46,10 @@ const BackgroundDark = styled.div`
 `;
 
 const Result = () => {
-  const { type, result } = useParams();
+  const [data, setData] = useState(null);
+  const { type, name } = useParams();
   const { pathname, state } = useLocation();
-  const typeCounts = useUpdateCount({
+  useUpdateCount({
     type,
     result: state?.result,
     update: updateData,
@@ -57,10 +60,33 @@ const Result = () => {
     history.replace(pathname, { state: null });
   }, []);
 
+  useEffect(() => {
+    loadData(`result/${results[name]}`).then((res) => {
+      setData(res);
+    });
+  }, [type, name]);
+
   return (
     <>
+      <Helmet>
+        <script src="https://developers.kakao.com/sdk/js/kakao.js" />
+      </Helmet>
       <ResultWrapper>
-        <ResultContainer />
+        {data && (
+          <ResultContainer
+            name={name}
+            type={type}
+            title={data.title}
+            subtitle={data.subtitle}
+            devDesc={Object.values(data.devDesc)}
+            designerDesc={Object.values(data.designerDesc)}
+            bestPartner={data.bestPartner}
+            worstPartner={data.worstPartner}
+            shortBio={data.shortBio}
+            bestPartnerTitle={data.bestPartnerTitle}
+            worstPartnerTitle={data.worstPartnerTitle}
+          />
+        )}
         <BackgroundDark />
         <RightTree />
         <LeftTree />
