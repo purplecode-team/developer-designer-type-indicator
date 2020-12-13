@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
 import treeBase from '../../../public/img/tree_base.png';
-import character from '../../../public/img/result_bear.png';
 import lightImg from '../../../public/img/light.png';
+import { characters } from '../../lib/util/util';
 
 const CharacterContent = styled.div`
   position: relative;
@@ -26,14 +26,18 @@ const CharacterLight = styled.div`
 
 const CharacterName = styled.h2`
   width: 250px;
-  padding: 2.5rem 0;
+  padding: 12px 0;
   margin: 0 auto;
   border-radius: 2rem;
   background-color: white;
   opacity: 0.9;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 24px;
   font-family: 'hannaPro', sans-serif;
+  line-height: 1.2em;
+  span {
+    font-size: 16px;
+  }
 `;
 
 const CharacterWrapper = styled.div`
@@ -63,17 +67,25 @@ const Tree = styled.img`
   }
 `;
 
-const CharacterContainer = () => {
+const Character = ({ name, shortBio }) => {
   return (
     <CharacterContent>
       <CharacterLight />
       <CharacterWrapper>
-        <CharacterName>뒷짐지는 곰돌이</CharacterName>
-        <CharacterImg src={character} />
+        <CharacterName>
+          <span> 당신은... </span> <br />
+          {shortBio}
+        </CharacterName>
+        <CharacterImg src={characters[name]} />
         <Tree src={treeBase} alt="tree base" />
       </CharacterWrapper>
     </CharacterContent>
   );
 };
 
-export default CharacterContainer;
+Character.propTypes = {
+  shortBio: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
+
+export default Character;

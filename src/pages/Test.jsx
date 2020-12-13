@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
-import ContentContainer from '../../src/containers/test/ContentContainer';
+import ContentContainer from '../containers/test/ContentContainer';
 import ContentNav from '../components/test/ContentNav';
 import firebase from '../lib/firebase/firebase';
 import leftTree from '../../public/img/tree_left.png';
@@ -56,17 +56,24 @@ const LeftTree = styled.img`
 `;
 
 const Container = styled.div`
+  @media (min-width: ${media.tablet}) {
+    margin: 120px auto;
+    
+  }
   @media (max-width: ${media.tablet}) {
     width: 450px;
+    position:absolute;
+    left:50%;
+    bottom: 25%;
+    transform:translateX(-50%);
   }
   @media (max-width: ${media.mobileL}) {
     width: 90%;
-    margin: 80px auto;
+    
   }
   position: relative;
   width: 500px;
   height: 350px;
-  margin: 120px auto;
   padding: 20px 0;
   text-align: center;
   font-family: 'hannaPro', sans-serif;
