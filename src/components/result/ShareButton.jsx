@@ -1,19 +1,15 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import kakaoImg from '../../../public/img/kakao.png';
 import { KAKAO_APP_KEY } from '../../lib/util/config';
+import {
+  TwitterShareButton,
+  FacebookShareButton,
+  FacebookIcon,
+} from 'react-share';
+import twitterIcon from '../../../public/img/twitter.png';
+import kakaoImg from '../../../public/img/kakao.png';
 
-const Icon = styled.img`
-  width: 40px;
-  margin: 0 5px;
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.05);
-    transition: all 0.2s ease-in-out;
-  }
-`;
-
-const KaKaoLinkBtn = ({ title }) => {
+export const KaKaoShareBtn = ({ title }) => {
   useEffect(() => {
     if (window.Kakao) {
       const kakao = window.Kakao;
@@ -50,9 +46,30 @@ const KaKaoLinkBtn = ({ title }) => {
 
   return (
     <button className="kakao-link-btn">
-      <Icon src={kakaoImg} alt="kakao" />
+      <img src={kakaoImg} alt="kakao" />
     </button>
   );
 };
 
-export default KaKaoLinkBtn;
+export const TwitterShareBtn = ({ title }) => {
+  return (
+    <TwitterShareButton url={window.location.href} title={title}>
+      <img src={twitterIcon} alt="twitter share" />
+    </TwitterShareButton>
+  );
+};
+
+export const FacebookShareBtn = ({ title }) => {
+  return (
+    <FacebookShareButton url={window.location.href} quote={title}>
+      <FacebookIcon
+        size={30.8}
+        style={{
+          boxShadow:
+            '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.19)',
+          borderRadius: '50%',
+        }}
+      />
+    </FacebookShareButton>
+  );
+};
