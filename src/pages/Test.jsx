@@ -57,19 +57,17 @@ const LeftTree = styled.img`
 
 const Container = styled.div`
   @media (min-width: ${media.tablet}) {
-    margin: 120px auto;
-    
+    margin: 80px auto;
   }
   @media (max-width: ${media.tablet}) {
     width: 450px;
-    position:absolute;
-    left:50%;
+    position: absolute;
+    left: 50%;
     bottom: 25%;
-    transform:translateX(-50%);
+    transform: translateX(-50%);
   }
   @media (max-width: ${media.mobileL}) {
     width: 90%;
-    
   }
   position: relative;
   width: 500px;
@@ -95,7 +93,7 @@ const ContentWrap = styled.div`
 `;
 
 const SmallCharacter = styled.img`
-  position:absolute;
+  position: absolute;
   bottom: -70px;
   right: -50px;
   width: 100px;

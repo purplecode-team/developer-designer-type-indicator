@@ -1,17 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import media from '../../lib/styles/media';
 import DescriptionList from '../../components/result/DescriptionList';
 import Partner from '../../components/result/Partner';
 import TypeGraph from '../../components/result/TypeGraph';
+import { BASE_URL } from '../../lib/util/config';
 import {
   FacebookShareBtn,
   KaKaoShareBtn,
   TwitterShareBtn,
 } from '../../components/result/ShareButton';
 import CopyButton from '../../components/result/CopyButton';
+import { loadConfig } from '@babel/core/lib/config/files/index-browser';
 
 const Board = styled.div`
   width: 100%;
@@ -166,26 +168,14 @@ const IconBox = styled.div`
     border: none;
     background: none;
     outline: none;
-    width: 45px;
-    height: 45px;
     &:hover {
       transform: scale(1.05);
       transition: all 0.2s ease-in-out;
     }
   }
   img {
-    height: 45px;
     width: 45px;
-  }
-`;
-
-const Icon = styled.img`
-  width: 40px;
-  margin: 0 5px;
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.05);
-    transition: all 0.2s ease-in-out;
+    height: 45px;
   }
 `;
 
@@ -243,6 +233,9 @@ const TextWhiteboard = ({
     type === 'designer' ? '디자이너' : '개발자'
   }`;
 
+  const location = useLocation();
+  const url = `${BASE_URL}/#${location.pathname}`;
+
   return (
     <Board>
       <Test>
@@ -283,11 +276,17 @@ const TextWhiteboard = ({
         <ShareBox>
           <IconTitle>내 결과 공유하기</IconTitle>
           <IconBox>
-            <KaKaoShareBtn title={`${subtitle}, ${titleWithType}`} />
+            <KaKaoShareBtn
+              name={title}
+              url={url}
+              title={`${subtitle}, ${titleWithType}`}
+            />
             <FacebookShareBtn
+              url={url}
               title={`${subtitle}, ${titleWithType} \n #개발자_디자이너_성향_테스트\n`}
             />
             <TwitterShareBtn
+              url={url}
               title={`${subtitle}, ${titleWithType} \n #개발자_디자이너_성향_테스트\n`}
             />
             <CopyButton />
