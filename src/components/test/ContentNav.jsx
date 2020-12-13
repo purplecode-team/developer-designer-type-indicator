@@ -38,7 +38,9 @@ const NavCount = styled.p`
 `;
 
 const ContentNav = ({ count }) => {
-  const STEP = 6.78;
+  const Question = 15; 
+  // STEP = Nav 길이 100% 중 질문 수 비율
+  const STEP = 100/Question;
 
   return (
     <NavBar>
