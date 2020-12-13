@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { s3CharacterImg } from '../../lib/util/util';
-import { KAKAO_APP_KEY } from '../../lib/util/config';
+import PropTypes from 'prop-types';
 import {
   TwitterShareButton,
   FacebookShareButton,
   FacebookIcon,
 } from 'react-share';
+import { s3CharacterImg } from '../../lib/util/util';
+import { KAKAO_APP_KEY } from '../../lib/util/config';
 import twitterIcon from '../../../public/img/twitter.png';
 import kakaoImg from '../../../public/img/kakao.png';
 
 export const KaKaoShareBtn = ({ url, title }) => {
   const { name } = useParams();
-  console.log(url);
+
   useEffect(() => {
     if (window.Kakao) {
       const kakao = window.Kakao;
@@ -25,7 +26,7 @@ export const KaKaoShareBtn = ({ url, title }) => {
         container: '.kakao-link-btn',
         objectType: 'feed',
         content: {
-          title: title,
+          title,
           description:
             '나는 어떤 유형의 개발자/디자이너일까? 개발자/디자이너 성향 테스트',
           imageUrl: `${s3CharacterImg[name]}`,
@@ -50,7 +51,7 @@ export const KaKaoShareBtn = ({ url, title }) => {
   }, []);
 
   return (
-    <button className="kakao-link-btn">
+    <button type="button" className="kakao-link-btn">
       <img src={kakaoImg} alt="kakao" />
     </button>
   );
@@ -77,4 +78,19 @@ export const FacebookShareBtn = ({ url, title }) => {
       />
     </FacebookShareButton>
   );
+};
+
+KaKaoShareBtn.propTypes = {
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
+FacebookShareBtn.propTypes = {
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
+TwitterShareBtn.propTypes = {
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };

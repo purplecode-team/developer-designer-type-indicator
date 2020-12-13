@@ -13,7 +13,6 @@ import {
   TwitterShareBtn,
 } from '../../components/result/ShareButton';
 import CopyButton from '../../components/result/CopyButton';
-import { loadConfig } from '@babel/core/lib/config/files/index-browser';
 
 const Board = styled.div`
   width: 100%;
@@ -225,7 +224,6 @@ const TextWhiteboard = ({
   designerDesc,
   devDesc,
   type,
-  name,
   worstPartnerTitle,
   bestPartnerTitle,
 }) => {

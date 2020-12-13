@@ -9,7 +9,7 @@ const CopyButton = () => {
   };
 
   return (
-    <button onClick={handleClick}>
+    <button type="button" onClick={handleClick}>
       <img src={clip} alt="copy" />
     </button>
   );

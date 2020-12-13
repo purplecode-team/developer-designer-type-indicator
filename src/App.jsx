@@ -14,7 +14,6 @@ import './app.css';
 import Main from './pages/Main';
 import Test from './pages/Test';
 import Result from './pages/Result';
-import { Helmet } from 'react-helmet';
 
 const reducer = (state, action) => {
   switch (action.type) {
