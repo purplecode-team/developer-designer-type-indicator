@@ -232,7 +232,7 @@ const TextWhiteboard = ({
   }`;
 
   const location = useLocation();
-  const url = `${BASE_URL}/#${location.pathname}`;
+  const url = `${BASE_URL}${location.pathname}`;
 
   return (
     <Board>

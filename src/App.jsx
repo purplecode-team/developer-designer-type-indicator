@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,

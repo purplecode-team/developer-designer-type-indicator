@@ -10,6 +10,7 @@ import { s3CharacterImg } from '../../lib/util/util';
 import { KAKAO_APP_KEY } from '../../lib/util/config';
 import twitterIcon from '../../../public/img/twitter.png';
 import kakaoImg from '../../../public/img/kakao.png';
+import facebookImg from '../../../public/img/facebook.png';
 
 export const KaKaoShareBtn = ({ url, title }) => {
   const { name } = useParams();
@@ -52,7 +53,7 @@ export const KaKaoShareBtn = ({ url, title }) => {
 
   return (
     <button type="button" className="kakao-link-btn">
-      <img src={kakaoImg} alt="kakao" />
+      <img src={kakaoImg} alt="kakao 공유" />
     </button>
   );
 };
@@ -60,22 +61,15 @@ export const KaKaoShareBtn = ({ url, title }) => {
 export const TwitterShareBtn = ({ url, title }) => {
   return (
     <TwitterShareButton url={url} title={title}>
-      <img src={twitterIcon} alt="twitter share" />
+      <img src={twitterIcon} alt="twitter 공유" />
     </TwitterShareButton>
   );
 };
 
 export const FacebookShareBtn = ({ url, title }) => {
   return (
-    <FacebookShareButton url={url} quote={title}>
-      <FacebookIcon
-        size={30.8}
-        style={{
-          boxShadow:
-            '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.19)',
-          borderRadius: '50%',
-        }}
-      />
+    <FacebookShareButton url={url} quote={title} style={{ padding: '1.5px' }}>
+      <img src={facebookImg} alt="facebook 공유" />
     </FacebookShareButton>
   );
 };
