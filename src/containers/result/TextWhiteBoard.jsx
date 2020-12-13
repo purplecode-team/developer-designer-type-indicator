@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import media from '../../lib/styles/media';
-import clip from '../../../public/img/clip.png';
 import DescriptionList from '../../components/result/DescriptionList';
 import Partner from '../../components/result/Partner';
 import TypeGraph from '../../components/result/TypeGraph';
@@ -12,6 +11,7 @@ import {
   KaKaoShareBtn,
   TwitterShareBtn,
 } from '../../components/result/ShareButton';
+import CopyButton from '../../components/result/CopyButton';
 
 const Board = styled.div`
   width: 100%;
@@ -290,7 +290,7 @@ const TextWhiteboard = ({
             <TwitterShareBtn
               title={`${subtitle}, ${titleWithType} \n #개발자_디자이너_성향_테스트\n`}
             />
-            <Icon src={clip} alt="clip" />
+            <CopyButton />
           </IconBox>
         </ShareBox>
         <Link to="/">
