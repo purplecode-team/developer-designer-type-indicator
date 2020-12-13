@@ -10,13 +10,19 @@ import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
 import grassImg from '../../public/img/ground.png';
 import cloudImg from '../../public/img/cloud.png';
+import rabbit from '../../public/img/rabbit.png';
 
 const MainWrapper = styled.div`
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
   position: relative;
   background-color: #c5f1fc;
+  @media (min-width: ${media.mobileL}) {
+    overflow: hidden;
+  }
+  @media (max-width: ${media.mobileL}) {
+    overflow-x: hidden;
+  }
 `;
 
 const RightTree = styled.img`
@@ -50,19 +56,27 @@ const LeftTree = styled.img`
 `;
 
 const Container = styled.div`
+  @media (min-width: ${media.tablet}) {
+    margin: 120px auto;
+    
+  }
   @media (max-width: ${media.tablet}) {
     width: 450px;
+    position:absolute;
+    left:50%;
+    bottom: 25%;
+    transform:translateX(-50%);
   }
   @media (max-width: ${media.mobileL}) {
     width: 90%;
+    
   }
   position: relative;
   width: 500px;
   height: 350px;
-  margin: 120px auto;
   padding: 20px 0;
   text-align: center;
-  font-family: 'jua', sans-serif;
+  font-family: 'hannaPro', sans-serif;
   background-color: white;
   border-radius: 50px;
   z-index: 12;
@@ -72,6 +86,7 @@ const Container = styled.div`
 const ContentTitle = styled.div`
   margin: 20px 0;
   font-size: 25px;
+  color: #ff9c9c;
 `;
 
 const ContentWrap = styled.div`
@@ -79,7 +94,18 @@ const ContentWrap = styled.div`
   margin: 0 auto;
 `;
 
+const SmallCharacter = styled.img`
+  position:absolute;
+  bottom: -70px;
+  right: -50px;
+  width: 100px;
+  @media (max-width: ${media.tablet}) {
+    right: 15px;
+  }
+`;
+
 const Test = ({ match, history }) => {
+  const [job, setJob] = useState('');
   const [count, setCount] = useState(1);
   const [currentData, setCurrentData] = useState({});
   const [data, setData] = useState({
@@ -134,8 +160,10 @@ const Test = ({ match, history }) => {
   useEffect(() => {
     if (match.params.type === 'developer') {
       connectData('developData');
+      setJob('개발자');
     } else if (match.params.type === 'designer') {
       connectData('designData');
+      setJob('디자이너');
     }
   }, []);
 
@@ -148,7 +176,7 @@ const Test = ({ match, history }) => {
       <RightTree src={rightTree} alt="Right tree" />
       <LeftTree src={leftTree} alt="Left tree" />
       <Container>
-        <ContentTitle>{match.params.type}</ContentTitle>
+        <ContentTitle>{job}</ContentTitle>
         <ContentWrap>
           <ContentContainer
             nextSlide={nextSlide}
@@ -158,6 +186,7 @@ const Test = ({ match, history }) => {
           />
         </ContentWrap>
         <ContentNav count={count} />
+        <SmallCharacter src={rabbit} alt="rabbit" />
       </Container>
       <CloudBackground
         role="img"

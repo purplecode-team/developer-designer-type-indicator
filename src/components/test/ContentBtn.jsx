@@ -11,7 +11,7 @@ const ContentBtnBox = styled.div`
   position: relative;
 `;
 
-const ContentBtn = styled.button`
+const SmallBtn = styled.button`
   @media (max-width: ${media.mobileL}) {
     font-size: 14px;
   }
@@ -19,7 +19,7 @@ const ContentBtn = styled.button`
   margin: 20px auto;
   width: 100%;
   height: 65px;
-  font-family: 'jua', sans-serif;
+  font-family: 'hannaPro', sans-serif;
   font-size: 16px;
   word-break: keep-all;
   white-space: break-spaces;
@@ -47,7 +47,7 @@ const ContentBtn = styled.button`
   -webkit-tap-highlight-color: transparent;
 `;
 
-const ContentBtnContainer = ({ nextSlide, data, count, history }) => {
+const ContentBtn = ({ nextSlide, data, count, history }) => {
   const { state, dispatch } = useContext(Context);
   const { type } = useParams();
 
@@ -75,30 +75,30 @@ const ContentBtnContainer = ({ nextSlide, data, count, history }) => {
 
   return (
     <ContentBtnBox>
-      <ContentBtn
+      <SmallBtn
         type="button"
         onClick={() => {
           clickSelection({ type: data.id }, 'A');
         }}
       >
         {data.A}
-      </ContentBtn>
-      <ContentBtn
+      </SmallBtn>
+      <SmallBtn
         type="button"
         onClick={() => {
           clickSelection({ type: data.id }, 'B');
         }}
       >
         {data.B}
-      </ContentBtn>
+      </SmallBtn>
     </ContentBtnBox>
   );
 };
 
-ContentBtnContainer.propTypes = {
+ContentBtn.propTypes = {
   nextSlide: PropTypes.func,
   data: PropTypes.object,
   count: PropTypes.number,
 };
 
-export default ContentBtnContainer;
+export default ContentBtn;

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import media from '../../lib/styles/media';
 
 const Background = styled.span`
   width: 100%;
@@ -12,6 +13,12 @@ const Background = styled.span`
   background-position: bottom;
   background-size: 100% 11rem;
   background-repeat: no-repeat;
+  @media (max-width:${media.laptopL}) {
+    background-size: 1440px 11rem;
+  }
+  @media (max-width:${media.mobileL}) {
+    background-size: 1440px 9rem;
+  }
 `;
 
 const GrassBackground = ({ ariaLabel, img }) => {

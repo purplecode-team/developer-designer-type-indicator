@@ -33,7 +33,7 @@ const CharacterName = styled.h2`
   opacity: 0.9;
   text-align: center;
   font-size: 24px;
-  font-family: 'jua', sans-serif;
+  font-family: 'hannaPro', sans-serif;
   line-height: 1.2em;
   span {
     font-size: 16px;

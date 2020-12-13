@@ -1,5 +1,10 @@
+
 @font-face {
-  font-family: 'jua';
-  font-display: block;
-  src: url(../public/font/BMJUA.ttf);
-}
+    font-family: 'hannaPro';
+    src: url(../public/font/BMHANNAPro.ttf);
+};
+
+
+body{
+    font-family: 'hannaPro',sans-serif;
+};
