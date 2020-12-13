@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import Character from '../../components/result/Character';
 import PropTypes from 'prop-types';
+import Character from '../../components/result/Character';
 import media from '../../lib/styles/media';
-import TextWhiteboard from '../../components/result/TextWhiteBoard';
+import TextWhiteboard from './TextWhiteBoard';
 
 const ResultBox = styled.div`
   position: absolute;
@@ -11,7 +11,7 @@ const ResultBox = styled.div`
   display: grid;
   width: 100%;
   @media (min-width: ${media.laptop}) {
-    grid-template-columns: 1fr 3fr 3fr 2fr;
+    grid-template-columns: 0.5fr 3fr 4fr 0.5fr;
   }
   @media (max-width: ${media.laptop}) {
     grid-template-rows: 1fr 1fr;
@@ -36,11 +36,15 @@ const ResultContainer = ({
   designerDesc,
   devDesc,
   type,
+  shortBio,
+  bestPartnerTitle,
+  worstPartnerTitle,
+  name,
 }) => {
   return (
     <ResultBox>
       <Space />
-      <Character />
+      <Character shortBio={shortBio} name={name} />
       <TextWhiteboard
         type={type}
         title={title}
@@ -49,6 +53,8 @@ const ResultContainer = ({
         designerDesc={designerDesc}
         bestPartner={bestPartner}
         worstPartner={worstPartner}
+        bestPartnerTitle={bestPartnerTitle}
+        worstPartnerTitle={worstPartnerTitle}
       />
       <Space />
     </ResultBox>
@@ -60,9 +66,13 @@ ResultContainer.propTypes = {
   subtitle: PropTypes.string.isRequired,
   bestPartner: PropTypes.string.isRequired,
   worstPartner: PropTypes.string.isRequired,
-  designerDesc: PropTypes.string.isRequired,
-  devDesc: PropTypes.string.isRequired,
+  designerDesc: PropTypes.arrayOf(PropTypes.string).isRequired,
+  devDesc: PropTypes.arrayOf(PropTypes.string).isRequired,
   type: PropTypes.string.isRequired,
+  shortBio: PropTypes.string.isRequired,
+  bestPartnerTitle: PropTypes.string.isRequired,
+  worstPartnerTitle: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 export default ResultContainer;
