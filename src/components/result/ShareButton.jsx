@@ -23,30 +23,14 @@ export const KaKaoShareBtn = ({ url, title }) => {
         kakao.init(KAKAO_APP_KEY);
       }
 
-      kakao.Link.createDefaultButton({
+      kakao.Link.createCustomButton({
         container: '.kakao-link-btn',
-        objectType: 'feed',
-        content: {
+        templateId: 42165,
+        templateArgs: {
           title,
           description:
             '나는 어떤 유형의 개발자/디자이너일까? 개발자/디자이너 성향 테스트',
-          imageUrl: `${s3CharacterImg[name]}`,
-          imageWidth: 130,
-          imageHeight: 300,
-          link: {
-            mobileWebUrl: url,
-            webUrl: url,
-          },
         },
-        buttons: [
-          {
-            title: '나도 테스트 해보기',
-            link: {
-              mobileWebUrl: url,
-              webUrl: url,
-            },
-          },
-        ],
       });
     }
   }, []);
