@@ -30,11 +30,10 @@ const StyledLink = styled(Link)`
 `;
 
 const BoardStick = styled.img`
-  width: 5rem;
+  width: 3rem;
   height: 20rem;
-  display: block;
   position: absolute;
-  top: -2rem;
+  top: -3rem;
 `;
 
 const MobileInformationBoard = () => {
