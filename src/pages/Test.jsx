@@ -17,12 +17,7 @@ const MainWrapper = styled.div`
   width: 100vw;
   position: relative;
   background-color: #c5f1fc;
-  @media (min-width: ${media.mobileL}) {
-    overflow: hidden;
-  }
-  @media (max-width: ${media.mobileL}) {
-    overflow-x: hidden;
-  }
+  overflow: hidden;
 `;
 
 const RightTree = styled.img`
@@ -63,7 +58,7 @@ const Container = styled.div`
     width: 450px;
     position: absolute;
     left: 50%;
-    bottom: 25%;
+    bottom: 27%;
     transform: translateX(-50%);
   }
   @media (max-width: ${media.mobileL}) {
@@ -94,11 +89,13 @@ const ContentWrap = styled.div`
 
 const SmallCharacter = styled.img`
   position: absolute;
-  bottom: -70px;
-  right: -50px;
-  width: 100px;
+  bottom: -110px;
+  right: -170px;
+  width: 110px;
   @media (max-width: ${media.tablet}) {
-    right: 15px;
+    right: 50px;
+    bottom: -40px;
+    width: 50px;
   }
 `;
 
