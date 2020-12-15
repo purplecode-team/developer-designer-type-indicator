@@ -5,15 +5,18 @@ import media from '../../lib/styles/media';
 
 const NavBar = styled.div`
   position: absolute;
-  bottom: -100px;
+  bottom: -140px;
   width: 700px;
-  height: 12px;
+  height: 20px;
   border-radius: 10px;
   background-color: #ffd4d7;
   left: -100px;
+  z-index:99;
   @media (max-width: ${media.tablet}){
     width:100%;
     left:0;
+    bottom: -60px;
+    height: 12px;
   }
 `;
 
@@ -39,7 +42,7 @@ const NavCount = styled.p`
 
 const ContentNav = ({ count }) => {
   const Question = 15; 
-  // STEP = Nav 길이 100% 중 질문 수 비율
+  // STEP = Nav 길이 100% 중 질문지 1개 당 너비 비율
   const STEP = 100/Question;
 
   return (
