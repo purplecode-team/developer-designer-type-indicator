@@ -34,7 +34,7 @@ const TitleWrapper = styled.div`
   margin: 0 auto;
   h1 {
     font-size: 24px;
-    padding: 2.7rem 0;
+    padding: 2.3rem 0;
     line-height: 1.3em;
     font-family: 'hannaPro', sans-serif;
     color: gray;
@@ -42,7 +42,7 @@ const TitleWrapper = styled.div`
   @media (max-width: ${media.tablet}) {
     height: 10rem;
     h1 {
-      padding: 2.2rem 0;
+      padding-top: 1.6rem;
     }
   }
   @media (max-width: ${media.mobileL}) {
