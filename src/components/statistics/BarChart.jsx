@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useEffect, useRef, useCallback, useState } from 'react';
 import * as d3 from 'd3';
 import styled from 'styled-components';
 import useWindowDimensions from '../../lib/hooks/useWindowDimensions';
@@ -53,8 +53,14 @@ const Tooltip = styled.div`
 `;
 
 const BarChart = ({ data, title }) => {
-  console.log(data);
+  const tabletWidth = Number(media.tablet.slice(0, -2));
   const { windowHeight, windowWidth } = useWindowDimensions();
+  const [width, setWidth] = useState(
+    windowWidth < tabletWidth ? windowWidth * 0.8 : 500
+  );
+  const [height, setHeight] = useState(
+    windowWidth < tabletWidth ? windowWidth * 0.8 : 400
+  );
   const ref = useRef();
   const tooltipRef = useRef();
 
@@ -65,12 +71,8 @@ const BarChart = ({ data, title }) => {
     left: 70,
   };
 
-  let width = 500;
-  let height = 400;
-  let imgWidth = 40;
-
   const createBarChart = useCallback(
-    (graphWidth, graphHeight, imgWidth, imgHeight) => {
+    (graphWidth, graphHeight) => {
       const svg = d3.select(ref.current);
       const tooltip = d3.select(tooltipRef.current);
 
@@ -100,7 +102,9 @@ const BarChart = ({ data, title }) => {
 
       const mouseover = function (event, d) {
         tooltip
-          .html(`<img src=${d.img}/><span>${d.shortBio}</span>`)
+          .html(
+            `<img src=${d.img} alt=${d.shortBio}/><span>${d.shortBio}</span>`
+          )
           .style('left', xScale(d.count) - 100)
           .style('top', yScale(d.name) + yScale.bandwidth() + 5)
           .transition()
@@ -136,31 +140,13 @@ const BarChart = ({ data, title }) => {
 
   // resize graph based on the window size
   useEffect(() => {
-    let width = 500;
-    let height = 400;
+    setWidth(windowWidth < tabletWidth ? windowWidth * 0.8 : 500);
+    setHeight(windowWidth < tabletWidth ? windowWidth * 0.8 : 500);
 
     let graphWidth = width - margin.left - margin.right;
     let graphHeight = height - margin.top - margin.bottom;
 
-    let marginImg = 10;
-    let imgWidth = graphWidth / data.length - marginImg;
-    let imgHeight = graphHeight / data.length - marginImg;
-
-    if (windowWidth < media.tablet) {
-      const width = windowWidth * 0.9;
-      height = 700;
-
-      graphWidth = width - margin.left - margin.right;
-      graphHeight = height - margin.top - margin.bottom;
-
-      imgHeight =
-        graphHeight / data.length - marginImg > 0
-          ? graphHeight / data.length - marginImg
-          : 10;
-      imgWidth = imgHeight;
-    }
-
-    createBarChart(graphWidth, graphHeight, imgWidth, imgHeight);
+    createBarChart(graphWidth, graphHeight);
   }, [
     windowHeight,
     windowWidth,
@@ -173,26 +159,17 @@ const BarChart = ({ data, title }) => {
   ]);
 
   return (
-    <>
-      <Canvas>
-        <h2> {title} </h2>
-        <Tooltip ref={tooltipRef} />
-        <svg ref={ref} width={width} height={height}>
-          <g
-            className="x-axis"
-            transform={`translate(${margin.left}, ${margin.top})`}
-          />
-          <g
-            className="y-axis"
-            transform={`translate(${margin.left - 10}, 0)`}
-          />
-          <g
-            className="y-img-axis"
-            transform={`translate(${margin.left}, 0)`}
-          />
-        </svg>
-      </Canvas>
-    </>
+    <Canvas>
+      <h2> {title} </h2>
+      <Tooltip ref={tooltipRef} />
+      <svg ref={ref} width={width} height={height}>
+        <g
+          className="x-axis"
+          transform={`translate(${margin.left}, ${margin.top})`}
+        />
+        <g className="y-axis" transform={`translate(${margin.left - 10}, 0)`} />
+      </svg>
+    </Canvas>
   );
 };
 
