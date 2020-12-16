@@ -18,14 +18,14 @@ const Wrapper = styled.div`
   border: 2px solid #b6af4a;
   border-radius: 2rem;
   display: grid;
-  @media (max-width: ${media.tablet}) {
+  @media (max-width: ${media.laptop}) {
     width: 85%;
     max-height: 95vh;
     margin: 1rem auto;
   }
   h1 {
     font-size: 24px;
-    padding: 1rem 2rem;
+    padding: 0.5rem 2rem;
   }
   p {
     padding: 1rem 2rem;
@@ -52,7 +52,8 @@ const ChartContainer = () => {
     const parseData = (data) => {
       const array = Object.keys(data).map((key) => ({
         shortBio: shortBio[names[key]],
-        name: title[names[key]],
+        name: names[key],
+        title: title[names[key]],
         img: characters[names[key]],
         count: data[key],
       }));
@@ -77,15 +78,24 @@ const ChartContainer = () => {
     <>
       {!error && designerData && designerData && (
         <Wrapper>
-          <h1> 개발자/디자이너 유형 차트 </h1>
+          <h1> 개발자/디자이너 성향 분석 차트 </h1>
           <p>
             개발자/디자이너들은 어떤 유형에 많이 속해있을지 궁금하시죠?🤔 <br />
             그래서 차트로 정리해보았습니다! <br />
-            범례에 있는 링크를 클릭하면 해당 유형에 대한 설명을 볼 수 있어요.
+            범례에 있는 유형 이름을 클릭하면 해당 유형에 대한 설명을 볼 수
+            있어요.
           </p>
           <Container>
-            <BarChart data={designerData} title="디자이너 유형" />
-            <BarChart data={developerData} title="개발자 유형" />
+            <BarChart
+              data={designerData}
+              type="designer"
+              title="디자이너 성향"
+            />
+            <BarChart
+              data={developerData}
+              type="designer"
+              title="개발자 성향"
+            />
           </Container>
         </Wrapper>
       )}

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useCallback, useState } from 'react';
 import * as d3 from 'd3';
 import styled from 'styled-components';
 import useWindowDimensions from '../../lib/hooks/useWindowDimensions';
+import Legend from './Legend';
 import media from '../../lib/styles/media';
 
 const Canvas = styled.div`
@@ -12,6 +13,8 @@ const Canvas = styled.div`
   padding: 0;
   background-color: #f2f3f4;
   h2 {
+    width: 100%;
+    text-align: center;
     position: relative;
     top: 1.5rem;
     font-family: hannaPro, sans-serif;
@@ -32,15 +35,15 @@ const Canvas = styled.div`
 const Tooltip = styled.div`
   opacity: 0;
   position: relative;
-  width: 10rem;
   height: 3rem;
   border-radius: 5px;
   font-size: 1rem;
+  z-index: 200;
   font-family: hannaAir, sans-serif;
   line-height: 1rem;
   padding-top: 0.5rem;
   padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-right: 1rem;
   background-color: white;
   img {
     height: 30px;
@@ -52,14 +55,22 @@ const Tooltip = styled.div`
   }
 `;
 
-const BarChart = ({ data, title }) => {
-  const tabletWidth = Number(media.tablet.slice(0, -2));
+const ChartWrapper = styled.div`
+  display: flex;
+  position: relative;
+  top: -2rem;
+  @media (max-width: ${media.laptop}) {
+    flex-direction: column;
+  }
+`;
+const BarChart = ({ data, title, type }) => {
+  const laptopWidth = Number(media.laptop.slice(0, -2));
   const { windowHeight, windowWidth } = useWindowDimensions();
   const [width, setWidth] = useState(
-    windowWidth < tabletWidth ? windowWidth * 0.8 : 500
+    windowWidth < laptopWidth ? windowWidth * 0.8 : 500
   );
   const [height, setHeight] = useState(
-    windowWidth < tabletWidth ? windowWidth * 0.8 : 400
+    windowWidth < laptopWidth ? windowWidth * 0.6 : 300
   );
   const ref = useRef();
   const tooltipRef = useRef();
@@ -85,7 +96,7 @@ const BarChart = ({ data, title }) => {
       const yScale = d3
         .scaleBand()
         .range([margin.top, graphHeight])
-        .domain(data.map((d) => d.name))
+        .domain(data.map((d) => d.title))
         .paddingOuter(0)
         .paddingInner(0.4);
 
@@ -103,10 +114,10 @@ const BarChart = ({ data, title }) => {
       const mouseover = function (event, d) {
         tooltip
           .html(
-            `<img src=${d.img} alt=${d.shortBio}/><span>${d.shortBio}</span>`
+            `<img src=${d.img} alt=${d.shortBio}/><span>${d.shortBio} ${d.count}명</span>`
           )
-          .style('left', xScale(d.count) - 100)
-          .style('top', yScale(d.name) + yScale.bandwidth() + 5)
+          .style('left', xScale(d.count) - 180)
+          .style('top', yScale(d.title) + yScale.bandwidth() + 5)
           .transition()
           .duration(200)
           .style('opacity', 1);
@@ -126,7 +137,7 @@ const BarChart = ({ data, title }) => {
         .join('rect')
         .attr('class', 'bar')
         .attr('x', margin.left)
-        .attr('y', (d) => yScale(d.name))
+        .attr('y', (d) => yScale(d.title))
         .attr('height', yScale.bandwidth())
         .on('mouseover', mouseover)
         .on('mouseleave', mouseleave)
@@ -138,10 +149,10 @@ const BarChart = ({ data, title }) => {
     [data, margin.left, margin.top]
   );
 
-  // resize graph based on the window size
+  // resize graph based on Window size
   useEffect(() => {
-    setWidth(windowWidth < tabletWidth ? windowWidth * 0.8 : 500);
-    setHeight(windowWidth < tabletWidth ? windowWidth * 0.8 : 500);
+    setWidth(windowWidth < laptopWidth ? windowWidth * 0.8 : 500);
+    setHeight(windowWidth < laptopWidth ? windowWidth * 0.6 : 300);
 
     let graphWidth = width - margin.left - margin.right;
     let graphHeight = height - margin.top - margin.bottom;
@@ -162,13 +173,19 @@ const BarChart = ({ data, title }) => {
     <Canvas>
       <h2> {title} </h2>
       <Tooltip ref={tooltipRef} />
-      <svg ref={ref} width={width} height={height}>
-        <g
-          className="x-axis"
-          transform={`translate(${margin.left}, ${margin.top})`}
-        />
-        <g className="y-axis" transform={`translate(${margin.left - 10}, 0)`} />
-      </svg>
+      <ChartWrapper>
+        <svg ref={ref} width={width} height={height}>
+          <g
+            className="x-axis"
+            transform={`translate(${margin.left}, ${margin.top})`}
+          />
+          <g
+            className="y-axis"
+            transform={`translate(${margin.left - 10}, 0)`}
+          />
+        </svg>
+        <Legend data={data} type={type} />
+      </ChartWrapper>
     </Canvas>
   );
 };
