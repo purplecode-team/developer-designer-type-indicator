@@ -19,12 +19,7 @@ const Wrapper = styled.div`
   display: grid;
   place-items: center;
   background-color: #c5f1fc;
-  @media (min-width: ${media.laptopM}) {
-    overflow: hidden;
-  }
-  @media (max-width: ${media.laptopM}) {
-    overflow-x: hidden;
-  }
+  overflow-x: hidden;
 `;
 
 const BackgroundDark = styled.div`

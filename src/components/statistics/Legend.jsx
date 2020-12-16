@@ -6,15 +6,17 @@ import media from '../../lib/styles/media';
 const Wrapper = styled.ul`
   padding: 1.5rem;
   @media (max-width: ${media.laptop}) {
+    padding: 1rem 0;
     width: 80%;
-    display: flex;
+    display: grid;
     margin: auto;
-    flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr;
     justify-content: center;
   }
   li {
-    width: 10rem;
     margin-bottom: 1rem;
+    font-size: 12px;
+    font-family: hannaAir, sans-serif;
     a {
       color: black;
       text-decoration: none;
@@ -29,12 +31,12 @@ const Legend = ({ data, type }) => {
   return (
     <Wrapper>
       {data &&
-        data.map(({ shortBio, name, count }, index) => (
+        data.map(({ shortBio, name, count }) => (
           <li key={shortBio}>
-            <svg width={20} height={20}>
+            <svg width={14} height={14}>
               <rect
-                width={20}
-                height={20}
+                width={14}
+                height={14}
                 fill={d3.interpolateYlGn(colorScale(count))}
               />
             </svg>

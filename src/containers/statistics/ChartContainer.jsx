@@ -19,16 +19,16 @@ const Wrapper = styled.div`
   border-radius: 2rem;
   display: grid;
   @media (max-width: ${media.laptop}) {
-    width: 85%;
-    max-height: 95vh;
-    margin: 1rem auto;
+    width: 80%;
+    max-height: 80vh;
+    margin: 5rem auto;
   }
   h1 {
     font-size: 24px;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1rem;
   }
   p {
-    padding: 1rem 2rem;
+    padding: 1rem;
     font-family: 'hannaAir', sans-serif;
     font-size: 16px;
     line-height: 1.3em;

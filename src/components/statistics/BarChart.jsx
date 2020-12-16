@@ -112,6 +112,9 @@ const BarChart = ({ data, title, type }) => {
         .tickSizeOuter(0);
 
       const mouseover = function (event, d) {
+        if (windowWidth < laptopWidth) {
+          return;
+        }
         tooltip
           .html(
             `<img src=${d.img} alt=${d.shortBio}/><span>${d.shortBio} ${d.count}명</span>`
@@ -124,7 +127,10 @@ const BarChart = ({ data, title, type }) => {
         d3.select(this).transition().duration(200).style('opacity', 0.3);
       };
 
-      const mouseleave = function (d) {
+      const mouseleave = function () {
+        if (windowWidth < laptopWidth) {
+          return;
+        }
         tooltip.html('  ').style('opacity', 0);
         d3.select(this).style('opacity', 1);
       };
@@ -172,7 +178,11 @@ const BarChart = ({ data, title, type }) => {
   return (
     <Canvas>
       <h2> {title} </h2>
-      <Tooltip ref={tooltipRef} />
+      {windowWidth >= laptopWidth ? (
+        <Tooltip ref={tooltipRef} />
+      ) : (
+        <div style={{ height: '3rem' }} />
+      )}
       <ChartWrapper>
         <svg ref={ref} width={width} height={height}>
           <g
