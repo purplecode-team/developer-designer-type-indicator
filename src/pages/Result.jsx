@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
@@ -49,6 +49,12 @@ const Result = () => {
   const [data, setData] = useState(null);
   const { type, name } = useParams();
   const { pathname, state } = useLocation();
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
+
   useUpdateCount({
     type,
     result: state?.result,
@@ -71,7 +77,7 @@ const Result = () => {
       <Helmet>
         <script src="https://developers.kakao.com/sdk/js/kakao.js" />
       </Helmet>
-      <ResultWrapper>
+      <ResultWrapper ref={ref}>
         {data && (
           <ResultContainer
             name={name}

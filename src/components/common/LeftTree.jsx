@@ -5,6 +5,7 @@ import tree from '../../../public/img/tree_left.png';
 
 const Container = styled.div`
   position: absolute;
+  height: 100vh;
   left: -1rem;
   top: -1rem;
   @media (max-width: ${media.laptopM}) {
@@ -14,6 +15,7 @@ const Container = styled.div`
 
 const Tree = styled.img`
   position: absolute;
+  overflow: hidden;
   left: -1rem;
   top: -1rem;
   z-index: 3;

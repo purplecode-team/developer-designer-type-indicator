@@ -41,13 +41,21 @@ export const characters = {
   cat: catImg,
 };
 
-export const s3CharacterImg = {
-  fox: `${BASE_URL}/73ca793e5ec964d81e10fb3475f8f0e2.png`,
-  quokka: `${BASE_URL}/530c8c8f896af5b3b37d69511fce0241.png`,
-  pelican: `${BASE_URL}/079a90ebd0a92c03aab7940bca797234.png`,
-  monkey: `${BASE_URL}/f6878aeb26bbcd4bde7f4fd6b9273406.png`,
-  squirrel: `${BASE_URL}/581f886321c895e897f784b8a392d41b.png`,
-  sloth: `${BASE_URL}/76c08f8696918dab1ba8038f045f28cf.png`,
-  bear: `${BASE_URL}/f43cda460a642b3aeda296cd5e1cc484.png`,
-  cat: `${BASE_URL}/7aa8cd334b5cea42f96784b90d76d36f.png`,
+export const kakaoButtonTemplateId = {
+  bear_designer: 42165,
+  bear_developer: 42582,
+  cat_developer: 42584,
+  cat_designer: 42585,
+  fox_developer: 42587,
+  fox_designer: 42588,
+  monkey_developer: 42589,
+  monkey_designer: 42590,
+  pelican_developer: 42591,
+  pelican_designer: 42592,
+  quokka_designer: 42593,
+  quokka_developer: 42594,
+  sloth_designer: 42595,
+  sloth_developer: 42597,
+  squirrel_developer: 42598,
+  squirrel_designer: 42599,
 };

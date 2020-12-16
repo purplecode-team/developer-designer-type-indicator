@@ -7,16 +7,17 @@ const Background = styled.span`
   width: 100%;
   height: 100%;
   display: block;
+  overflow: hidden;
   position: absolute;
   bottom: 0;
   background-image: url(${(props) => props.img});
   background-position: bottom;
   background-size: 100% 11rem;
   background-repeat: no-repeat;
-  @media (max-width:${media.laptopL}) {
+  @media (max-width: ${media.laptopL}) {
     background-size: 1440px 11rem;
   }
-  @media (max-width:${media.mobileL}) {
+  @media (max-width: ${media.mobileL}) {
     background-size: 1440px 9rem;
   }
 `;

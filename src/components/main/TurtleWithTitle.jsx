@@ -33,8 +33,10 @@ const TitleWrapper = styled.div`
   height: 12rem;
   margin: 0 auto;
   h1 {
+    text-align: center;
     font-size: 24px;
-    padding: 2.7rem 0;
+    // 말풍선 높이 - 글자 2줄 높이 - 말풍선 꼬리 부분 / 2
+    padding-top: calc((12rem - 2.6em - 25px) / 2);
     line-height: 1.3em;
     font-family: 'hannaPro', sans-serif;
     color: gray;
@@ -42,7 +44,7 @@ const TitleWrapper = styled.div`
   @media (max-width: ${media.tablet}) {
     height: 10rem;
     h1 {
-      padding: 2.2rem 0;
+      padding-top: calc((10rem - 2.6em - 20px) / 2);
     }
   }
   @media (max-width: ${media.mobileL}) {

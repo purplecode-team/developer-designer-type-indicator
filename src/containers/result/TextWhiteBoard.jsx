@@ -258,6 +258,7 @@ const TextWhiteboard = ({
           alt={`best partner ${bestPartner}`}
           title="최고의 짝궁"
           name={bestPartner}
+          type={type}
           shortBio={bestPartnerTitle}
         />
       </Side>
@@ -267,6 +268,7 @@ const TextWhiteboard = ({
           alt={`worst partner ${worstPartner}`}
           title="최악의 짝궁"
           name={worstPartner}
+          type={type}
           shortBio={worstPartnerTitle}
         />
       </Side2>
