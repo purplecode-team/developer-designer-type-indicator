@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   position: relative;
   width: 70rem;
   height: 80vh;
-  margin: 5rem auto;
+  margin: auto;
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 100;

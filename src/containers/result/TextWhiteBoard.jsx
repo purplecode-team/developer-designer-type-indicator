@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import media from '../../lib/styles/media';
 import DescriptionList from '../../components/result/DescriptionList';
@@ -14,6 +13,7 @@ import {
   TwitterShareBtn,
 } from '../../components/result/ShareButton';
 import CopyButton from '../../components/result/CopyButton';
+import useDataLoad from '../../lib/hooks/useDataLoad';
 
 const Board = styled.div`
   width: 100%;
@@ -56,6 +56,7 @@ const Board = styled.div`
     grid-template-rows: repeat(6, 100px);
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
+      'Test Test'
       'Test Test'
       'Test Test'
       'Test Test'
@@ -130,9 +131,12 @@ const ShareBox = styled.div`
     color: grey;
     font-family: hannaAir, sans-serif;
     text-decoration: none;
-    &:hover {
-      color: black;
-      font-weight: bold;
+    @media (min-width: ${media.laptop}) {
+      &:hover {
+        color: black;
+        font-weight: bold;
+        font-size: 14px;
+      }
     }
   }
 `;
@@ -224,104 +228,95 @@ const Share = styled.div`
   grid-area: Share;
 `;
 
-const TextWhiteboard = ({
-  title,
-  subtitle,
-  bestPartner,
-  worstPartner,
-  designerDesc,
-  devDesc,
-  type,
-  worstPartnerTitle,
-  bestPartnerTitle,
-}) => {
-  const titleWithType = `${title} ${
-    type === 'designer' ? '디자이너' : '개발자'
-  }`;
+const TextWhiteboard = () => {
+  const { type, name } = useParams();
+  const [content, setContent] = useState('');
+  const [state, setUrl] = useDataLoad(`result/${results[name]}`, null);
+  const { isError, isLoading, data } = state;
+
+  useEffect(() => {
+    setUrl(`result/${results[name]}`);
+  }, [type, name]);
+
+  useEffect(() => {
+    if (data) {
+      setContent(
+        `${data?.subtitle} 
+        ${type === 'designer' ? '디자이너' : '개발자'} 
+        \n #개발자_디자이너_성향_테스트\n`
+      );
+    }
+  }, [data]);
 
   const location = useLocation();
-  const { name } = useParams();
+
   const url = `${BASE_URL}${location.pathname}`;
 
   return (
-    <Board>
-      <Test>
-        <TestBox>
-          <TitleWrap>
-            <SmallTitle>{subtitle}</SmallTitle>
-            <Title>{titleWithType}</Title>
-          </TitleWrap>
-          {type === 'designer' ? (
-            <DescriptionList description={designerDesc} />
-          ) : (
-            <DescriptionList description={devDesc} />
-          )}
-        </TestBox>
-      </Test>
-      <Graph>
-        <TypeGraph result={results[name]} />
-      </Graph>
-      <Side>
-        <Partner
-          borderRadius="0 0 0 1rem"
-          alt={`best partner ${bestPartner}`}
-          title="최고의 짝궁"
-          name={bestPartner}
-          type={type}
-          shortBio={bestPartnerTitle}
-        />
-      </Side>
-      <Side2>
-        <Partner
-          borderRadius="0 0 1rem 0"
-          alt={`worst partner ${worstPartner}`}
-          title="최악의 짝궁"
-          name={worstPartner}
-          type={type}
-          shortBio={worstPartnerTitle}
-        />
-      </Side2>
-      <Share>
-        <ShareBox>
-          <Link to="/statistics">
-            다른 개발자들은 주로 어떤 성향을 가지고 있을까요?
-          </Link>
-          <IconTitle>내 결과 공유하기</IconTitle>
-          <IconBox>
-            <KaKaoShareBtn
-              name={title}
-              url={url}
-              title={`${subtitle}, ${titleWithType}`}
+    <>
+      {!isLoading && !isError && data !== null && (
+        <Board>
+          <Test>
+            <TestBox>
+              <TitleWrap>
+                <SmallTitle>{data.subtitle}</SmallTitle>
+                <Title>
+                  {`${data.title} ${
+                    type === 'designer' ? '디자이너' : '개발자'
+                  }`}
+                </Title>
+              </TitleWrap>
+              {type === 'designer' ? (
+                <DescriptionList description={data.designerDesc} />
+              ) : (
+                <DescriptionList description={data.devDesc} />
+              )}
+            </TestBox>
+          </Test>
+          <Graph>
+            <TypeGraph result={results[name]} />
+          </Graph>
+          <Side>
+            <Partner
+              borderRadius="0 0 0 1rem"
+              alt={`best partner ${data.bestPartner}`}
+              title="최고의 짝궁"
+              name={data.bestPartner}
+              type={type}
+              shortBio={data.bestPartnerTitle}
             />
-            <FacebookShareBtn
-              url={url}
-              title={`${subtitle}, ${titleWithType} \n #개발자_디자이너_성향_테스트\n`}
+          </Side>
+          <Side2>
+            <Partner
+              borderRadius="0 0 1rem 0"
+              alt={`worst partner ${data.worstPartner}`}
+              title="최악의 짝궁"
+              name={data.worstPartner}
+              type={type}
+              shortBio={data.worstPartnerTitle}
             />
-            <TwitterShareBtn
-              url={url}
-              title={`${subtitle}, ${titleWithType} \n #개발자_디자이너_성향_테스트\n`}
-            />
-            <CopyButton />
-          </IconBox>
-        </ShareBox>
-        <Link to="/">
-          <RestartButton>테스트 다시하기</RestartButton>
-        </Link>
-      </Share>
-    </Board>
+          </Side2>
+          <Share>
+            <ShareBox>
+              <Link to="/statistics">
+                다른 개발자들은 주로 어떤 성향을 가지고 있을까요?
+              </Link>
+              <IconTitle>내 결과 공유하기</IconTitle>
+              <IconBox>
+                <KaKaoShareBtn />
+                <FacebookShareBtn url={url} content={content} />
+                <TwitterShareBtn url={url} content={content} />
+                <CopyButton />
+              </IconBox>
+            </ShareBox>
+            <Link to="/">
+              <RestartButton>테스트 다시하기</RestartButton>
+            </Link>
+          </Share>
+        </Board>
+      )}
+    </>
   );
-};
-
-TextWhiteboard.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  bestPartner: PropTypes.string.isRequired,
-  worstPartner: PropTypes.string.isRequired,
-  designerDesc: PropTypes.arrayOf(PropTypes.string).isRequired,
-  devDesc: PropTypes.arrayOf(PropTypes.string).isRequired,
-  type: PropTypes.string.isRequired,
-  worstPartnerTitle: PropTypes.string.isRequired,
-  bestPartnerTitle: PropTypes.string.isRequired,
 };
 
 export default TextWhiteboard;

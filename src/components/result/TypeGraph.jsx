@@ -33,7 +33,10 @@ const GraphWrapper = styled.div`
     object-fit: contain;
     @media (max-width: ${media.laptopM}) {
       margin: auto;
-      width: 100%;
+      width: 50%;
+    }
+    @media (max-width: ${media.mobileL}) {
+      width: 80%;
     }
   }
 `;

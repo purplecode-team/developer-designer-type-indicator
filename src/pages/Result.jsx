@@ -46,8 +46,7 @@ const BackgroundDark = styled.div`
 `;
 
 const Result = () => {
-  const [data, setData] = useState(null);
-  const { type, name } = useParams();
+  const { type } = useParams();
   const { pathname, state } = useLocation();
   const ref = useRef();
 
@@ -66,33 +65,13 @@ const Result = () => {
     history.replace(pathname, { state: null });
   }, []);
 
-  useEffect(() => {
-    loadData(`result/${results[name]}`).then((res) => {
-      setData(res);
-    });
-  }, [type, name]);
-
   return (
     <>
       <Helmet>
         <script src="https://developers.kakao.com/sdk/js/kakao.js" />
       </Helmet>
       <ResultWrapper ref={ref}>
-        {data && (
-          <ResultContainer
-            name={name}
-            type={type}
-            title={data.title}
-            subtitle={data.subtitle}
-            devDesc={Object.values(data.devDesc)}
-            designerDesc={Object.values(data.designerDesc)}
-            bestPartner={data.bestPartner}
-            worstPartner={data.worstPartner}
-            shortBio={data.shortBio}
-            bestPartnerTitle={data.bestPartnerTitle}
-            worstPartnerTitle={data.worstPartnerTitle}
-          />
-        )}
+        <ResultContainer />
         <BackgroundDark />
         <RightTree />
         <LeftTree />
