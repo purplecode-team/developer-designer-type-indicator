@@ -35,11 +35,11 @@ const PartnerWrapper = styled.div`
   }
 `;
 
-const Partner = ({ title, name, shortBio, alt, borderRadius }) => {
+const Partner = ({ title, name, shortBio, alt, borderRadius, type }) => {
   return (
     <PartnerWrapper borderRadius={borderRadius}>
       <PartnerTitle>{title}</PartnerTitle>
-      <Link to={`/result/developer/${name}`}>
+      <Link to={`/result/${type}/${name}`}>
         <PartnerImg src={characters[name]} alt={alt} />
         <PartnerName>{shortBio}</PartnerName>
       </Link>
@@ -53,6 +53,7 @@ Partner.propTypes = {
   name: PropTypes.string.isRequired,
   shortBio: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default Partner;

@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, lazy, Suspense } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,9 +11,9 @@ import { Context } from './lib/helpers/context';
 import './app.css';
 
 // pages
-import Main from './pages/Main';
-import Test from './pages/Test';
-import Result from './pages/Result';
+const Main = lazy(() => import('./pages/Main'));
+const Test = lazy(() => import('./pages/Test'));
+const Result = lazy(() => import('./pages/Result'));
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -43,12 +43,14 @@ const App = () => {
     <Context.Provider value={{ state, dispatch }}>
       <Router history={history}>
         <GlobalStyle />
-        <Switch>
-          <Route exact path="/" component={Main} />
-          <Route path="/test/:type" component={Test} />
-          <Route path="/result/:type/:name" component={Result} />
-          <Redirect from="*" to="/" />
-        </Switch>
+        <Suspense fallback="">
+          <Switch>
+            <Route exact path="/" component={Main} />
+            <Route path="/test/:type" component={Test} />
+            <Route path="/result/:type/:name" component={Result} />
+            <Redirect from="*" to="/" />
+          </Switch>
+        </Suspense>
       </Router>
     </Context.Provider>
   );
