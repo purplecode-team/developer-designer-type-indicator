@@ -37,7 +37,7 @@ const Tooltip = styled.div`
   position: relative;
   height: 3rem;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 12px;
   z-index: 200;
   font-family: hannaAir, sans-serif;
   line-height: 1rem;
@@ -63,6 +63,7 @@ const ChartWrapper = styled.div`
     flex-direction: column;
   }
 `;
+
 const BarChart = ({ data, title, type }) => {
   const laptopWidth = Number(media.laptop.slice(0, -2));
   const { windowHeight, windowWidth } = useWindowDimensions();
