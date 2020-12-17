@@ -120,7 +120,7 @@ const BarChart = ({ data, title, type }) => {
           .html(
             `<img src=${d.img} alt=${d.shortBio}/><span>${d.shortBio} ${d.count}명</span>`
           )
-          .style('left', xScale(d.count) - 180)
+          .style('left', xScale(d.count) - 170)
           .style('top', yScale(d.title) + yScale.bandwidth() + 5)
           .transition()
           .duration(200)
