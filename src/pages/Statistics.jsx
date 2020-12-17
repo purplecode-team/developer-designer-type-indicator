@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   display: grid;
   place-items: center;
   background-color: #c5f1fc;
-  overflow-x: hidden;
+  overflow: hidden;
 `;
 
 const BackgroundDark = styled.div`

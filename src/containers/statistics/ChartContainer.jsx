@@ -8,7 +8,8 @@ import BarChart from '../../components/statistics/BarChart';
 const Wrapper = styled.div`
   position: relative;
   width: 70rem;
-  max-height: 40rem;
+  height: 80vh;
+  margin: 5rem auto;
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 100;
@@ -20,8 +21,6 @@ const Wrapper = styled.div`
   display: grid;
   @media (max-width: ${media.laptop}) {
     width: 80%;
-    max-height: 80vh;
-    margin: 5rem auto;
   }
   h1 {
     font-size: 24px;

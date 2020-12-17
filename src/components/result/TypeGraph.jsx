@@ -31,8 +31,9 @@ const GraphWrapper = styled.div`
     margin: -1rem auto;
     width: 20rem;
     object-fit: contain;
-    @media (max-width: ${media.mobileL}) {
-      width: 80%;
+    @media (max-width: ${media.laptopM}) {
+      margin: auto;
+      width: 100%;
     }
   }
 `;

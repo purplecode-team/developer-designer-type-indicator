@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import media from '../../lib/styles/media';
 import DescriptionList from '../../components/result/DescriptionList';
 import Partner from '../../components/result/Partner';
 import TypeGraph from '../../components/result/TypeGraph';
+import { results } from '../../lib/util/util';
 import { BASE_URL } from '../../lib/util/config';
 import {
   FacebookShareBtn,
@@ -34,6 +35,8 @@ const Board = styled.div`
     'Test Test Side Side2'
     'Test Test Side Side2'
     'Test Test Side Side2'
+    'Test Test Share Share'
+    'Test Test Share Share'
     'Test Test Share Share';
   @media (max-width: ${media.laptopM}) {
     width: 450px;
@@ -117,15 +120,20 @@ const TestBox = styled.div`
 `;
 
 const ShareBox = styled.div`
-  width: 85%;
-  padding-top: 4rem;
   margin: auto;
   text-align: center;
   @media (max-width: ${media.laptop}) {
     width: 100%;
   }
-  @media (max-width: ${media.laptop}) {
-    padding-top: 1rem;
+  a {
+    font-size: 14px;
+    color: grey;
+    font-family: hannaAir, sans-serif;
+    text-decoration: none;
+    &:hover {
+      color: black;
+      font-weight: bold;
+    }
   }
 `;
 
@@ -152,7 +160,7 @@ const Title = styled.h1`
 `;
 
 const IconTitle = styled.h4`
-  padding: 10px 0;
+  padding: 4rem 0 10px 0;
   font-size: 16px;
   font-family: 'hannaPro', sans-serif;
 `;
@@ -232,6 +240,7 @@ const TextWhiteboard = ({
   }`;
 
   const location = useLocation();
+  const { name } = useParams();
   const url = `${BASE_URL}${location.pathname}`;
 
   return (
@@ -250,7 +259,7 @@ const TextWhiteboard = ({
         </TestBox>
       </Test>
       <Graph>
-        <TypeGraph result="EFP" />
+        <TypeGraph result={results[name]} />
       </Graph>
       <Side>
         <Partner
@@ -274,6 +283,9 @@ const TextWhiteboard = ({
       </Side2>
       <Share>
         <ShareBox>
+          <Link to="/statistics">
+            다른 개발자들은 주로 어떤 성향을 가지고 있을까요?
+          </Link>
           <IconTitle>내 결과 공유하기</IconTitle>
           <IconBox>
             <KaKaoShareBtn
