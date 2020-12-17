@@ -1,22 +1,22 @@
 import { useState, useEffect, useReducer } from 'react';
-import { loadData } from '../firebase/api';
+import * as api from '../firebase/api';
 
-const dataFetchReducer = (state, action) => {
+const dataUpdateReducer = (state, action) => {
   switch (action.type) {
-    case 'FETCH_INIT':
+    case 'UPDATE_INIT':
       return {
         ...state,
         isLoading: true,
         isError: false,
       };
-    case 'FETCH_SUCCESS':
+    case 'UPDATE_SUCCESS':
       return {
         ...state,
         isLoading: false,
         isError: false,
-        data: action.payload,
+        isUploaded: true,
       };
-    case 'FETCH_FAILURE':
+    case 'UPDATE_FAILURE':
       return {
         ...state,
         isLoading: false,
@@ -27,35 +27,38 @@ const dataFetchReducer = (state, action) => {
   }
 };
 
-export default function useDataLoad(initialUrl, initialData) {
-  const [url, setUrl] = useState(initialUrl);
+export default function useUpdateData(url, initialData) {
+  const [data, setData] = useState(initialData);
   const initialState = {
     isLoading: false,
     isError: false,
-    data: initialData,
+    isUploaded: false,
   };
-  const [state, dispatch] = useReducer(dataFetchReducer, initialState);
+  const [state, dispatch] = useReducer(dataUpdateReducer, initialState);
 
   useEffect(() => {
     // prevent to set component state after the component get unmounted
     let didCancel = false;
 
-    const fetchData = async () => {
-      dispatch({ type: 'FETCH_INIT' });
+    const updateData = async () => {
+      if (!data) {
+        return;
+      }
+      dispatch({ type: 'UPDATE_INIT' });
       try {
-        const result = await loadData(initialUrl);
+        await api.updateData(url, data);
         if (!didCancel) {
-          dispatch({ type: 'FETCH_SUCCESS', payload: result });
+          dispatch({ type: 'UPDATE_SUCCESS' });
         }
       } catch (error) {
         if (!didCancel) {
-          dispatch({ type: 'FETCH_FAILURE' });
+          dispatch({ type: 'UPDATE_FAILURE' });
         }
       }
     };
 
-    fetchData();
-  }, [url]);
+    updateData();
+  }, [data]);
 
-  return [state, setUrl];
+  return [state, setData];
 }

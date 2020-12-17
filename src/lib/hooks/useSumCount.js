@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useDataLoad from './useDataLoad';
+import useLoadData from './useLoadData';
 
 export default function useSumCount() {
   const [sum, setSum] = useState({
@@ -7,8 +7,8 @@ export default function useSumCount() {
     designer: 0,
   });
 
-  const [devCountState] = useDataLoad('devCount', null);
-  const [designerCountState] = useDataLoad('devCount', null);
+  const [devCountState] = useLoadData('devCount', null);
+  const [designerCountState] = useLoadData('devCount', null);
 
   useEffect(() => {
     if (devCountState.data && designerCountState.data) {

@@ -13,7 +13,7 @@ import {
   TwitterShareBtn,
 } from '../../components/result/ShareButton';
 import CopyButton from '../../components/result/CopyButton';
-import useDataLoad from '../../lib/hooks/useDataLoad';
+import useLoadData from '../../lib/hooks/useLoadData';
 
 const Board = styled.div`
   width: 100%;
@@ -231,7 +231,7 @@ const Share = styled.div`
 const TextWhiteboard = () => {
   const { type, name } = useParams();
   const [content, setContent] = useState('');
-  const [state, setUrl] = useDataLoad(`result/${results[name]}`, null);
+  const [state, setUrl] = useLoadData(`result/${results[name]}`, null);
   const { isError, isLoading, data } = state;
 
   useEffect(() => {
