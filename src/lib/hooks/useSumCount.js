@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { loadData } from '../firebase/api';
+import useDataLoad from './useDataLoad';
 
 export default function useSumCount() {
   const [sum, setSum] = useState({
@@ -7,22 +7,21 @@ export default function useSumCount() {
     designer: 0,
   });
 
-  const loadCount = async () => {
-    const devCount = await loadData('devCount');
-    const designerCount = await loadData('designerCount');
-    return { devCount, designerCount };
-  };
+  const [devCountState] = useDataLoad('devCount', null);
+  const [designerCountState] = useDataLoad('devCount', null);
 
   useEffect(() => {
-    loadCount().then(({ devCount, designerCount }) => {
+    if (devCountState.data && designerCountState.data) {
       setSum({
-        developer: Object.values(devCount).reduce((total, val) => total + val),
-        designer: Object.values(designerCount).reduce(
+        developer: Object.values(devCountState.data).reduce(
+          (total, val) => total + val
+        ),
+        designer: Object.values(designerCountState.data).reduce(
           (total, val) => total + val
         ),
       });
-    });
-  }, []);
+    }
+  }, [devCountState, designerCountState]);
 
   return [sum];
 }
