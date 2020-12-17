@@ -249,12 +249,11 @@ const TextWhiteboard = () => {
   }, [data]);
 
   const location = useLocation();
-
   const url = `${BASE_URL}${location.pathname}`;
 
   return (
     <>
-      {!isLoading && !isError && data !== null && (
+      {!isLoading && !isError && data && (
         <Board>
           <Test>
             <TestBox>
@@ -267,9 +266,11 @@ const TextWhiteboard = () => {
                 </Title>
               </TitleWrap>
               {type === 'designer' ? (
-                <DescriptionList description={data.designerDesc} />
+                <DescriptionList
+                  description={Object.values(data.designerDesc)}
+                />
               ) : (
-                <DescriptionList description={data.devDesc} />
+                <DescriptionList description={Object.values(data.devDesc)} />
               )}
             </TestBox>
           </Test>
