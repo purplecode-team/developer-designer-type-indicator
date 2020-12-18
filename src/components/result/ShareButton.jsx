@@ -33,17 +33,17 @@ export const KaKaoShareBtn = () => {
   );
 };
 
-export const TwitterShareBtn = ({ url, title }) => {
+export const TwitterShareBtn = ({ url, content }) => {
   return (
-    <TwitterShareButton url={url} title={title}>
+    <TwitterShareButton url={url} title={content}>
       <img src={twitterIcon} alt="twitter 공유" />
     </TwitterShareButton>
   );
 };
 
-export const FacebookShareBtn = ({ url, title }) => {
+export const FacebookShareBtn = ({ url, content }) => {
   return (
-    <FacebookShareButton url={url} quote={title} style={{ padding: '1.5px' }}>
+    <FacebookShareButton url={url} quote={content} style={{ padding: '1.5px' }}>
       <img src={facebookImg} alt="facebook 공유" />
     </FacebookShareButton>
   );
@@ -51,10 +51,10 @@ export const FacebookShareBtn = ({ url, title }) => {
 
 FacebookShareBtn.propTypes = {
   url: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
 };
 
 TwitterShareBtn.propTypes = {
   url: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
 };

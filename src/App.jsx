@@ -9,6 +9,8 @@ import { history } from './lib/helpers/history';
 import GlobalStyle from './lib/styles/GlobalStyle';
 import { Context } from './lib/helpers/context';
 import './app.css';
+import BarChart from './components/statistics/BarChart';
+import Statistics from './pages/Statistics';
 
 // pages
 const Main = lazy(() => import('./pages/Main'));
@@ -48,6 +50,7 @@ const App = () => {
             <Route exact path="/" component={Main} />
             <Route path="/test/:type" component={Test} />
             <Route path="/result/:type/:name" component={Result} />
+            <Route path="/statistics" component={Statistics} />
             <Redirect from="*" to="/" />
           </Switch>
         </Suspense>

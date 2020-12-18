@@ -27,6 +27,7 @@ const PartnerName = styled.h3`
 const PartnerWrapper = styled.div`
   background-color: #eeeeee;
   text-align: center;
+  height: 12rem;
   padding: 10px 0;
   border-radius: ${(props) => props.borderRadius};
   a {
