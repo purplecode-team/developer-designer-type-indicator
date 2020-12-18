@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   border: 2px solid #b6af4a;
   border-radius: 2rem;
   display: grid;
-  @media (max-width: ${media.laptop}) {
+  @media (max-width: ${media.laptop}px) {
     width: 80%;
   }
   h1 {

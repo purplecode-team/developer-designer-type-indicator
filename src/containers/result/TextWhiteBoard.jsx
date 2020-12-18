@@ -16,7 +16,7 @@ import CopyButton from '../../components/result/CopyButton';
 import useLoadData from '../../lib/hooks/useLoadData';
 
 const Board = styled.div`
-  width: 100%;
+  width: 90%;
   margin: auto;
   background-color: white;
   font-family: 'hannaPro', sans-serif;
@@ -24,7 +24,9 @@ const Board = styled.div`
   border: 2px solid #b6af4a;
   border-radius: 2rem;
   display: grid;
-  grid-template-rows: repeat(6, 40px);
+  column-gap: 10px;
+  row-gap: 10px;
+  grid-template-rows: repeat(12, 43px);
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
     'Test Test Graph Graph'
@@ -38,18 +40,15 @@ const Board = styled.div`
     'Test Test Share Share'
     'Test Test Share Share'
     'Test Test Share Share';
-  @media (max-width: ${media.laptopM}) {
+  @media (max-width: ${media.laptopM}px) {
     width: 450px;
-    height: 90%;
   }
-  @media (min-width: ${media.laptop}) {
-    column-gap: 15px;
-    row-gap: 10px;
+  @media (min-width: ${media.laptop+1}px) {
+
   }
-  @media (max-width: ${media.laptop}) {
+  @media (max-width: ${media.laptop}px) {
     padding: 20px 10px;
-    column-gap: 10px;
-    row-gap: 10px;
+
     margin: 0 auto 5rem auto;
     width: 80%;
     height: auto;
@@ -62,23 +61,6 @@ const Board = styled.div`
       'Test Test'
       'Test Test'
       'Test Test'
-      'Graph Graph'
-      'Graph Graph'
-      'Side Side2'
-      'Side Side2'
-      'Share Share'
-      'Share Share'
-      'Share Share'
-      'Share Share';
-  }
-  @media (max-width: ${media.mobileM}) {
-    grid-template-rows: repeat(6, 90px);
-    grid-template-areas:
-      'Test Test'
-      'Test Test'
-      'Test Test'
-      'Test Test'
-      'Test Test'
       'Test Test'
       'Graph Graph'
       'Graph Graph'
@@ -89,24 +71,8 @@ const Board = styled.div`
       'Share Share'
       'Share Share';
   }
-  @media (max-width: ${media.mobileS}) {
+  @media (max-width: ${media.mobileM}px) {
     grid-template-rows: repeat(6, 90px);
-    grid-template-areas:
-      'Test Test'
-      'Test Test'
-      'Test Test'
-      'Test Test'
-      'Test Test'
-      'Test Test'
-      'Test Test'
-      'Graph Graph'
-      'Graph Graph'
-      'Side Side2'
-      'Side Side2'
-      'Share Share'
-      'Share Share'
-      'Share Share'
-      'Share Share';
   }
 `;
 
@@ -114,16 +80,16 @@ const TestBox = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 2rem;
-  @media (max-width: ${media.laptop}) {
-    width: 100%;
-    border-radius: 2rem;
+  overflow-y:auto;
+  &::-webkit-scrollbar{
+     display:none;
   }
 `;
 
 const ShareBox = styled.div`
   margin: auto;
   text-align: center;
-  @media (max-width: ${media.laptop}) {
+  @media (max-width: ${media.laptop}px) {
     width: 100%;
   }
   a {
@@ -131,7 +97,7 @@ const ShareBox = styled.div`
     color: grey;
     font-family: hannaAir, sans-serif;
     text-decoration: none;
-    @media (min-width: ${media.laptop}) {
+    @media (min-width: ${media.laptop+1}px) {
       &:hover {
         color: black;
         font-weight: bold;
@@ -142,10 +108,10 @@ const ShareBox = styled.div`
 `;
 
 const TitleWrap = styled.div`
-  padding: 5px 0 10px 0;
+  padding: 20px 0 20px 0;
   width: 100%;
   text-align: center;
-  @media (max-width: ${media.laptop}) {
+  @media (max-width: ${media.laptop}px) {
     padding: 20px 0 20px;
   }
 `;
@@ -154,7 +120,7 @@ const SmallTitle = styled.h2`
   font-size: 16px;
   word-break: keep-all;
   margin-bottom: 0.5em;
-  @media (max-width: ${media.laptop}) {
+  @media (max-width: ${media.laptop}px) {
     margin-top: 0.5rem;
   }
 `;
@@ -164,7 +130,7 @@ const Title = styled.h1`
 `;
 
 const IconTitle = styled.h4`
-  padding: 4rem 0 10px 0;
+  padding: 1rem 0 10px 0;
   font-size: 16px;
   font-family: 'hannaPro', sans-serif;
 `;
@@ -190,9 +156,9 @@ const IconBox = styled.div`
   }
 `;
 
-const RestartButton = styled.button`
+const LinkButton = styled.button`
   width: 100%;
-  height: 50px;
+  height: 40px;
   border-radius: 1rem;
   background-color: #d1c873;
   color: white;
@@ -214,14 +180,20 @@ const Test = styled.div`
 
 const Graph = styled.div`
   grid-area: Graph;
+  border-radius: 1rem 1rem 0 0;
+  background-color: #eeeeee;
 `;
 
 const Side = styled.div`
   grid-area: Side;
+  border-radius: 0 0 1rem 1rem;
+  background-color: #eeeeee;
 `;
 
 const Side2 = styled.div`
   grid-area: Side2;
+  border-radius: 0 0 1rem 1rem;
+  background-color: #eeeeee;
 `;
 
 const Share = styled.div`
@@ -299,9 +271,6 @@ const TextWhiteboard = () => {
           </Side2>
           <Share>
             <ShareBox>
-              <Link to="/statistics">
-                다른 개발자들은 주로 어떤 성향을 가지고 있을까요?
-              </Link>
               <IconTitle>내 결과 공유하기</IconTitle>
               <IconBox>
                 <KaKaoShareBtn />
@@ -311,7 +280,11 @@ const TextWhiteboard = () => {
               </IconBox>
             </ShareBox>
             <Link to="/">
-              <RestartButton>테스트 다시하기</RestartButton>
+              <LinkButton>테스트 다시하기</LinkButton>
+            </Link>
+            <br></br><br></br>
+            <Link to="/statistics">
+              <LinkButton>다른 성향 구경하기</LinkButton>
             </Link>
           </Share>
         </Board>

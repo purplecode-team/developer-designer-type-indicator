@@ -22,7 +22,7 @@ const MainWrapper = styled.div`
 const Main = () => {
   const { windowWidth } = useWindowDimensions();
   const [sum] = useSumCount();
-  const tabletWidth = Number(media.tablet.slice(0, -2));
+  const tabletWidth = media.tablet;
 
   return (
     <MainWrapper>

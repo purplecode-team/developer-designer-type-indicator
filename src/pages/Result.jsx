@@ -19,10 +19,10 @@ const ResultWrapper = styled.div`
   width: 100vw;
   position: relative;
   background-color: #436943;
-  @media (min-width: ${media.laptopM}) {
+  @media (min-width: ${media.laptop+1}px) {
     overflow: hidden;
   }
-  @media (max-width: ${media.laptopM}) {
+  @media (max-width: ${media.laptop}px) {
     overflow-x: hidden;
   }
 `;

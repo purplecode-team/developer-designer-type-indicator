@@ -12,7 +12,7 @@ const ContentBtnBox = styled.div`
 `;
 
 const SmallBtn = styled.button`
-  @media (max-width: ${media.mobileL}) {
+  @media (max-width: ${media.mobileL}px) {
     font-size: 14px;
   }
   display: block;
@@ -35,7 +35,7 @@ const SmallBtn = styled.button`
   &:focus {
     outline-style: none;
   }
-  @media (max-width: ${media.tablet}) {
+  @media (max-width: ${media.tablet}px) {
     &:focus {
       color: black;
       background-color: white;

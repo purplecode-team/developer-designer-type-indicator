@@ -14,7 +14,7 @@ const IconImg = styled.img`
   &:hover {
     transform: scale(1.05);
   }
-  @media (max-width: ${media.laptopL}) {
+  @media (max-width: ${media.laptopL}px) {
     width: 6rem;
   }
 `;

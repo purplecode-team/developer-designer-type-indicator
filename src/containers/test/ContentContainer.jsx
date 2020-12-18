@@ -18,7 +18,7 @@ const ContentQuestionWrap = styled.div`
 `;
 
 const ContentQuestion = styled.p`
-  @media (max-width: ${media.mobileL}) {
+  @media (max-width: ${media.mobileL}px) {
     font-size: 16px;
   }
   display: table-cell;

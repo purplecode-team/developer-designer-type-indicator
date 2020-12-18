@@ -13,13 +13,14 @@ const CharacterContent = styled.div`
 
 const CharacterLight = styled.div`
   width: 400px;
-  height: 600px;
+  height: 85vh;
   margin: 0 auto;
+  padding-top:120px;
   background-image: url(${lightImg});
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
-  @media (max-width: ${media.mobileL}) {
+  @media (max-width: ${media.mobileL}px) {
     width: 270px;
   }
 `;
@@ -27,8 +28,8 @@ const CharacterLight = styled.div`
 const CharacterName = styled.h2`
   width: 250px;
   padding: 12px 0;
-  margin: 0 auto;
   border-radius: 2rem;
+  margin: 50px;
   background-color: white;
   opacity: 0.9;
   text-align: center;
@@ -48,6 +49,7 @@ const CharacterWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   text-align: center;
 `;
 
@@ -55,14 +57,17 @@ const CharacterImg = styled.img`
   width: 140px;
   position: relative;
   top: 50px;
-  @media (max-width: ${media.mobileL}) {
+  @media (min-width: ${media.laptopL+1}px) {
+    width: 30%;
+  }
+  @media (max-width: ${media.mobileL}px) {
     width: 100px;
   }
 `;
 
 const Tree = styled.img`
   width: 350px;
-  @media (max-width: ${media.mobileL}) {
+  @media (max-width: ${media.mobileL}px) {
     width: 270px;
   }
 `;
@@ -70,7 +75,9 @@ const Tree = styled.img`
 const Character = ({ name, shortBio }) => {
   return (
     <CharacterContent>
-      <CharacterLight />
+      <CharacterLight >
+
+      </CharacterLight>
       <CharacterWrapper>
         <CharacterName>
           <span> 당신은... </span> <br />

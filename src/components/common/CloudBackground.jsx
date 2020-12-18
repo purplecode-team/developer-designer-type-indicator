@@ -13,13 +13,13 @@ const Background = styled.span`
   background-image: url(${(props) => props.img});
   background-repeat: no-repeat;
   background-size:100%;
-  @media (max-width: ${media.tablet}){
+  @media (max-width: ${media.tablet}px){
     top: ${(props) => props.top+5}%;
     left: ${(props) => props.left}%;
     width: 10rem;
     height: 7rem;
   }
-  @media (max-width: ${media.mobileL}){
+  @media (max-width: ${media.mobileL}px){
     top: ${(props) => props.top+5}%;
     left: ${(props) => props.left-10}%;
     width: 10rem;
