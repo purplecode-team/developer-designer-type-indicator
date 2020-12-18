@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import media from '../../lib/styles/media';
 import DescriptionList from '../../components/result/DescriptionList';
@@ -15,6 +15,17 @@ import {
 import CopyButton from '../../components/result/CopyButton';
 import useLoadData from '../../lib/hooks/useLoadData';
 
+const fadeIn = keyframes`
+  0% {
+    opacity:0;
+    transform:translateY(10px);
+  }
+  100% {
+    opacity:1;
+    transform:translateY(0);
+  }
+`;
+
 const Board = styled.div`
   width: 90%;
   margin: auto;
@@ -23,6 +34,7 @@ const Board = styled.div`
   padding: 20px;
   border: 2px solid #b6af4a;
   border-radius: 2rem;
+  animation: ${fadeIn} 4s;
   display: grid;
   column-gap: 10px;
   row-gap: 10px;
@@ -282,7 +294,7 @@ const TextWhiteboard = () => {
             <Link to="/">
               <LinkButton>테스트 다시하기</LinkButton>
             </Link>
-            <br></br><br></br>
+            <br /><br />
             <Link to="/statistics">
               <LinkButton>다른 성향 구경하기</LinkButton>
             </Link>

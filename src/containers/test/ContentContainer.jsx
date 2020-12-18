@@ -1,8 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
 import ContentBtn from '../../components/test/ContentBtn';
+
+const fadeIn = keyframes`
+  from {
+    opacity:0;
+    transform:translateY(5px);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+`;
 
 const ContentBox = styled.div`
   width: 100%;
@@ -10,6 +21,7 @@ const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  animation: ${fadeIn} 2s;
 `;
 
 const ContentQuestionWrap = styled.div`
@@ -31,13 +43,14 @@ const ContentQuestion = styled.p`
   word-break: keep-all;
   white-space: break-spaces;
   line-height: normal;
+
 `;
 
 const Content = ({ nextSlide, data, count, history }) => {
   return (
     <ContentBox>
       <ContentQuestionWrap>
-        <ContentQuestion>Q. {data.question}</ContentQuestion>
+        <ContentQuestion>{data.question}</ContentQuestion>
       </ContentQuestionWrap>
       <ContentBtn
         nextSlide={nextSlide}

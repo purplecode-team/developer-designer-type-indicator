@@ -51,15 +51,10 @@ const LeftTree = styled.img`
 `;
 
 const Container = styled.div`
-  /* @media (min-width: ${media.laptopL}px) {
-    margin: 20% auto;
-    width: 55rem;
-    height: 25rem;
+  @media (min-width: ${media.laptopL+1}px) {
+    width: 50%;
+    bottom: 35%;
   }
-  @media (max-width: ${media.laptopL}px) {
-    margin: 80px auto;
-  }
-  */
   @media (max-width: ${media.tablet}px) {
     width: 450px;
     position: absolute;
@@ -102,9 +97,6 @@ const SmallCharacter = styled.img`
   right: 20%;
   width: 110px;
   z-index:99;
-  /* @media (min-width: ${media.laptopL}+1px) {
-    bottom:-250px;
-  }*/
   @media (max-width: ${media.tablet}px) {
     bottom: 40px;
     width: 70px;
@@ -120,6 +112,7 @@ const Test = ({ match, history }) => {
   const connectData = useCallback((dataName) => {
     const ref = firebase.database().ref(dataName);
     ref.once('value', (snapshot) => {
+      // 해당 접근은 firebase 데이터 순서에 의존하여 적용된다는 문제가 있음
       setData(Object.values(snapshot.val()));
       setCurrentData(Object.values(snapshot.val())[0]);
     });
@@ -167,4 +160,6 @@ const Test = ({ match, history }) => {
     </MainWrapper>
   );
 };
+
+
 export default Test;
