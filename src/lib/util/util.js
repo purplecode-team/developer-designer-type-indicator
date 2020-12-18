@@ -6,7 +6,6 @@ import monkeyImg from '../../../public/img/result_monkey.png';
 import slothImg from '../../../public/img/result_sloth.png';
 import squirrelImg from '../../../public/img/result_squirrel.png';
 import pelicanImg from '../../../public/img/result_pelican.png';
-import { BASE_URL } from './config';
 
 export const names = {
   EFJ: 'fox',
@@ -58,4 +57,26 @@ export const kakaoButtonTemplateId = {
   sloth_developer: 42597,
   squirrel_developer: 42598,
   squirrel_designer: 42599,
+};
+
+export const shortBio = {
+  fox: '센스쟁이 여우',
+  quokka: '핵인싸 쿼카',
+  pelican: '외유내강 펠리컨',
+  monkey: '폭력배 원숭이',
+  squirrel: '완벽주의 다람쥐',
+  sloth: '마이페이스 나무늘보',
+  bear: '선비같은 곰',
+  cat: '마이웨이 고양이',
+};
+
+export const title = {
+  fox: '여우',
+  quokka: '쿼카',
+  pelican: '펠리컨',
+  monkey: '원숭이',
+  squirrel: '다람쥐',
+  sloth: '나무늘보',
+  bear: '곰',
+  cat: '고양이',
 };

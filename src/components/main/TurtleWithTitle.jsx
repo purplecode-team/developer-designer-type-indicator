@@ -18,7 +18,7 @@ const Content = styled.div`
   bottom: 5rem;
   text-align: center;
   width: 400px;
-  @media (max-width: ${media.tablet}) {
+  @media (max-width: ${media.tablet}px) {
     bottom: 17rem;
     width: 70%;
   }
@@ -41,13 +41,13 @@ const TitleWrapper = styled.div`
     font-family: 'hannaPro', sans-serif;
     color: gray;
   }
-  @media (max-width: ${media.tablet}) {
+  @media (max-width: ${media.tablet}px) {
     height: 10rem;
     h1 {
       padding-top: calc((10rem - 2.6em - 20px) / 2);
     }
   }
-  @media (max-width: ${media.mobileL}) {
+  @media (max-width: ${media.mobileL}px) {
     width: 100%;
   }
 `;
@@ -60,7 +60,7 @@ const TurtleImg = styled.div`
   width: 14rem;
   height: 20rem;
   margin: 0 auto;
-  @media (max-width: ${media.tablet}) {
+  @media (max-width: ${media.tablet}px) {
     width: 7rem;
     height: 8rem;
     background-image: url(${turtleImg2});

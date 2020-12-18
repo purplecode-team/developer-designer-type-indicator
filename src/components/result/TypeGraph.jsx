@@ -13,12 +13,10 @@ import graphP from '../../../public/img/graph_P.png';
 
 const GraphWrapper = styled.div`
   padding: 1rem 2rem;
-  border-radius: 1rem 1rem 0 0;
-  background-color: #eeeeee;
-  @media (max-width: ${media.mobileL}) {
+  @media (max-width: ${media.mobileL}px) {
     padding: 1rem 1.5rem;
   }
-  @media (max-width: ${media.mobileS}) {
+  @media (max-width: ${media.mobileS}px) {
     padding: 0.5rem 0;
   }
   h2 {
@@ -29,9 +27,16 @@ const GraphWrapper = styled.div`
   img {
     display: block;
     margin: -1rem auto;
-    width: 20rem;
+    width: 15rem;
     object-fit: contain;
-    @media (max-width: ${media.mobileL}) {
+    @media (max-width: ${media.laptopM}px) {
+      margin: auto;
+      width: 100%;
+    }
+    @media (max-width: ${media.laptop}px) {
+      width: 70%;
+    }
+    @media (max-width: ${media.mobileL}px) {
       width: 80%;
     }
   }

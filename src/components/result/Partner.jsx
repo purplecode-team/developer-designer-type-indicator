@@ -10,7 +10,7 @@ const PartnerTitle = styled.h3`
 `;
 
 const PartnerImg = styled.img`
-  height: 7rem;
+  height: 5rem;
   padding: 7px 0 5px 0;
   object-fit: contain;
   &:hover {
@@ -25,9 +25,8 @@ const PartnerName = styled.h3`
 `;
 
 const PartnerWrapper = styled.div`
-  background-color: #eeeeee;
   text-align: center;
-  padding: 10px 0;
+  padding: 30px 0;
   border-radius: ${(props) => props.borderRadius};
   a {
     text-decoration: none;

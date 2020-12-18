@@ -9,7 +9,7 @@ const StyledLink = styled(Link)`
   width: 20rem;
   z-index: 10;
   padding-top: 10px;
-  @media (max-width: ${media.tablet}) {
+  @media (max-width: ${media.tablet}px) {
     width: 14rem;
     position: absolute;
     top: ${(props) => props.top}rem;
@@ -40,7 +40,7 @@ const Button = styled.button`
     font-size: 16px;
     margin-top: 10px;
   }
-  @media (max-width: ${media.tablet}) {
+  @media (max-width: ${media.tablet}px) {
     h2 {
       font-size: 16px;
     }
@@ -57,7 +57,7 @@ const BoardTextWrap = styled.div`
   width: 95%;
   text-align: center;
   padding-left: ${(props) => props.leftPos}rem;
-  @media (max-width: ${media.tablet}) {
+  @media (max-width: ${media.tablet}px) {
     top: 30px;
     padding-left: 0;
   }

@@ -14,10 +14,10 @@ const Background = styled.span`
   background-position: bottom;
   background-size: 100% 11rem;
   background-repeat: no-repeat;
-  @media (max-width: ${media.laptopL}) {
+  @media (max-width: ${media.laptopL}px) {
     background-size: 1440px 11rem;
   }
-  @media (max-width: ${media.mobileL}) {
+  @media (max-width: ${media.mobileL}px) {
     background-size: 1440px 9rem;
   }
 `;

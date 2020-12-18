@@ -8,7 +8,7 @@ const Container = styled.div`
   height: 100vh;
   top: -1rem;
   right: -1rem;
-  @media (max-width: ${media.laptopM}) {
+  @media (max-width: ${media.laptopM}px) {
     display: none;
   }
 `;
