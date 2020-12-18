@@ -22,7 +22,7 @@ const DescriptionList = ({ description }) => {
   return (
     <List>
       {description &&
-        description.map((item, index) => <li key={index}> {item} </li>)}
+        description.map((item, index) => <li key={index+1}> {item} </li>)}
     </List>
   );
 };

@@ -59,13 +59,13 @@ const ChartWrapper = styled.div`
   display: flex;
   position: relative;
   top: -2rem;
-  @media (max-width: ${media.laptop}) {
+  @media (max-width: ${media.laptop}px) {
     flex-direction: column;
   }
 `;
 
 const BarChart = ({ data, title, type }) => {
-  const laptopWidth = Number(media.laptop.slice(0, -2));
+  const laptopWidth = media.laptop;
   const { windowHeight, windowWidth } = useWindowDimensions();
   const [width, setWidth] = useState(
     windowWidth < laptopWidth ? windowWidth * 0.8 : 500
@@ -161,8 +161,8 @@ const BarChart = ({ data, title, type }) => {
     setWidth(windowWidth < laptopWidth ? windowWidth * 0.8 : 500);
     setHeight(windowWidth < laptopWidth ? windowWidth * 0.6 : 300);
 
-    let graphWidth = width - margin.left - margin.right;
-    let graphHeight = height - margin.top - margin.bottom;
+    const graphWidth = width - margin.left - margin.right;
+    const graphHeight = height - margin.top - margin.bottom;
 
     createBarChart(graphWidth, graphHeight);
   }, [

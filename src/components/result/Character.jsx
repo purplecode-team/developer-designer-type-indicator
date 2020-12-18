@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
 import treeBase from '../../../public/img/tree_base.png';
@@ -25,6 +25,18 @@ const CharacterLight = styled.div`
   }
 `;
 
+const fadeIn = keyframes`
+  0% {
+    opacity:0;
+  }
+  10% {
+    opacity:0;
+  }
+  100%{
+    opacity:1;
+  }
+`;
+
 const CharacterName = styled.h2`
   width: 250px;
   padding: 12px 0;
@@ -39,6 +51,7 @@ const CharacterName = styled.h2`
   span {
     font-size: 16px;
   }
+  animation: ${fadeIn} 6s;
 `;
 
 const CharacterWrapper = styled.div`
@@ -53,16 +66,26 @@ const CharacterWrapper = styled.div`
   text-align: center;
 `;
 
+const randomImg = keyframes`
+  from {
+    filter: brightness(0);
+  }
+  to {
+    filter: brightness(1);
+  }
+`;
+
 const CharacterImg = styled.img`
   width: 140px;
   position: relative;
   top: 50px;
-  @media (min-width: ${media.laptopL+1}px) {
+  @media (min-width: ${media.desktop}px) {
     width: 30%;
   }
   @media (max-width: ${media.mobileL}px) {
     width: 100px;
   }
+  animation: ${randomImg} 6s;
 `;
 
 const Tree = styled.img`
@@ -73,11 +96,11 @@ const Tree = styled.img`
 `;
 
 const Character = ({ name, shortBio }) => {
+
+
   return (
     <CharacterContent>
-      <CharacterLight >
-
-      </CharacterLight>
+      <CharacterLight />
       <CharacterWrapper>
         <CharacterName>
           <span> 당신은... </span> <br />
@@ -90,9 +113,11 @@ const Character = ({ name, shortBio }) => {
   );
 };
 
+
 Character.propTypes = {
   shortBio: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };
+
 
 export default Character;

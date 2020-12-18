@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import media from '../../lib/styles/media';
 import styled from 'styled-components';
+import media from '../../lib/styles/media';
 import { loadData } from '../../lib/firebase/api';
 import { names, title, shortBio, characters } from '../../lib/util/util';
 import BarChart from '../../components/statistics/BarChart';
 
 const Wrapper = styled.div`
   position: relative;
-  width: 70rem;
+  width: 60%;
   height: 80vh;
   margin: auto;
   overflow-x: hidden;
@@ -19,15 +19,22 @@ const Wrapper = styled.div`
   border: 2px solid #b6af4a;
   border-radius: 2rem;
   display: grid;
+  text-align:center;
+  &::-webkit-scrollbar{
+     display:none;
+  }
   @media (max-width: ${media.laptop}px) {
     width: 80%;
   }
+  @media (max-width: ${media.mobileL}px) {
+    text-align:inherit;
+  }
   h1 {
     font-size: 24px;
-    padding: 0.5rem 1rem;
+    padding: 1rem 1rem;
   }
   p {
-    padding: 1rem;
+    padding: 0rem 1rem 2rem 1rem;
     font-family: 'hannaAir', sans-serif;
     font-size: 16px;
     line-height: 1.3em;
