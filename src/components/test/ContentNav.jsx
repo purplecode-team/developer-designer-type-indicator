@@ -12,7 +12,7 @@ const NavBar = styled.div`
   background-color: #ffd4d7;
   left: -125px;
   z-index:99;
-  @media (min-width: ${media.laptopL+1}px){
+  @media (min-width: ${media.desktop}px){
     width:100%;
     left:0;
   }
