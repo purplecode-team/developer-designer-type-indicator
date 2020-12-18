@@ -6,7 +6,6 @@ import monkeyImg from '../../../public/img/result_monkey.png';
 import slothImg from '../../../public/img/result_sloth.png';
 import squirrelImg from '../../../public/img/result_squirrel.png';
 import pelicanImg from '../../../public/img/result_pelican.png';
-import { BASE_URL } from './config';
 
 export const names = {
   EFJ: 'fox',

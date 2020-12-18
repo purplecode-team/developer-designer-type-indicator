@@ -21,10 +21,10 @@ const MainWrapper = styled.div`
 `;
 
 const RightTree = styled.img`
-  @media (max-width: ${media.laptopM}) {
+  @media (max-width: ${media.laptopM}px) {
     right: -12rem;
   }
-  @media (max-width: ${media.laptop}) {
+  @media (max-width: ${media.laptop}px) {
     display: none;
   }
   position: absolute;
@@ -36,10 +36,10 @@ const RightTree = styled.img`
 `;
 
 const LeftTree = styled.img`
-  @media (max-width: ${media.laptopM}) {
+  @media (max-width: ${media.laptopM}px) {
     left: -12rem;
   }
-  @media (max-width: ${media.laptop}) {
+  @media (max-width: ${media.laptop}px) {
     display: none;
   }
   position: absolute;
@@ -51,21 +51,25 @@ const LeftTree = styled.img`
 `;
 
 const Container = styled.div`
-  @media (min-width: ${media.tablet}) {
-    margin: 80px auto;
+  @media (min-width: ${media.laptopL+1}px) {
+    width: 50%;
+    bottom: 35%;
   }
-  @media (max-width: ${media.tablet}) {
+  @media (max-width: ${media.tablet}px) {
     width: 450px;
     position: absolute;
     left: 50%;
     bottom: 27%;
     transform: translateX(-50%);
   }
-  @media (max-width: ${media.mobileL}) {
+  @media (max-width: ${media.mobileL}px) {
     width: 90%;
   }
-  position: relative;
-  width: 500px;
+  width: 450px;
+  position: absolute;
+  left: 50%;
+  bottom: 27%;
+  transform: translateX(-50%);
   height: 350px;
   padding: 20px 0;
   text-align: center;
@@ -89,13 +93,13 @@ const ContentWrap = styled.div`
 
 const SmallCharacter = styled.img`
   position: absolute;
-  bottom: -110px;
-  right: -170px;
+  bottom: 110px;
+  right: 20%;
   width: 110px;
-  @media (max-width: ${media.tablet}) {
-    right: 50px;
-    bottom: -40px;
-    width: 50px;
+  z-index:99;
+  @media (max-width: ${media.tablet}px) {
+    bottom: 40px;
+    width: 70px;
   }
 `;
 
@@ -108,6 +112,7 @@ const Test = ({ match, history }) => {
   const connectData = useCallback((dataName) => {
     const ref = firebase.database().ref(dataName);
     ref.once('value', (snapshot) => {
+      // 해당 접근은 firebase 데이터 순서에 의존하여 적용된다는 문제가 있음
       setData(Object.values(snapshot.val()));
       setCurrentData(Object.values(snapshot.val())[0]);
     });
@@ -143,15 +148,18 @@ const Test = ({ match, history }) => {
           />
         </ContentWrap>
         <ContentNav count={count} />
-        <SmallCharacter src={rabbit} alt="rabbit" />
+        
       </Container>
       <CloudBackground
         role="img"
         ariaLabel="clouds background"
         img={cloudImg}
       />
+      <SmallCharacter src={rabbit} alt="rabbit" />
       <GrassBackground role="img" ariaLabel="grass background" img={grassImg} />
     </MainWrapper>
   );
 };
+
+
 export default Test;

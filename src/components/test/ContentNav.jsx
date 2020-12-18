@@ -5,14 +5,18 @@ import media from '../../lib/styles/media';
 
 const NavBar = styled.div`
   position: absolute;
-  bottom: -140px;
+  bottom: -110px;
   width: 700px;
   height: 20px;
   border-radius: 10px;
   background-color: #ffd4d7;
-  left: -100px;
+  left: -125px;
   z-index:99;
-  @media (max-width: ${media.tablet}){
+  @media (min-width: ${media.laptopL+1}px){
+    width:100%;
+    left:0;
+  }
+  @media (max-width: ${media.tablet}px){
     width:100%;
     left:0;
     bottom: -60px;

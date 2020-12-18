@@ -1,14 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { loadData, updateData } from '../lib/firebase/api';
+import { loadData } from '../lib/firebase/api';
 import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
 import RightTree from '../components/common/RightTree';
 import LeftTree from '../components/common/LeftTree';
 import grassImg from '../../public/img/ground.png';
 import cloudImg from '../../public/img/cloud.png';
-import media from '../lib/styles/media';
 import { results } from '../lib/util/util';
 import ChartContainer from '../containers/statistics/ChartContainer';
 

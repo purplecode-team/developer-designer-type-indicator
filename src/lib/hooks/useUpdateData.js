@@ -38,7 +38,7 @@ export default function useUpdateData(url, initialData) {
 
   useEffect(() => {
     // prevent to set component state after the component get unmounted
-    let didCancel = false;
+    const didCancel = false;
 
     const updateData = async () => {
       if (!data) {

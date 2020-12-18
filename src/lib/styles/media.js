@@ -1,12 +1,12 @@
 const media = {
-  mobileS: '320px',
-  mobileM: '380px',
-  mobileL: '480px',
-  tablet: '768px',
-  laptop: '1024px',
-  laptopM: '1200px',
-  laptopL: '1440px',
-  desktop: '2560px',
+  mobileS: 320,
+  mobileM: 380,
+  mobileL: 480,
+  tablet: 768,
+  laptop: 1024,
+  laptopM: 1200,
+  laptopL: 1440,
+  desktop: 1920,
 };
 
 export default media;
