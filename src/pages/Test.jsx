@@ -103,53 +103,19 @@ const Test = ({ match, history }) => {
   const [job, setJob] = useState('');
   const [count, setCount] = useState(1);
   const [currentData, setCurrentData] = useState({});
-  const [data, setData] = useState({
-    Q1: {},
-    Q2: {},
-    Q3: {},
-    Q4: {},
-    Q5: {},
-    Q6: {},
-    Q7: {},
-    Q8: {},
-    Q9: {},
-    Q10: {},
-    Q11: {},
-    Q12: {},
-    Q13: {},
-    Q14: {},
-    Q15: {},
-  });
-
-  const dataArray = [
-    data.Q1,
-    data.Q2,
-    data.Q3,
-    data.Q4,
-    data.Q5,
-    data.Q6,
-    data.Q7,
-    data.Q8,
-    data.Q9,
-    data.Q10,
-    data.Q11,
-    data.Q12,
-    data.Q13,
-    data.Q14,
-    data.Q15,
-  ];
+  const [data, setData] = useState([]);
 
   const connectData = useCallback((dataName) => {
     const ref = firebase.database().ref(dataName);
     ref.once('value', (snapshot) => {
-      setData(snapshot.val());
+      setData(Object.values(snapshot.val()));
+      setCurrentData(Object.values(snapshot.val())[0]);
     });
   }, []);
 
   const nextSlide = useCallback(() => {
-    console.log(`현재 count : ${count}`);
     setCount(count + 1);
-    setCurrentData(dataArray[count]);
+    setCurrentData(data[count]);
   });
 
   useEffect(() => {
@@ -161,10 +127,6 @@ const Test = ({ match, history }) => {
       setJob('디자이너');
     }
   }, []);
-
-  useEffect(() => {
-    setCurrentData(dataArray[0]);
-  }, [data]);
 
   return (
     <MainWrapper>
