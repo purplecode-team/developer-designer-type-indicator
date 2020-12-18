@@ -51,7 +51,7 @@ const LeftTree = styled.img`
 `;
 
 const Container = styled.div`
-  @media (min-width: ${media.laptopL+1}px) {
+  @media (min-width: ${media.desktop}px) {
     width: 50%;
     bottom: 35%;
   }
