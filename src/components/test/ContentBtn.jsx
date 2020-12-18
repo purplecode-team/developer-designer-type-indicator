@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import { Context } from '../../lib/helpers/context';
 import media from '../../lib/styles/media';
 import matchResultType from '../../lib/util/matchResultType';
 import { names } from '../../lib/util/util';
+import useSetResult from '../../lib/hooks/useSetResult';
 
 const ContentBtnBox = styled.div`
   position: relative;
@@ -48,7 +48,7 @@ const SmallBtn = styled.button`
 `;
 
 const ContentBtn = ({ nextSlide, data, count, history }) => {
-  const { state, dispatch } = useContext(Context);
+  const [ state, dispatch ] = useSetResult();
   const { type } = useParams();
 
   const classifySelection = (id, selection) => {
