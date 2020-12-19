@@ -19,7 +19,7 @@ const Content = styled.div`
   text-align: center;
   width: 400px;
   @media (max-width: ${media.tablet}px) {
-    bottom: 17rem;
+    bottom: 15rem;
     width: 70%;
   }
 `;

@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   overflow: hidden;
   margin: 0 auto;
   position: absolute;
-  bottom: 0;
+  bottom: -28px;
   left: 0;
   width: 100%;
   height: 18rem;
@@ -25,7 +25,7 @@ const StyledLink = styled(Link)`
   top: ${(props) => props.top}rem;
   z-index: 2;
   img {
-    width: 16rem;
+    width: 14rem;
   }
 `;
 
@@ -33,7 +33,7 @@ const BoardStick = styled.img`
   width: 3rem;
   height: 20rem;
   position: absolute;
-  top: -3rem;
+  top: -4rem;
 `;
 
 const MobileInformationBoard = () => {

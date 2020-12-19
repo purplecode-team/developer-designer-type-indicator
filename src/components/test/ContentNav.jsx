@@ -39,7 +39,7 @@ const NavIconWrap = styled.span`
 `;
 
 const NavCount = styled.p`
-  font-size: 5px;
+  font-size: 10px;
   color: white;
   margin-top: 20px;
 `;
