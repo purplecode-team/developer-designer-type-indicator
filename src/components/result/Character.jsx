@@ -22,6 +22,7 @@ const CharacterLight = styled.div`
   background-position: center;
   @media (max-width: ${media.mobileL}px) {
     width: 270px;
+    height: 65vh;
   }
 `;
 
@@ -83,6 +84,7 @@ const CharacterImg = styled.img`
     width: 30%;
   }
   @media (max-width: ${media.mobileL}px) {
+    top: 40px;
     width: 100px;
   }
   animation: ${randomImg} 6s;
