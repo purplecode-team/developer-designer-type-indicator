@@ -27,22 +27,22 @@ const GraphWrapper = styled.div`
 `;
 
 const Graph = styled.div`
-    @media (max-width: ${media.laptopM}px) {
-      margin: auto;
-      width: 100%;
-    }
-
-    @media (max-width: ${media.mobileL}px) {
-      width: 80%;
-    }
-  }
- 
-   img {
+  margin: auto;
+  display: grid;
+  place-items: center;
+  img {
     display: block;
     margin: auto;
     width: 15rem;
     object-fit: contain;
+    @media (max-width: ${media.laptopM}px) {
+      margin: auto;
+      width: 100%;
     }
+    @media (max-width: ${media.mobileL}px) {
+      width: 80%;
+    }
+  }
 `;
 
 const TypeGraph = ({ result }) => {

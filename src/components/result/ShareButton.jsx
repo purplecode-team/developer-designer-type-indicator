@@ -10,7 +10,7 @@ import facebookImg from '../../../public/img/facebook.png';
 
 export const KaKaoShareBtn = () => {
   const { type, name } = useParams();
-  console.log(`${name}_${type}`);
+
   useEffect(() => {
     if (window.Kakao) {
       const kakao = window.Kakao;
