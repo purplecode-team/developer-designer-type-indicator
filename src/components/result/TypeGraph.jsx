@@ -32,7 +32,7 @@ const Graph = styled.div`
   place-items: center;
   img {
     display: block;
-    margin: auto;
+    margin: -0.3rem auto;
     width: 15rem;
     object-fit: contain;
     @media (max-width: ${media.laptopM}px) {

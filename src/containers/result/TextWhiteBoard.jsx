@@ -55,8 +55,7 @@ const Board = styled.div`
   @media (max-width: ${media.laptopM}px) {
     width: 450px;
   }
-  @media (min-width: ${media.laptop+1}px) {
-
+  @media (min-width: ${media.laptop + 1}px) {
   }
   @media (max-width: ${media.laptop}px) {
     padding: 20px 10px;
@@ -92,9 +91,9 @@ const TestBox = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 2rem;
-  overflow-y:auto;
-  &::-webkit-scrollbar{
-     display:none;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
   }
 `;
 
@@ -109,7 +108,7 @@ const ShareBox = styled.div`
     color: grey;
     font-family: hannaAir, sans-serif;
     text-decoration: none;
-    @media (min-width: ${media.laptop+1}px) {
+    @media (min-width: ${media.laptop + 1}px) {
       &:hover {
         color: black;
         font-weight: bold;
@@ -212,6 +211,9 @@ const Share = styled.div`
   grid-area: Share;
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+`;
 const TextWhiteboard = () => {
   const { type, name } = useParams();
   const [content, setContent] = useState('');
@@ -294,7 +296,8 @@ const TextWhiteboard = () => {
             <Link to="/">
               <LinkButton>테스트 다시하기</LinkButton>
             </Link>
-            <br /><br />
+            <br />
+            <br />
             <Link to="/statistics">
               <LinkButton>다른 성향 구경하기</LinkButton>
             </Link>

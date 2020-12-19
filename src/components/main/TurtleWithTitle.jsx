@@ -30,13 +30,13 @@ const TitleWrapper = styled.div`
   background-size: 100% 100%;
   background-position: center;
   width: 20rem;
-  height: 12rem;
+  height: 10rem;
   margin: 0 auto;
   h1 {
     text-align: center;
     font-size: 24px;
     // 말풍선 높이 - 글자 2줄 높이 - 말풍선 꼬리 부분 / 2
-    padding-top: calc((12rem - 2.6em - 25px) / 2);
+    padding-top: calc((10rem - 2em - 25px) / 2);
     line-height: 1.3em;
     font-family: 'hannaPro', sans-serif;
     color: gray;
