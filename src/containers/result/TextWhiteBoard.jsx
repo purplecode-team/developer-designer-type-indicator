@@ -31,14 +31,14 @@ const Board = styled.div`
   margin: auto;
   background-color: white;
   font-family: 'hannaPro', sans-serif;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   border: 2px solid #b6af4a;
   border-radius: 2rem;
   animation: ${fadeIn} 4s;
   display: grid;
   column-gap: 10px;
   row-gap: 10px;
-  grid-template-rows: repeat(12, 43px);
+  grid-template-rows: repeat(11, 43px);
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
     'Test Test Graph Graph'
@@ -55,12 +55,9 @@ const Board = styled.div`
   @media (max-width: ${media.laptopM}px) {
     width: 450px;
   }
-  @media (min-width: ${media.laptop+1}px) {
-
+  @media (min-width: ${media.laptop + 1}px) {
   }
   @media (max-width: ${media.laptop}px) {
-    padding: 20px 10px;
-
     margin: 0 auto 5rem auto;
     width: 80%;
     height: auto;
@@ -92,10 +89,7 @@ const TestBox = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 2rem;
-  overflow-y:auto;
-  &::-webkit-scrollbar{
-     display:none;
-  }
+  overflow-y: auto;
 `;
 
 const ShareBox = styled.div`
@@ -109,7 +103,7 @@ const ShareBox = styled.div`
     color: grey;
     font-family: hannaAir, sans-serif;
     text-decoration: none;
-    @media (min-width: ${media.laptop+1}px) {
+    @media (min-width: ${media.laptop + 1}px) {
       &:hover {
         color: black;
         font-weight: bold;
@@ -120,7 +114,7 @@ const ShareBox = styled.div`
 `;
 
 const TitleWrap = styled.div`
-  padding: 20px 0 20px 0;
+  padding: 0 0 20px 0;
   width: 100%;
   text-align: center;
   @media (max-width: ${media.laptop}px) {
@@ -152,7 +146,7 @@ const IconBox = styled.div`
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   button {
     border: none;
     background: none;
@@ -169,9 +163,10 @@ const IconBox = styled.div`
 `;
 
 const LinkButton = styled.button`
-  width: 100%;
+  width: 10rem;
   height: 40px;
   border-radius: 1rem;
+  margin: 0 1rem;
   background-color: #d1c873;
   color: white;
   border-style: none;
@@ -210,6 +205,11 @@ const Side2 = styled.div`
 
 const Share = styled.div`
   grid-area: Share;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const TextWhiteboard = () => {
@@ -290,14 +290,17 @@ const TextWhiteboard = () => {
                 <TwitterShareBtn url={url} content={content} />
                 <CopyButton />
               </IconBox>
+              <ButtonWrapper>
+                <Link to="/">
+                  <LinkButton>테스트 다시하기</LinkButton>
+                </Link>
+                <br />
+                <br />
+                <Link to="/statistics">
+                  <LinkButton>다른 성향 구경하기</LinkButton>
+                </Link>
+              </ButtonWrapper>
             </ShareBox>
-            <Link to="/">
-              <LinkButton>테스트 다시하기</LinkButton>
-            </Link>
-            <br /><br />
-            <Link to="/statistics">
-              <LinkButton>다른 성향 구경하기</LinkButton>
-            </Link>
           </Share>
         </Board>
       )}

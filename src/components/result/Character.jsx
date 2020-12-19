@@ -15,7 +15,7 @@ const CharacterLight = styled.div`
   width: 400px;
   height: 85vh;
   margin: 0 auto;
-  padding-top:120px;
+  padding-top: 120px;
   background-image: url(${lightImg});
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -42,7 +42,6 @@ const CharacterName = styled.h2`
   width: 250px;
   padding: 12px 0;
   border-radius: 2rem;
-  margin: 50px;
   background-color: white;
   opacity: 0.9;
   text-align: center;
@@ -98,8 +97,6 @@ const Tree = styled.img`
 `;
 
 const Character = ({ name, shortBio }) => {
-
-
   return (
     <CharacterContent>
       <CharacterLight />
@@ -115,11 +112,9 @@ const Character = ({ name, shortBio }) => {
   );
 };
 
-
 Character.propTypes = {
   shortBio: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };
-
 
 export default Character;

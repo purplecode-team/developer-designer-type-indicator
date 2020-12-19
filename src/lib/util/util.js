@@ -63,7 +63,7 @@ export const shortBio = {
   fox: '센스쟁이 여우',
   quokka: '핵인싸 쿼카',
   pelican: '외유내강 펠리컨',
-  monkey: '폭력배 원숭이',
+  monkey: '팩력배 원숭이',
   squirrel: '완벽주의 다람쥐',
   sloth: '마이페이스 나무늘보',
   bear: '선비같은 곰',

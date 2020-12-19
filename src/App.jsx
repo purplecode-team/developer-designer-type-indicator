@@ -8,13 +8,12 @@ import {
 import { history } from './lib/helpers/history';
 import GlobalStyle from './lib/styles/GlobalStyle';
 import './app.css';
-import Statistics from './pages/Statistics';
 
 // pages
 const Main = lazy(() => import('./pages/Main'));
 const Test = lazy(() => import('./pages/Test'));
 const Result = lazy(() => import('./pages/Result'));
-
+const Statistics = lazy(() => import('./pages/Statistics'));
 
 const App = () => {
   return (

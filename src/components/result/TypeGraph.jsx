@@ -24,17 +24,20 @@ const GraphWrapper = styled.div`
     font-size: 16px;
     margin-bottom: 0.5rem;
   }
+`;
+
+const Graph = styled.div`
+  margin: auto;
+  display: grid;
+  place-items: center;
   img {
     display: block;
-    margin: -1rem auto;
+    margin: -0.3rem auto;
     width: 15rem;
     object-fit: contain;
     @media (max-width: ${media.laptopM}px) {
       margin: auto;
       width: 100%;
-    }
-    @media (max-width: ${media.laptop}px) {
-      width: 70%;
     }
     @media (max-width: ${media.mobileL}px) {
       width: 80%;
@@ -55,9 +58,11 @@ const TypeGraph = ({ result }) => {
   return (
     <GraphWrapper>
       <h2> 나의 성향 </h2>
-      <img src={match[result[0]]} alt={`type ${result[0]}`} />
-      <img src={match[result[1]]} alt={`type ${result[1]}`} />
-      <img src={match[result[2]]} alt={`type ${result[2]}`} />
+      <Graph>
+        <img src={match[result[0]]} alt={`type ${result[0]}`} />
+        <img src={match[result[1]]} alt={`type ${result[1]}`} />
+        <img src={match[result[2]]} alt={`type ${result[2]}`} />
+      </Graph>
     </GraphWrapper>
   );
 };
