@@ -9,7 +9,7 @@ export default function useSumCount() {
 
   const [devCountState] = useLoadData('devCount', null);
   const [designerCountState] = useLoadData('designerCount', null);
-  console.log(devCountState, designerCountState);
+
   useEffect(() => {
     if (devCountState.data && designerCountState.data) {
       setSum({

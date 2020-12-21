@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useCallback, useState } from 'react';
 import * as d3 from 'd3';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import useWindowDimensions from '../../lib/hooks/useWindowDimensions';
 import Legend from './Legend';
@@ -199,6 +200,20 @@ const BarChart = ({ data, title, type }) => {
       </ChartWrapper>
     </Canvas>
   );
+};
+
+BarChart.propTypes = {
+  type: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      img: PropTypes.string.isRequired,
+      shortBio: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      count: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 export default BarChart;

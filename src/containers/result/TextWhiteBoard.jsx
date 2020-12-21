@@ -254,11 +254,9 @@ const TextWhiteboard = () => {
                 </Title>
               </TitleWrap>
               {type === 'designer' ? (
-                <DescriptionList
-                  description={Object.values(data.designerDesc)}
-                />
+                <DescriptionList description={data.designerDesc} />
               ) : (
-                <DescriptionList description={Object.values(data.devDesc)} />
+                <DescriptionList description={data.devDesc} />
               )}
             </TestBox>
           </Test>
