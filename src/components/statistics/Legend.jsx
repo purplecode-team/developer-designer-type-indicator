@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import * as d3 from 'd3';
 import media from '../../lib/styles/media';
@@ -40,13 +41,30 @@ const Legend = ({ data, type }) => {
                 fill={d3.interpolateYlGn(colorScale(count))}
               />
             </svg>
-            <a target="_blank" href={`/result/${type}/${name}`}>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={`/result/${type}/${name}`}
+            >
               <span> {shortBio}</span>
             </a>
           </li>
         ))}
     </Wrapper>
   );
+};
+
+Legend.propTypes = {
+  type: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      img: PropTypes.string.isRequired,
+      shortBio: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      count: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Legend;
