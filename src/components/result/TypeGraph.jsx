@@ -33,11 +33,15 @@ const Graph = styled.div`
   img {
     display: block;
     margin: -0.3rem auto;
-    width: 15rem;
+    width: 13rem;
     object-fit: contain;
     @media (max-width: ${media.laptopM}px) {
       margin: auto;
-      width: 100%;
+      width: 10rem;
+    }
+    @media (max-width: ${media.laptop}px) {
+      margin: auto;
+      width: 70%;
     }
     @media (max-width: ${media.mobileL}px) {
       width: 80%;

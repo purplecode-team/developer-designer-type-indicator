@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import Character from '../../components/result/Character';
 import media from '../../lib/styles/media';
-import TextWhiteboard from './TextWhiteBoard';
+import ResultBoardContainer from './ResultBoardContainer';
 import { shortBio } from '../../lib/util/util';
 
 const ResultBox = styled.div`
@@ -36,7 +36,7 @@ const ResultContainer = () => {
     <ResultBox>
       <Space />
       <Character shortBio={shortBio[name]} name={name} />
-      <TextWhiteboard />
+      <ResultBoardContainer />
       <Space />
     </ResultBox>
   );
