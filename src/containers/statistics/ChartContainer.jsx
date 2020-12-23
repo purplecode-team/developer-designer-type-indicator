@@ -4,6 +4,7 @@ import media from '../../lib/styles/media';
 import { names, title, shortBio, characters } from '../../lib/util/util';
 import BarChart from '../../components/statistics/BarChart';
 import useLoadData from '../../lib/hooks/useLoadData';
+import { history } from '../../lib/helpers/history';
 
 const Wrapper = styled.div`
   position: relative;
@@ -48,10 +49,36 @@ const Container = styled.div`
     margin-bottom: 2rem;
   }
 `;
+const BtnWrapper = styled.div`
+  padding-bottom: 40px;
+  width: 13rem;
+  margin: 0 auto;
+`;
+const CloseBtn = styled.button`
+  width: 100%;
+  height: 40px;
+  border-radius: 1rem;
+  background-color: #d1c873;
+  color: white;
+  border-style: none;
+  font-family: 'hannaPro', sans-serif;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+  }
+  &:focus {
+    outline: none;
+  }
+`;
 
 const ChartContainer = () => {
   const [designerCountState] = useLoadData('designerCount', null);
   const [developerCountState] = useLoadData('devCount', null);
+
+  const goBack = () => {
+    history.back();
+  };
 
   const parseData = (data) => {
     const array = Object.keys(data).map((key) => ({
@@ -91,6 +118,9 @@ const ChartContainer = () => {
               title="개발자 성향"
             />
           </Container>
+          <BtnWrapper>
+            <CloseBtn onClick={goBack}>닫기</CloseBtn>
+          </BtnWrapper>
         </Wrapper>
       )}
     </>

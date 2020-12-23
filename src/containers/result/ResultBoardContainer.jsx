@@ -163,7 +163,6 @@ const LinkButton = styled.button`
   width: 95%;
   height: 40px;
   border-radius: 1rem;
-  /* margin: 0 1rem; */
   background-color: #d1c873;
   color: white;
   border-style: none;
@@ -295,8 +294,6 @@ const ResultBoardContainer = () => {
                 <Link to="/">
                   <LinkButton>테스트 다시하기</LinkButton>
                 </Link>
-                <br />
-                <br />
                 <Link to="/statistics">
                   <LinkButton>다른 성향 구경하기</LinkButton>
                 </Link>
