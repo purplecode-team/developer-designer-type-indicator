@@ -211,7 +211,7 @@ const Share = styled.div`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-  @media (max-width: ${media.tablet}px) {
+  @media (max-width: ${media.laptop}px) {
     padding: 1rem 0;
   }
 `;
@@ -254,11 +254,9 @@ const TextWhiteboard = () => {
                 </Title>
               </TitleWrap>
               {type === 'designer' ? (
-                <DescriptionList
-                  description={Object.values(data.designerDesc)}
-                />
+                <DescriptionList description={data.designerDesc} />
               ) : (
-                <DescriptionList description={Object.values(data.devDesc)} />
+                <DescriptionList description={data.devDesc} />
               )}
             </TestBox>
           </Test>

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import media from '../../lib/styles/media';
 import tree from '../../../public/img/tree_left.png';
 
@@ -45,6 +46,17 @@ const LeftTree = ({ children }) => {
       <Tree src={tree} alt="left tree" />
     </Container>
   );
+};
+
+LeftTree.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+};
+
+LeftTree.defaultProps = {
+  children: null,
 };
 
 export default LeftTree;

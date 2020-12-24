@@ -1,14 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
 import styled from 'styled-components';
-import { loadData } from '../lib/firebase/api';
 import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
 import RightTree from '../components/common/RightTree';
 import LeftTree from '../components/common/LeftTree';
 import grassImg from '../../public/img/ground.png';
 import cloudImg from '../../public/img/cloud.png';
-import { results } from '../lib/util/util';
 import ChartContainer from '../containers/statistics/ChartContainer';
 
 const Wrapper = styled.div`
@@ -33,19 +30,9 @@ const BackgroundDark = styled.div`
 `;
 
 const Statistics = () => {
-  const [data, setData] = useState(null);
-  const { type, name } = useParams();
-  const ref = useRef();
-
-  useEffect(() => {
-    loadData(`result/${results[name]}`).then((res) => {
-      setData(res);
-    });
-  }, [type, name]);
-
   return (
     <>
-      <Wrapper ref={ref}>
+      <Wrapper>
         <ChartContainer />
         <BackgroundDark />
         <RightTree />
