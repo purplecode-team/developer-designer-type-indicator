@@ -244,16 +244,16 @@ const ResultBoardContainer = () => {
       {!isLoading && !isError && data && (
         <Board>
           <Test>
-              <TitleWrap>
-                <SmallTitle>{data.subtitle}</SmallTitle>
-                <Title>
-                  {`${data.title} ${
+            <TitleWrap>
+              <SmallTitle>{data.subtitle}</SmallTitle>
+              <Title>
+                {`${data.title} ${
                     type === 'designer' ? '디자이너' : '개발자'
                   }`}
-                </Title>
-              </TitleWrap>
-              {type === 'designer' ? (
-                <DescriptionList description={data.designerDesc} />
+              </Title>
+            </TitleWrap>
+            {type === 'designer' ? (
+              <DescriptionList description={data.designerDesc} />
               ) : (
                 <DescriptionList description={data.devDesc} />
               )}

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import media from '../../lib/styles/media';
 import { names, title, shortBio, characters } from '../../lib/util/util';
-import { Link } from 'react-router-dom';
 import BarChart from '../../components/statistics/BarChart';
 import useLoadData from '../../lib/hooks/useLoadData';
 import { history } from '../../lib/helpers/history';
