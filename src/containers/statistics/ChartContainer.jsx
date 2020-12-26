@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import media from '../../lib/styles/media';
 import { names, title, shortBio, characters } from '../../lib/util/util';
+import { Link } from 'react-router-dom';
 import BarChart from '../../components/statistics/BarChart';
 import useLoadData from '../../lib/hooks/useLoadData';
 import { history } from '../../lib/helpers/history';
 
 const Wrapper = styled.div`
   position: relative;
-  width: 60%;
+  width: 45rem;
   height: 80vh;
   margin: auto;
   overflow-x: hidden;
@@ -50,13 +51,21 @@ const Container = styled.div`
   }
 `;
 const BtnWrapper = styled.div`
+  display: flex;
   padding-bottom: 40px;
-  width: 13rem;
+  width: 100%;
   margin: 0 auto;
+  flex-direction: row;
+  justify-content: space-evenly;
+  @media (max-width: ${media.mobileL}px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const CloseBtn = styled.button`
-  width: 100%;
-  height: 40px;
+  width: 12rem;
+  height: 2.5rem;
+  margin-bottom: 1.5rem;
   border-radius: 1rem;
   background-color: #d1c873;
   color: white;
@@ -119,8 +128,11 @@ const ChartContainer = () => {
             />
           </Container>
           <BtnWrapper>
-            <CloseBtn onClick={goBack}>닫기</CloseBtn>
-          </BtnWrapper>
+            <CloseBtn onClick={goBack}>뒤로 가기</CloseBtn>
+            <Link to="/">
+              <CloseBtn>메인으로</CloseBtn>
+            </Link>
+          </BtnWrapper>          
         </Wrapper>
       )}
     </>
