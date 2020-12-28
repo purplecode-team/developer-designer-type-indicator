@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 import ContentContainer from '../containers/test/ContentContainer';
 import ContentNav from '../components/test/ContentNav';
-import firebase from '../lib/firebase/firebase';
 import leftTree from '../../public/img/tree_left.png';
 import rightTree from '../../public/img/tree_right.png';
 import media from '../lib/styles/media';
@@ -11,6 +11,7 @@ import CloudBackground from '../components/common/CloudBackground';
 import grassImg from '../../public/img/ground.png';
 import cloudImg from '../../public/img/cloud.png';
 import rabbit from '../../public/img/rabbit.png';
+import useLoadData from '../lib/hooks/useLoadData';
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -103,35 +104,27 @@ const SmallCharacter = styled.img`
   }
 `;
 
-const Test = ({ match, history }) => {
-  const [job, setJob] = useState('');
+const Test = ({ history }) => {
+  const { type } = useParams();
   const [count, setCount] = useState(1);
   const [currentData, setCurrentData] = useState({});
   const [data, setData] = useState([]);
 
-  const connectData = useCallback((dataName) => {
-    const ref = firebase.database().ref(dataName);
-    ref.once('value', (snapshot) => {
-      // 해당 접근은 firebase 데이터 순서에 의존하여 적용된다는 문제가 있음
-      setData(Object.values(snapshot.val()));
-      setCurrentData(Object.values(snapshot.val())[0]);
-    });
-  }, []);
+  const job = type === 'designer' ? '디자이너' : '개발자';
+  const match = type === 'designer' ? 'designData' : 'developData';
+  const [dataState] = useLoadData(match, null);
+
+  useEffect(() => {
+    if(dataState.data){
+      setData(Object.values(dataState.data));
+      setCurrentData(Object.values(dataState.data)[0]);
+    }
+  },[dataState]);
 
   const nextSlide = useCallback(() => {
     setCount(count + 1);
     setCurrentData(data[count]);
   });
-
-  useEffect(() => {
-    if (match.params.type === 'developer') {
-      connectData('developData');
-      setJob('개발자');
-    } else if (match.params.type === 'designer') {
-      connectData('designData');
-      setJob('디자이너');
-    }
-  }, []);
 
   return (
     <MainWrapper>
@@ -148,7 +141,6 @@ const Test = ({ match, history }) => {
           />
         </ContentWrap>
         <ContentNav count={count} />
-        
       </Container>
       <CloudBackground
         role="img"
