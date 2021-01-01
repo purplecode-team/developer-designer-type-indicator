@@ -14,21 +14,12 @@ import media from '../lib/styles/media';
 import useLoadData from '../lib/hooks/useLoadData';
 import useUpdateData from '../lib/hooks/useUpdateData';
 
-const backgroundFade = keyframes`
-  0% {
-    background-color: #000;
-  }
-  100%{
-    background-color: #436943;
-  }
-`;
 
 const ResultWrapper = styled.div`
   height: 100vh;
   width: 100vw;
   position: relative;
-  background-color: #436943;
-  animation: ${backgroundFade} 5s;
+  background-color: #84d184;
   @media (min-width: ${media.laptop+1}px) {
     overflow: hidden;
   }
@@ -100,7 +91,6 @@ const Result = () => {
       </Helmet>
       <ResultWrapper ref={ref}>
         <ResultContainer />
-        <BackgroundDark />
         <RightTree />
         <LeftTree />
         <CloudBackground

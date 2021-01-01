@@ -52,11 +52,6 @@ const Board = styled.div`
     'Test Test Share Share'
     'Test Test Share Share'
     'Test Test Share Share';
-  @media (max-width: ${media.laptopM}px) {
-    width: 450px;
-  }
-  @media (min-width: ${media.laptop + 1}px) {
-  }
   @media (max-width: ${media.laptop}px) {
     margin: 0 auto 5rem auto;
     width: 80%;
@@ -90,7 +85,6 @@ const TestBox = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 2rem;
-  overflow-y: auto;
 `;
 
 const ShareBox = styled.div`
@@ -101,6 +95,7 @@ const ShareBox = styled.div`
   }
   a {
     font-size: 14px;
+    width:100%;
     color: grey;
     font-family: hannaAir, sans-serif;
     text-decoration: none;
@@ -147,7 +142,7 @@ const IconBox = styled.div`
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 5px;
   button {
     border: none;
     background: none;
@@ -163,27 +158,19 @@ const IconBox = styled.div`
   }
 `;
 
-const LinkButton = styled.button`
-  width: 95%;
-  height: 40px;
-  border-radius: 1rem;
-  margin: 0 1rem;
-  background-color: #d1c873;
-  color: white;
-  border-style: none;
-  font-family: 'hannaPro', sans-serif;
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.05);
-    transition: all 0.2s ease-in-out;
-  }
-  &:focus {
-    outline: none;
-  }
-`;
-
 const Test = styled.div`
   grid-area: Test;
+  padding: 10px 0;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: none;
+  }
 `;
 
 const Graph = styled.div`
@@ -210,9 +197,27 @@ const Share = styled.div`
 
 const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   @media (max-width: ${media.laptop}px) {
     padding: 1rem 0;
+  }
+`;
+
+const LinkButton = styled.button`
+  width: 95%;
+  height: 40px;
+  border-radius: 1rem;
+  background-color: #d1c873;
+  color: white;
+  border-style: none;
+  font-family: 'hannaPro', sans-serif;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+  }
+  &:focus {
+    outline: none;
   }
 `;
 
