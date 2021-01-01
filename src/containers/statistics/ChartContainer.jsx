@@ -7,7 +7,7 @@ import useLoadData from '../../lib/hooks/useLoadData';
 
 const Wrapper = styled.div`
   position: relative;
-  width: 60%;
+  width: 45rem;
   height: 80vh;
   margin: auto;
   overflow-x: hidden;
