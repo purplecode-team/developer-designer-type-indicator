@@ -6,6 +6,7 @@ import media from '../../lib/styles/media';
 
 const Wrapper = styled.ul`
   padding: 1.5rem;
+  text-align: left;
   @media (max-width: ${media.laptop}px) {
     padding: 1rem 0;
     width: 80%;
