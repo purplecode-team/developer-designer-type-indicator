@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
@@ -63,7 +63,7 @@ const ContentBtn = ({ nextSlide, data, count, history }) => {
     }
   };
 
-  const clickSelection = (id) => {
+  const clickAnswer = (id) => {
     dispatch(id);
     goToResult();
     nextSlide();
@@ -74,7 +74,7 @@ const ContentBtn = ({ nextSlide, data, count, history }) => {
       <SmallBtn
         type="button"
         onClick={() => {
-          clickSelection({ type: data.TypeA });
+          clickAnswer({ type: data.TypeA });
         }}
       >
         {data.A}
@@ -82,7 +82,7 @@ const ContentBtn = ({ nextSlide, data, count, history }) => {
       <SmallBtn
         type="button"
         onClick={() => {
-          clickSelection({ type: data.TypeB });
+          clickAnswer({ type: data.TypeB });
         }}
       >
         {data.B}
