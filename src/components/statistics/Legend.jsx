@@ -18,7 +18,6 @@ const Wrapper = styled.ul`
   li {
     font-size: 12px;
     font-family: hannaAir,sans-serif;
-    text-align: initial;
     width: 7rem;
     margin: 0 auto 1rem;
     a {
