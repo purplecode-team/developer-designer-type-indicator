@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { TwitterShareButton, FacebookShareButton } from 'react-share';
@@ -7,6 +8,12 @@ import { KAKAO_APP_KEY } from '../../lib/util/config';
 import twitterIcon from '../../../public/img/twitter.png';
 import kakaoImg from '../../../public/img/kakao.png';
 import facebookImg from '../../../public/img/facebook.png';
+
+const IconButton = styled.button`
+  :hover{
+    cursor:pointer;
+  }
+`;
 
 export const KaKaoShareBtn = () => {
   const { type, name } = useParams();
@@ -27,9 +34,9 @@ export const KaKaoShareBtn = () => {
   }, [name, type]);
 
   return (
-    <button type="button" className="kakao-link-btn">
+    <IconButton type="button" className="kakao-link-btn">
       <img src={kakaoImg} alt="kakao 공유" />
-    </button>
+    </IconButton>
   );
 };
 
