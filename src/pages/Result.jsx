@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams, useLocation } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { history } from '../lib/helpers/history';
 import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
@@ -33,28 +33,6 @@ const BackgroundColor = styled.div`
   height: 100vh;
   background-color: #c5f1fc;
 `;
-
-const fadeIn = keyframes`
-  0% {
-    opacity:1;
-  }
-  100%{
-    opacity:0.5;
-  }
-`;
-
-const BackgroundDark = styled.div`
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  position: absolute;
-  background-color: black;
-  opacity: 0.5;
-  animation: ${fadeIn} 5s;
-  z-index: 99;
-  top: 0;
-`;
-
 
 const Result = () => {
   const { type } = useParams();
