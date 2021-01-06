@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import media from '../../lib/styles/media';
 import { names, title, shortBio, characters } from '../../lib/util/util';
 import BarChart from '../../components/statistics/BarChart';
@@ -49,6 +50,28 @@ const Container = styled.div`
   }
 `;
 
+const CloseBtn = styled.button`
+  width: 12rem;
+  height: 2.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 1rem;
+  background-color: #d1c873;
+  color: white;
+  border-style: none;
+  font-family: 'hannaPro', sans-serif;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+  }
+  &:focus {
+    outline: none;
+  }
+  @media (max-width: ${media.mobileL}px) {
+    width: 100%;
+  }
+`;
+
 const ChartContainer = () => {
   const [designerCountState] = useLoadData('designerCount', null);
   const [developerCountState] = useLoadData('devCount', null);
@@ -91,6 +114,9 @@ const ChartContainer = () => {
               title="개발자 성향"
             />
           </Container>
+          <Link to="/">
+            <CloseBtn>테스트 다시하기</CloseBtn>
+          </Link>
         </Wrapper>
       )}
     </>
