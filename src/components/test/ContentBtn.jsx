@@ -12,9 +12,6 @@ const ContentBtnBox = styled.div`
 `;
 
 const SmallBtn = styled.button`
-  @media (max-width: ${media.mobileL}px) {
-    font-size: 14px;
-  }
   display: block;
   margin: 20px auto;
   width: 100%;
@@ -28,12 +25,18 @@ const SmallBtn = styled.button`
   border: 1px solid #ff9c9c;
   border-radius: 25px;
   cursor: pointer;
-  &:hover {
+  &:focus {
+    outline-style: none;
+  }
+  &:active {
+    border: 2px solid #fc7676;
+  }
+  -webkit-tap-highlight-color: transparent;
+  @media (min-width: ${media.tablet+1}px) {
+    &:hover {
     color: white;
     background-color: #ff9c9c;
   }
-  &:focus {
-    outline-style: none;
   }
   @media (max-width: ${media.tablet}px) {
     &:focus {
@@ -41,21 +44,14 @@ const SmallBtn = styled.button`
       background-color: white;
     }
   }
-  &:active {
-    border: 2px solid #fc7676;
+  @media (max-width: ${media.mobileL}px) {
+    font-size: 14px;
   }
-  -webkit-tap-highlight-color: transparent;
 `;
 
 const ContentBtn = ({ nextSlide, data, count, history }) => {
   const [ state, dispatch ] = useSetResult();
   const { type } = useParams();
-
-  const classifySelection = (id, selection) => {
-    if (selection === 'A') {
-      dispatch(id);
-    }
-  };
 
   const goToResult = () => {
     if (count === 15) {
@@ -67,8 +63,8 @@ const ContentBtn = ({ nextSlide, data, count, history }) => {
     }
   };
 
-  const clickSelection = (id, selection) => {
-    classifySelection(id, selection);
+  const clickAnswer = (id) => {
+    dispatch(id);
     goToResult();
     nextSlide();
   };
@@ -78,7 +74,7 @@ const ContentBtn = ({ nextSlide, data, count, history }) => {
       <SmallBtn
         type="button"
         onClick={() => {
-          clickSelection({ type: data.id }, 'A');
+          clickAnswer({ type: data.TypeA });
         }}
       >
         {data.A}
@@ -86,7 +82,7 @@ const ContentBtn = ({ nextSlide, data, count, history }) => {
       <SmallBtn
         type="button"
         onClick={() => {
-          clickSelection({ type: data.id }, 'B');
+          clickAnswer({ type: data.TypeB });
         }}
       >
         {data.B}
