@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams, useLocation } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { history } from '../lib/helpers/history';
 import GrassBackground from '../components/common/GrassBackground';
 import CloudBackground from '../components/common/CloudBackground';
@@ -14,21 +14,12 @@ import media from '../lib/styles/media';
 import useLoadData from '../lib/hooks/useLoadData';
 import useUpdateData from '../lib/hooks/useUpdateData';
 
-const backgroundFade = keyframes`
-  0% {
-    background-color: #000;
-  }
-  100%{
-    background-color: #436943;
-  }
-`;
 
 const ResultWrapper = styled.div`
   height: 100vh;
   width: 100vw;
   position: relative;
-  background-color: #436943;
-  animation: ${backgroundFade} 5s;
+  background-color: #84d184;
   @media (min-width: ${media.laptop+1}px) {
     overflow: hidden;
   }
@@ -42,28 +33,6 @@ const BackgroundColor = styled.div`
   height: 100vh;
   background-color: #c5f1fc;
 `;
-
-const fadeIn = keyframes`
-  0% {
-    opacity:1;
-  }
-  100%{
-    opacity:0.5;
-  }
-`;
-
-const BackgroundDark = styled.div`
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  position: absolute;
-  background-color: black;
-  opacity: 0.5;
-  animation: ${fadeIn} 5s;
-  z-index: 99;
-  top: 0;
-`;
-
 
 const Result = () => {
   const { type } = useParams();
@@ -100,7 +69,6 @@ const Result = () => {
       </Helmet>
       <ResultWrapper ref={ref}>
         <ResultContainer />
-        <BackgroundDark />
         <RightTree />
         <LeftTree />
         <CloudBackground

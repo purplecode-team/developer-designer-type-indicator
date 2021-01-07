@@ -1,5 +1,12 @@
 import React from 'react';
+import styled from 'styled-components';
 import clip from '../../../public/img/clip.png';
+
+const IconButton = styled.button`
+  &:hover{
+    cursor:pointer;
+  }
+`;
 
 const CopyButton = () => {
   const handleClick = () => {
@@ -9,9 +16,9 @@ const CopyButton = () => {
   };
 
   return (
-    <button type="button" onClick={handleClick}>
+    <IconButton type="button" onClick={handleClick}>
       <img src={clip} alt="copy" />
-    </button>
+    </IconButton>
   );
 };
 
