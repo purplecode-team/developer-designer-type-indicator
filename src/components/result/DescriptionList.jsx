@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const List = styled.ul`
-  width: 85%;
+  width: 95%;
   //overflow-y 사용 시, 내부 스크롤 가능 but, list-style '-'이 가려짐
   overflow-y: auto;
   line-height: 1.5em;
