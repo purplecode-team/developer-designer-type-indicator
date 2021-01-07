@@ -16,10 +16,9 @@ const Wrapper = styled.ul`
     justify-content: center;
   }
   li {
+    margin-bottom: 1rem;
     font-size: 12px;
-    font-family: hannaAir,sans-serif;
-    width: 7rem;
-    margin: 0 auto 1rem;
+    font-family: hannaAir, sans-serif;
     a {
       color: black;
       text-decoration: none;
