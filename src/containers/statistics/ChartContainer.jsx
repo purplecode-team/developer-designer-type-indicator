@@ -110,7 +110,7 @@ const ChartContainer = () => {
             />
             <BarChart
               data={parseData(developerCountState.data)}
-              type="designer"
+              type="developer"
               title="개발자 성향"
             />
           </Container>
