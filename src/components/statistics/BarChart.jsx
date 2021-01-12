@@ -104,7 +104,7 @@ const BarChart = ({ data, title, type }) => {
 
       const color = d3.scaleLinear().domain([0, xMaxValue]).range([0, 1]);
 
-      const xAxis = d3.axisTop(xScale);
+      const xAxis = d3.axisTop(xScale).ticks(7);
       svg.select('.x-axis').call(xAxis);
 
       const yAxis = d3
