@@ -44,7 +44,7 @@ const TitleWrapper = styled.div`
   @media (max-width: ${media.tablet}px) {
     height: 10rem;
     h1 {
-      padding-top: calc((10rem - 2.6em - 15px) / 2);
+      padding-top: calc((10rem - 2.6em - 20px) / 2);
     }
   }
   @media (max-width: ${media.mobileL}px) {
