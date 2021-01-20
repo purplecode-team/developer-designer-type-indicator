@@ -6,7 +6,7 @@ DDTI는 개발자/디자이너 성향 테스트를 통해 사용자의 성향을
 
 📝 [테스트 해보기](http://developer-designer-personality-test.s3-website.ap-northeast-2.amazonaws.com/)
 
-## 📚 Libraries
+## 📚 Project Stack
 - React
 - Firebase (Realtime Database)
 - Styled Components
