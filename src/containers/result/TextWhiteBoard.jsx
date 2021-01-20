@@ -95,7 +95,7 @@ const ShareBox = styled.div`
   }
   a {
     font-size: 14px;
-    width:100%;
+    width: 100%;
     color: grey;
     font-family: hannaAir, sans-serif;
     text-decoration: none;
@@ -110,7 +110,7 @@ const ShareBox = styled.div`
 `;
 
 const TitleWrap = styled.div`
-  padding: 0 0 20px 0;
+  padding: 0 0 10px 0;
   width: 100%;
   text-align: center;
   @media (max-width: ${media.laptop}px) {
@@ -160,7 +160,7 @@ const IconBox = styled.div`
 
 const Test = styled.div`
   grid-area: Test;
-  padding: 10px 0;
+  padding: 5px 0;
   overflow-y: auto;
   &::-webkit-scrollbar {
     width: 4px;
@@ -249,21 +249,17 @@ const TextWhiteboard = () => {
       {!isLoading && !isError && data && (
         <Board>
           <Test>
-            <TestBox>
-              <TitleWrap>
-                <SmallTitle>{data.subtitle}</SmallTitle>
-                <Title>
-                  {`${data.title} ${
-                    type === 'designer' ? '디자이너' : '개발자'
-                  }`}
-                </Title>
-              </TitleWrap>
-              {type === 'designer' ? (
-                <DescriptionList description={data.designerDesc} />
-              ) : (
-                <DescriptionList description={data.devDesc} />
-              )}
-            </TestBox>
+            <TitleWrap>
+              <SmallTitle>{data.subtitle}</SmallTitle>
+              <Title>
+                {`${data.title} ${type === 'designer' ? '디자이너' : '개발자'}`}
+              </Title>
+            </TitleWrap>
+            {type === 'designer' ? (
+              <DescriptionList description={data.designerDesc} />
+            ) : (
+              <DescriptionList description={data.devDesc} />
+            )}
           </Test>
           <Graph>
             <TypeGraph result={results[name]} />
