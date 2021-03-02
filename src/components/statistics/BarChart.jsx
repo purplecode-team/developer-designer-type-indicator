@@ -63,6 +63,12 @@ const ChartWrapper = styled.div`
   @media (max-width: ${media.laptop}px) {
     flex-direction: column;
   }
+  .bar {
+    transition: opacity 200ms;
+    &:hover {
+      opacity: 0.3;
+    }
+  }
 `;
 
 const BarChart = ({ data, title, type }) => {
@@ -113,7 +119,7 @@ const BarChart = ({ data, title, type }) => {
         .tickSizeInner(0)
         .tickSizeOuter(0);
 
-      const mouseover = function (event, d) {
+      const mouseover = (event, d) => {
         if (windowWidth < laptopWidth) {
           return;
         }
@@ -126,15 +132,13 @@ const BarChart = ({ data, title, type }) => {
           .transition()
           .duration(200)
           .style('opacity', 1);
-        d3.select(this).transition().duration(200).style('opacity', 0.3);
       };
 
-      const mouseleave = function () {
+      const mouseleave = () => {
         if (windowWidth < laptopWidth) {
           return;
         }
-        tooltip.html('  ').style('opacity', 0);
-        d3.select(this).style('opacity', 1);
+        tooltip.style('opacity', 0);
       };
 
       svg.select('.y-axis').call(yAxis);
